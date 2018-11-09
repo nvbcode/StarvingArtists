@@ -9,13 +9,8 @@ module.exports = function(connection, Sequelize) {
       }
     });
     Applicant.associate=function(models){
-        Applicant.belongsTo(models.Artist,{
-            foreignKey:{
-                allowNull:false
-            },
-            onDelete:'cascade'
-        });
-        Applicant.belongsToMany(models.Event,{through:models.Artist});
+        Applicant.belongsToMany(models.Artist,{through:'Artist_Event'});
+        Applicant.belongsToMany(models.Event,{through:'Artist_Event'});;
     }
   
     return Applicant;
