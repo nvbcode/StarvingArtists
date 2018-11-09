@@ -1,0 +1,24 @@
+{
+  "name": "starvingartists",
+  "version": "1.0.0",
+  "description": "## Team Members:  Josh McCormick  Josh Jeng  Makiko Vaughan  Neel Bhandari Cynthia Knox",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvbcode/StarvingArtists.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvbcode/StarvingArtists/issues"
+  },
+  "homepage": "https://github.com/nvbcode/StarvingArtists#readme",
+  "dependencies": {
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.1"
+  }
+}
