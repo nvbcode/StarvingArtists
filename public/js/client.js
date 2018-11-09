@@ -1,5 +1,18 @@
 $(function () {
 
+	const testUser ={
+		id: 234,
+		username: "GenericPerson",
+		password: "funfunfun"
+	}
+
+	function startRender(){
+		$('#banner').append(`Welcome, ${testUser.username}!`);
+	}
+
+	startRender();
+
+
 	$('#createEvent').on("click", eventModal)
 	function eventModal(event) {
 		event.preventDefault();
@@ -11,11 +24,12 @@ $(function () {
 		event.preventDefault();
 	
 		const newEvent = {
-			firstName: $('#firstName').val().trim(),
-			lastName: $('#lastName').val().trim(),
+			eventName: $('#eventName').val().trim(),
 			zipcode: parseInt($('#zipcode').val()),
+			price: parseInt($('#zipcode').val()),
 			state: $('#state').val(),
-			artist: $('#virtuoso').val()
+			artist: $('#virtuoso').val(),
+			comments: $('#comments').val()
 		}
 		if (newEvent.firstName==="" || newEvent.lastName==="" || isNaN(newEvent.zipcode)) {
 			errorBox.style.display = "block";
@@ -23,8 +37,8 @@ $(function () {
 		} else {
 			$('#myModal').removeClass("show");
 			console.log(newEvent);
+			return newEvent;
 		}
-
 	}
 	
 	$('#cancel').on("click", emptyCart);
@@ -32,5 +46,4 @@ $(function () {
 		event.preventDefault();
 		$('#myModal').removeClass("show");
 	}
-
 });

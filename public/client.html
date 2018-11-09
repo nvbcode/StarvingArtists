@@ -14,29 +14,44 @@
 
 <body>
 	<div id="page">
-		<div id="banner">
-			Welcome!
-		</div>
-		<div id="contentBox">
+		<div id="banner"></div>
+		<div class="contentBox">
 			<button class="button" id="createEvent">Create an Event</button>
 		</div>
+
+		<div id="eventsBox">
+				<div class="boxBanner"> Your Current Events </div>
+			</div>
+
 		<div id="myModal" class="modal">
 			<div id="modalContent">
 				<div id="eventTitle">Let's Get Started</div>
+
 				<div class="rowBox">
 					<div class="itemBox">
-						<div class="label">First Name</div>
-						<input type="text" class="input" id="firstName" />
+						<div class="label">Event Name</div>
+						<input type="text" class="input" id="eventName" />
+					</div>
+				</div>
+
+				<div class="rowBox">
+					<div class="itemBox">
+						<div class="label">Select Artist Type</div>
+						<select class="input" id="virtuoso">
+							<option value="musician">Musician</option>
+							<option value="artist">Artist</option>
+							<option value="photographer">Photographer</option>
+						</select>
 					</div>
 					<div class="itemBox">
-						<div class="label">Last Name</div>
-						<input type="text" class="input" id="lastName" />
+						<div class="label">Price Bid</div>
+						<input type="number" class="input" id="price" />
 					</div>
 				</div>
 				<div class="rowBox">
 					<div class="itemBox">
 						<div class="label">Zipcode</div>
-						<input type="number" class="input" id="zipcode"  />
+						<input type="number" class="input" id="zipcode" />
 					</div>
 					<div class="itemBox">
 						<div class="label">State</div>
@@ -95,20 +110,16 @@
 						</select>
 					</div>
 				</div>
-				<div class="typeBox">
-					<div class="label">Select Artist Type</div>
-					<select class="input" id="virtuoso">
-						<option value="musician">Musician</option>
-						<option value="artist">Artist</option>
-						<option value="photographer">Photographer</option>
-					</select>
+
+				<div class="commentBox">
+					<div class="label">What're You Looking For?</div>
+					<input type="text" id="comments" />
 				</div>
 				<div id="errorBox" class="colorVar">Whoops! please fill in all the info</div>
 				<div class="buttonRow">
 					<button class="button" id="create">Create</button>
 					<button class="button" id="cancel">Cancel</button>
 				</div>
-
 			</div>
 		</div>
 
