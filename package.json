@@ -1,0 +1,28 @@
+{
+  "name": "starving-artist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node ./seed/seed-db.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvbcode/StarvingArtists.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvbcode/StarvingArtists/issues"
+  },
+  "homepage": "https://github.com/nvbcode/StarvingArtists#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql2": "^1.6.4",
+    "path": "^0.12.7",
+    "sequelize": "^4.41.1"
+  }
+}
