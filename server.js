@@ -10,8 +10,8 @@ app.use(express.static("public"));
 
 
 
-// require('./routes/api-routes.js')(app);
-// require('./routes/html-routes.js')(app);
+require('./routes/api-customers.js')(app);
+require('./routes/html-routes.js')(app);
 
 
 const db = require('./models');
