@@ -11,6 +11,7 @@ app.use(express.static("public"));
 
 
 require('./routes/api-customers.js')(app);
+require('./routes/api-artists.js')(app);
 require('./routes/html-routes.js')(app);
 
 
