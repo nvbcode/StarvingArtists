@@ -85,24 +85,35 @@ $(function () {
 	}
 
 	function startRender() {
-		$('#banner').append(`Welcome, ${testArtist.firstName} ${testArtist.lastName}!`);
-		$('#picBox').append(`<img id=profilePic src=${testArtist.profilePic}>`);
 
-		const specialties = testArtist.specialties;
-		for (let i = 0; i < specialties.length; i++) {
-			$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
-		}
+		$.ajax({
+			method: "GET",
+			url: "/api/artists/1"
+		}).then(function (response) {
+			const artist = response;
 
-		const reviews = testArtist.reviews;
-		for (let i = 0; i < specialties.length; i++) {
-			$('#reviewRow').append(`
+			$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
+			$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
+
+			const specialties = testArtist.specialties;
+			for (let i = 0; i < specialties.length; i++) {
+				$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
+			}
+
+			const reviews = artist.reviews;
+			for (let i = 0; i < reviews.length; i++) {
+				$('#reviewRow').append(`
 			<div class="oneReview">
-				<div class="rating">${reviews[i].rating}</div>
-				<div class="comment">${reviews[i].comment}</div>
-			</div>`)
-		}
+				<div class="rating">${reviews[i].review_rate}</div>
+				<div class="comment">${reviews[i].review_body}</div>
+			</div>`);
+			}
 
-		eventsRender(eventsList);
+			eventsRender(eventsList);
+
+		}).catch(function (err) {
+			console.log("Error", err);
+		});
 	}
 
 	startRender();

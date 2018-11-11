@@ -1,5 +1,7 @@
 // Requiring our models
 const db = require('../models');
+
+//Using these two files for posting and getting from/to review table.
 const artistReview = require('./artistReview.js');
 const creatingReview = require('./addingReview.js');
 
@@ -35,7 +37,7 @@ module.exports = function (app) {
                         city: artist.city,
                         state: artist.state,
                         profile_pic: artist.profile_pic,
-                        review: reviewArray
+                        reviews: reviewArray
                     }
                     res.json(reviewInfo);
                 });
@@ -60,8 +62,6 @@ module.exports = function (app) {
             profile_pic: artistData.profilePic,
             UserId: artistData.id
         }
-
-        console.log("Artist", artist);
 
         db.Artist.create(artist).then(function (rows) {
 

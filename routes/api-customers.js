@@ -42,7 +42,7 @@ module.exports = function (app) {
             city: customer.city,
             state: customer.state,
             profile_pic: customer.profile_pic,
-            event: eventArray
+            events: eventArray
           }
           //Send the requested data to the client
           res.json(customerData);
