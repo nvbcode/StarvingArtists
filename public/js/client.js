@@ -1,10 +1,39 @@
+const testUser = {
+	id: 234,
+	username: "GenericPerson",
+	password: "funfunfun"
+}
+
+const createdEvents = [
+	{
+		id: 10,
+		eventName: "Fluffy's Birthday Party",
+		zipcode: "90210",
+		price: 500,
+		state: "AK",
+		artType: "Musician",
+		comments: "I want Fluffy's birthday party to be special. He loves Ray Charles, so I'm hoping for someone that plays like that.",
+	}
+]
+
 $(function () {
 
-	const testUser ={
-		id: 234,
-		username: "GenericPerson",
-		password: "funfunfun"
+function renderEvents() {
+	$('#eventsBox').empty();
+	
+	for (let i = 0; i<createdEvents.length; i++) {
+		const c = createdEvents[i];
+		$('#eventsBox').append(`
+		<div class="oneEvent">
+			<div class="eventElement">Event: ${c.eventName}</div>
+			<div class="eventElement">Type: ${c.artType}</div>
+			<div class="eventElement">Offer: ${c.price}</div>
+			<div class="eventElement">Comments: ${c.comments}</div>
+		</div>`)
 	}
+}
+
+
 
 	function startRender(){
 
@@ -43,21 +72,21 @@ $(function () {
 		});
 
 		});
+
 	}
 
 	startRender();
 
-
-	$('#createEvent').on("click", eventModal)
-	function eventModal(event) {
+	$('#createEvent').on("click", showEventModal)
+	function showEventModal(event) {
 		event.preventDefault();
-		$('#myModal').addClass("show");
+		$('#eventCreateModal').addClass("show");
 	}
 
-	$("#create").on("click", createEvent)
+	$("#createButton").on("click", createEvent)
 	function createEvent(event) {
 		event.preventDefault();
-	
+
 		const newEvent = {
 			eventName: $('#eventName').val().trim(),
 			zipcode: parseInt($('#zipcode').val()),
@@ -66,19 +95,25 @@ $(function () {
 			artist: $('#virtuoso').val(),
 			comments: $('#comments').val()
 		}
-		if (newEvent.firstName==="" || newEvent.lastName==="" || isNaN(newEvent.zipcode)) {
-			errorBox.style.display = "block";
+
+		if (newEvent.firstName === "" || newEvent.lastName === "" || isNaN(newEvent.zipcode)) {
+			$('#errorBox').addClass("show")
 			$('#errorBox').toggleClass("alt");
 		} else {
-			$('#myModal').removeClass("show");
-			console.log(newEvent);
-			return newEvent;
+			createdEvents.push(newEvent);
+			$('#eventCreateModal').removeClass("show");
+			$('#errorBox').removeClass("show")
+			console.log(createdEvents);
+			renderEvents();
+			}
 		}
-	}
 	
-	$('#cancel').on("click", emptyCart);
+	$('#cancelButton').on("click", emptyCart);
 	function emptyCart(event) {
 		event.preventDefault();
-		$('#myModal').removeClass("show");
+		$('#eventCreateModal').removeClass("show");
 	}
+
 });
+
+
