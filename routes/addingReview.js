@@ -11,8 +11,10 @@ module.exports = function (reviewData, artistId, cb) {
             ArtistId: artistId
         }
 
+        console.log("Review", review);
+
         db.Review.create(review).then(function (rows) {
-            console.log("Here");
+            
         }).catch(function (error) {
             res.json({ error: error });
         });

@@ -1,5 +1,7 @@
 // Requiring our models
 const db = require('../models');
+
+//Using these two files for posting and getting from/to review table.
 const artistReview = require('./artistReview.js');
 const creatingReview = require('./addingReview.js');
 
@@ -35,7 +37,7 @@ module.exports = function (app) {
                         city: artist.city,
                         state: artist.state,
                         profile_pic: artist.profile_pic,
-                        review: reviewArray
+                        reviews: reviewArray
                     }
                     res.json(reviewInfo);
                 });
@@ -61,21 +63,13 @@ module.exports = function (app) {
             UserId: artistData.id
         }
 
-        console.log("Artist", artist);
-
         db.Artist.create(artist).then(function (rows) {
 
-            console.log("Rows", rows.dataValues.id);
-
-            //Calling the function in addingReview.js to add the review.
-            creatingReview(artistData.reviews, rows.dataValues.id, function(){
-                res.json({
-                    ArtistId: rows.id,
-                    Status: "Created"
-                });
-            
+            res.json({
+                ArtistId: rows.dataValues.id,
+                Status: "Created"
             });
-                
+
         }).catch(function (error) {
             res.json({ error: error });
         });
@@ -83,18 +77,20 @@ module.exports = function (app) {
     });
 
 
-    //Create a row in Artists table.
-    // app.post("/api/reviews", function (req, res) {
+    //Create a row in Review table.
+    app.post("/api/reviews", function (req, res) {
 
-    //     db.Review.create(req.body).then(function (rows) {
-    //         res.json({
-    //             Review: rows.id,
-    //             Status: "Created"
-    //         });
-    //     }).catch(function (error) {
-    //         res.json({ error: error });
-    //     });
+        console.log(req.body);
 
-    // });
+        //Calling the function in addingReview.js to add the review.
+        creatingReview(req.body.reviews, req.body.ArtistId, function(){
+            res.json({
+                ArtistId: req.body.ArtistId,
+                Status: "Review Created"
+            });
+        
+        });
+
+    });
 
 }
