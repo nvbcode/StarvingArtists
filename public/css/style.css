@@ -6,7 +6,7 @@ html, body{
 }
 
 .show{
-	display:flex;
+	display:flex !important;
 }
 
 #banner, .boxBanner {
@@ -45,6 +45,10 @@ html, body{
 	border-bottom-style: solid;
 	border-bottom-width:2px;
 	border-color:black;
+}
+
+.eventElement{
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .rowBox{
@@ -132,7 +136,7 @@ html, body{
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
+	z-index: 100; /* Sit on top */
 	padding-top:10px;
 	left: 0;
 	top: 0;
@@ -178,6 +182,8 @@ html, body{
 /*ARTIST PROFILE SECTION*/
 #profileSection{
 	display:flex;
+	justify-content:space-around;
+	align-items: center;
 	width:100%;
 	min-height:300px;
 	border-color:blue;
