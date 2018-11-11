@@ -1,6 +1,7 @@
 // Requiring our models
 const db = require('../models');
 const artistReview = require('./artistReview.js');
+const creatingReview = require('./addingReview.js');
 
 module.exports = function (app) {
 
@@ -44,32 +45,56 @@ module.exports = function (app) {
     });
 
     //Create a row in Artists table.
-    app.post("/api/artists", function(req, res){
+    app.post("/api/artists", function (req, res) {
 
-        db.Review.create(req.body).then(function (rows) {
-            res.json({
-              Review: rows.id,
-              Status: "Created"
+        const artistData = req.body;
+
+        console.log("artistData", artistData);
+
+        const artist = {
+            first_name: artistData.firstName,
+            last_name: artistData.lastName,
+            demo: artistData.demo,
+            city: artistData.city,
+            state: artistData.state,
+            profile_pic: artistData.profilePic,
+            UserId: artistData.id
+        }
+
+        console.log("Artist", artist);
+
+        db.Artist.create(artist).then(function (rows) {
+
+            console.log("Rows", rows.dataValues.id);
+
+            //Calling the function in addingReview.js to add the review.
+            creatingReview(artistData.reviews, rows.dataValues.id, function(){
+                res.json({
+                    ArtistId: rows.id,
+                    Status: "Created"
+                });
+            
             });
-          }).catch(function (error) {
+                
+        }).catch(function (error) {
             res.json({ error: error });
-          });
+        });
 
     });
 
 
     //Create a row in Artists table.
-    app.post("/api/reviews", function(req, res){
+    // app.post("/api/reviews", function (req, res) {
 
-        db.Review.create(req.body).then(function (rows) {
-            res.json({
-              Review: rows.id,
-              Status: "Created"
-            });
-          }).catch(function (error) {
-            res.json({ error: error });
-          });
+    //     db.Review.create(req.body).then(function (rows) {
+    //         res.json({
+    //             Review: rows.id,
+    //             Status: "Created"
+    //         });
+    //     }).catch(function (error) {
+    //         res.json({ error: error });
+    //     });
 
-    });
+    // });
 
 }
