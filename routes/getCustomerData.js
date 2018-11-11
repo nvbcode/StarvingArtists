@@ -13,10 +13,8 @@ module.exports = function (customerID, cb) {
             Customerid: customerID
         }
     }).then(function (dbEvent) {
-        console.log(dbEvent);
         cb(dbEvent);
     }).catch(function (error) {
-        console.log(error);
         res.json({ error: error });
     });
 

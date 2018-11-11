@@ -53,7 +53,21 @@ module.exports = function (app) {
 
   });
 
+  //Create a customer row in the table
   app.post("/api/customers", function (req, res) {
+    db.Event.create(req.body).then(function (rows) {
+      res.json({
+        Event: rows.id,
+        Status: "Created"
+      });
+    }).catch(function (error) {
+      res.json({ error: error })
+    });
+
+  });
+
+  //Create review table based on the customer's id
+  app.post("/api/events", function (req, res) {
     db.Event.create(req.body).then(function (rows) {
       res.json({
         Event: rows.id,

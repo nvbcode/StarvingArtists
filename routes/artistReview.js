@@ -10,10 +10,8 @@ module.exports = function (artistID, cb) {
             Artistid: artistID
         }
     }).then(function (dbReview) {
-        console.log(dbReview);
         cb(dbReview);
     }).catch(function (error) {
-        console.log(error);
         res.json({ error: error });
     });
 

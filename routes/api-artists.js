@@ -39,9 +39,37 @@ module.exports = function (app) {
                     res.json(reviewInfo);
                 });
             }).catch(function (error) {
-                console.log(error);
                 res.json({ error: error });
             });
+    });
+
+    //Create a row in Artists table.
+    app.post("/api/artists", function(req, res){
+
+        db.Review.create(req.body).then(function (rows) {
+            res.json({
+              Review: rows.id,
+              Status: "Created"
+            });
+          }).catch(function (error) {
+            res.json({ error: error });
+          });
+
+    });
+
+
+    //Create a row in Artists table.
+    app.post("/api/reviews", function(req, res){
+
+        db.Review.create(req.body).then(function (rows) {
+            res.json({
+              Review: rows.id,
+              Status: "Created"
+            });
+          }).catch(function (error) {
+            res.json({ error: error });
+          });
+
     });
 
 }

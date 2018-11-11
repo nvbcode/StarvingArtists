@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-
+//routes files
+require('./routes/api-user.js')(app);
 require('./routes/api-customers.js')(app);
 require('./routes/api-artists.js')(app);
 require('./routes/html-routes.js')(app);
