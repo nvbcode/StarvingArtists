@@ -1,0 +1,230 @@
+/*GENERIC INFO USED BY ALL*/
+html, body{
+	padding:0;
+	margin:0;
+	width:100%;
+}
+
+.show{
+	display:flex !important;
+}
+
+#banner, .boxBanner {
+	border-bottom-style: solid;
+	border-bottom-width:2px;
+	border-color:black;
+	text-align:center;
+	font-size:40px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#eventsBox, .contentBox, #reviewRow{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 20px;
+	padding-top:20px;
+	padding-bottom:20px;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	border-style:solid;
+	border-color: rgb(41, 53, 53);
+	border-width:3px;
+	border-radius: 20px;
+}
+
+#eventTitle{
+	font-size:36px;
+	font-weight:bold;
+	text-align:center;
+	width:100%;
+	margin-bottom:30px;
+	padding-bottom:10px;
+	border-bottom-style: solid;
+	border-bottom-width:2px;
+	border-color:black;
+}
+
+.eventElement{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.rowBox{
+	display:flex;
+	width:90%;
+	margin-bottom:30px;
+	justify-content: space-around;
+}
+
+.itemBox{
+	display:flex;
+	justify-content:space-around;
+}
+
+.label{
+	width:50px;
+	text-align:left;
+}
+
+.input {
+	width:200px;
+}
+
+.commentBox{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-bottom:30px;
+	width:100%;
+}
+
+#comments{
+	width:80%;
+	min-height:200px;
+	text-align:left;
+}
+
+#errorBox{
+	display:none;
+	text-align:center;
+}
+
+.colorVar{
+	display:flex;
+	justify-content:space-around;
+	background-color:whitesmoke;
+	color: rgb(41, 53, 53);
+	border-color:rgb(41, 53, 53);
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	width:85%;
+	font-size:16px;
+	line-height:36px;
+	margin-bottom:20px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.colorVar.alt{
+	display:flex;
+	justify-content:space-around;
+	background-color:rgb(136, 136, 136);
+	color:whitesmoke;
+	border-color:rgb(41, 53, 53);
+	border-style:solid;
+	border-width:2px;
+	border-radius:10px;
+	width:85%;
+	font-size:16px;
+	line-height:36px;
+	margin-bottom:20px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.buttonRow{
+	display:flex;
+	width:50%;
+	justify-content: space-around;
+	margin-bottom:30px;
+}
+
+/*MODAL CONTENT*/
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 100; /* Sit on top */
+	padding-top:10px;
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	overflow:scroll;
+}
+
+.hide{
+	display:none;
+}
+
+#modalContent {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	background-color: #fefefe;
+	margin:auto;
+	padding-top:30px;
+	border-width:2px;
+	border-style:solid;
+	border-color: rgb(41, 53, 53);
+	border-radius: 20px;
+	width: 80%;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*ARTIST PROFILE SECTION*/
+#profileSection{
+	display:flex;
+	justify-content:space-around;
+	align-items: center;
+	width:100%;
+	min-height:300px;
+	border-color:blue;
+	border-style:solid;
+	border-width:2px;
+}
+
+#topRow{
+	display:flex;
+	width:100%;
+}
+#picBox{
+	width:300px;
+}
+
+#profilePic{
+	width:100%;
+}
+
+#specialtiesBox {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+#specBoxTitle{
+	text-align:center;
+	font-size:24px;
+}
+
+.comment, .rating{
+	text-align:center;
+}
+
+.oneEvent{
+	border-color:green;
+	border-style:solid;
+	border-width:2px;
+	width:80%;
+}
+
+.notice{
+	font-weight:bold;
+	color:red;
+}
