@@ -4,12 +4,14 @@ module.exports = function (app) {
 
     //Create review table based on the customer's id
     app.post("/api/events", function (req, res) {
+        console.log(req.body);
         db.Event.create(req.body).then(function (rows) {
             res.json({
                 Event: rows.id,
                 Status: "Created"
             });
         }).catch(function (error) {
+            console.log(error);
             res.json({ error: error })
         });
 
