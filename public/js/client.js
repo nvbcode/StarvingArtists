@@ -41,6 +41,8 @@ const eventsList = [
 	}
 ]
 
+let customer;
+
 //[END: DELETE ALL]
 
 $(function () {
@@ -49,19 +51,30 @@ $(function () {
 	function startRender() {
 		// $.get('/api/user/234') -- i.e. getting data based on the unique identifier.
 		// 	.then(function (user){}
+		$.ajax({
+			method: "GET",
+			url: "/api/customers/2"
+		}).then(function (response) {
+			customer = response;
+			console.log(response);
+			//[REQUEST]: GET [user]. In the actual code: 
+			// 1. the test stuff above will be removed,
+			// 2. the code below will go into the {} of the .then request above, and 
+			// 3. [testUser] in the code below will be replaced with the [user] argument seen above. Or vice versa. It's all good.
+			// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
+			$('#banner').append(`Welcome, ${customer.first_name} ${customer.last_name}!`);
+			renderEvents(customer.events);
 
-		//[REQUEST]: GET [user]. In the actual code: 
-		// 1. the test stuff above will be removed,
-		// 2. the code below will go into the {} of the .then request above, and 
-		// 3. [testUser] in the code below will be replaced with the [user] argument seen above. Or vice versa. It's all good.
-		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-		$('#banner').append(`Welcome, ${testUser.username}!`);
-		renderEvents();
+		}).catch(function (err) {
+			console.log("Error", err);
+		});
+
+
 	}
 
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in the startRender function 
 	//and the createEvent click function.
-	function renderEvents() {
+	function renderEvents(events) {
 		// $.get('/api/events/234')
 		// 	.then(function (events){}
 
@@ -72,19 +85,31 @@ $(function () {
 		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 		$('#eventsBox').empty();
 
-		for (let i = 0; i < eventsList.length; i++) {
+		// for (let i = 0; i < events.length; i++) {
 
-			const c = eventsList[i];
-			if (testUser.id === c.creator) {
-				$('#eventsBox').append(`
+		// 	const c = events[i];
+		// 	if (testUser.id === c.creator) {
+		// 		$('#eventsBox').append(`
+		// 			<div class="oneEvent">
+		// 				<div class="eventElement">Event: ${c.eventName}</div>
+		// 				<div class="eventElement">Type: ${c.artType}</div>
+		// 				<div class="eventElement">Offer: ${c.price}</div>
+		// 				<div class="eventElement">Comments: ${c.comments}</div>
+		// 			</div>`);
+		// 	}
+		// }
+
+		events.forEach(event => {
+
+			$('#eventsBox').append(`
 					<div class="oneEvent">
-						<div class="eventElement">Event: ${c.eventName}</div>
-						<div class="eventElement">Type: ${c.artType}</div>
-						<div class="eventElement">Offer: ${c.price}</div>
-						<div class="eventElement">Comments: ${c.comments}</div>
-					</div>`);
-			}
-		}
+		 				<div class="eventElement">Event: ${event.venue_name}</div>
+		 				<div class="eventElement">Type: ${event.event_type}</div>
+		 				<div class="eventElement">Offer: ${event.budget}</div>
+		 				<div class="eventElement">Comments: ${event.additional_info}</div>
+		 			</div>`);
+
+		});
 	}
 
 	$('#createEvent').on("click", showEventModal)
@@ -94,24 +119,26 @@ $(function () {
 	}
 
 	$("#createButton").on("click", createEvent)
-	function createEvent(event) {
-		event.preventDefault();
+	function createEvent(e) {
+		e.preventDefault();
 		//VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
 		//and mySQL will take care of it.
 		const fakeID = Math.floor(Math.random() * 100)
 
 		const newEvent = {
-			id: fakeID,
-			eventName: $('#eventName').val().trim(),
-			zipcode: parseInt($('#zipcode').val()),
-			price: parseInt($('#zipcode').val()),
+			event_type: $('#virtuoso').val(),
+			street_address: "123 Bogus St.",
+			city: "Alpharetta", //parseInt($('#zipcode').val()),
 			state: $('#state').val(),
-			artType: $('#virtuoso').val(),
-			creator: testUser.id,
-			comments: $('#comments').val()
+			event_venue: $('#eventName').val().trim(),
+			budget: parseFloat($('#price').val()),
+			additional_info: $('#comments').val(),
+			has_booking: false,
+			CustomerId: customer.id,		
 		}
 
-		if (newEvent.firstName === "" || newEvent.lastName === "" || isNaN(newEvent.zipcode)) {
+
+		if (newEvent.first_name === "" || newEvent.last_name === "" || newEvent.city === "") {
 			$('#errorBox').addClass("show")
 			$('#errorBox').toggleClass("alt");
 		} else {
@@ -123,6 +150,15 @@ $(function () {
 			//		information currently sits.)
 			//		Since we're only pushing, a global variable would probably be easy.
 
+			console.log(newEvent);
+
+			$.post('/api/events', newEvent)
+				.then(function (data) {
+					console.log(data);
+				}).catch(function(error){
+					console.log(error);
+				});
+
 			testUser.createdEvents.push(newEvent.id);
 			// $.put('/user)
 			//[REQUEST]: PUT [eventID]. In the actual code: 
@@ -130,11 +166,11 @@ $(function () {
 			//		NOTE: may end up reconstructing the whole thing with a return or just create a global-scale variabe (i.e. where the test
 			//		information currently sits.)
 			//		Since we're only pushing, a global variable would probably be easy.
-			}
-			$('#eventCreateModal').removeClass("show");
-			$('#errorBox').removeClass("show")
-			renderEvents();
 		}
+		$('#eventCreateModal').removeClass("show");
+		$('#errorBox').removeClass("show")
+		renderEvents(customer.events);
+	}
 
 	$('#cancelButton').on("click", emptyCart);
 	function emptyCart(event) {
