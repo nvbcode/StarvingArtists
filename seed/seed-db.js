@@ -61,7 +61,7 @@ db.sequelize.sync().then(function () {
       last_name: 'Vaughan',
       city: 'Atlanta',
       state: 'GA',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     },
     {
       UserId: 2,
@@ -69,7 +69,7 @@ db.sequelize.sync().then(function () {
       last_name: 'McCormick',
       city: 'Atlanta',
       state: 'GA',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     },
     {
       UserId: 3,
@@ -77,7 +77,7 @@ db.sequelize.sync().then(function () {
       last_name: 'Knox',
       city: 'Atlanta',
       state: 'GA',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     },
     {
       UserId: 4,
@@ -85,7 +85,7 @@ db.sequelize.sync().then(function () {
       last_name: 'Jeng',
       city: 'Atlanta',
       state: 'GA',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     },
     {
       UserId: 5,
@@ -93,7 +93,7 @@ db.sequelize.sync().then(function () {
       last_name: 'Bernhadi',
       city: 'Atlanta',
       state: 'GA',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     },
     {
       UserId: 6,
@@ -101,17 +101,17 @@ db.sequelize.sync().then(function () {
       last_name: 'Customer',
       city: 'Tallahassee',
       state: 'FL',
-      profile_pic: 'http://'
+      profile_pic: 'https://countrylakesdental.com/wp-content/uploads/2016/10/orionthemes-placeholder-image.jpg'
     }
     ]).then(function (response) {
       db.Artist.bulkCreate([{
         UserId: 7,
         first_name: 'Test',
         last_name: 'Artist',
-        demo: 'http://youtube.com',
-        city: 'Tallahassee',
-        state: 'FL',
-        profile_pic: 'http://'
+        demo: 'https://www.youtube.com/watch?v=ZjRX-PL7pC4',
+        city: 'Hollygrove',
+        state: 'LA',
+        profile_pic: 'https://timedotcom.files.wordpress.com/2015/01/460619956.jpg'
       },
       {
         UserId: 8,
@@ -120,25 +120,25 @@ db.sequelize.sync().then(function () {
         demo: 'https://www.youtube.com/watch?v=WrAV5EVI4tU',
         city: 'Tallahassee',
         state: 'FL',
-        profile_pic: 'http://'
+        profile_pic: 'http://ultimateclassicrock.com/files/2014/10/Beatles-.jpg?w=200&q=75'
       },
       {
         UserId: 9,
         first_name: 'User',
         last_name: '1',
         city: 'Los Angeles',
-        demo: 'https://youtube.com',
+        demo: 'https://www.youtube.com/watch?v=rYEDA3JcQqw',
         state: 'CA',
-        profile_pic: 'http://'
+        profile_pic: 'https://media.npr.org/assets/img/2015/11/24/ajeup0ayctw4ztltklrnuvtm-y4xulezgneawbqw4cs_custom-7aa29347d5da230c6101168c71549a7399302d0c-s800-c85.jpg'
       },
       {
         UserId: 10,
         first_name: 'User',
         last_name: '2',
         city: 'Las Vegas',
-        demo: 'https://youtube.com',
+        demo: 'https://www.youtube.com/watch?v=fKopy74weus',
         state: 'NV',
-        profile_pic: 'http://'
+        profile_pic: 'https://i.scdn.co/image/a841f0ee4f2d88c42f55f76c2cc6b588841f5d2f'
       }
       ]).then(function (response) {
         db.Event.bulkCreate([{
