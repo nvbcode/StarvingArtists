@@ -10,76 +10,35 @@
   <!-- w3schools template stylesheet  -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- cloudflare stylesheets css and js needed for nav bar/body  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link rel="stylesheet" href="modal.html">
 
-  <title>STARVING ARTIST</title>
+  <title>STARVING ARTISTS</title>
 </head>
-<!-- NAV BAR -tabs show darker color on hover -buttons need to link to pages  -->
 
-<body>
+<body class="bg">
   <header>
-    <nav>
-      <div class="nav-wrapper">
-        <ul class="right hide-on-med-and-down" id="head-nav-links">
-          <li><a href="#">Musicians</a></li>
-          <li><a href="#">Photographers</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#"> </a></li>
-
-          <li onclick="document.getElementById('id01').style.display=''" ;>Login</li>
-         
-          <li><a href="#"></a></li>
-        </ul>
+    <div class="topnav">
+           <div class="topnav-right">
+               <div class="login-container">
+            <form action="/action_page.php">
+              <input type="text" placeholder="Username" name="username">
+              <input type="text" placeholder="Password" name="psw">
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        <!-- <a href="#Contact">Contact</a> -->
+              <a class="nav-link" href="public/client.html">Events</a>
+        <a class="nav-link" href="public/artist.html">Photographers</a>
+        <a class="nav-link" href="public/artist.html">Musicians</a>
+        <a class="nav-link" href="public/artist.html">Artists</a>
+        
       </div>
-    </nav>
+    </div>
+   
   </header>
-  <!-- HIDDEN modal popup form ACTIVATES ON BUTTON CLICK -->
-  <div id="id01" class="modal";>
-
-    <form class="modal-content animate" action="/action_page.php">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <!-- GRABBED THIS MONSTER FOR AVATAR -CAN CHANGE PER USER ID -->
-        <img src="http://fiyazhasan.me/content/images/2017/06/default-avatar-png.png" alt="Fizz Avatar" class="avatar">
-      </div>
-
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-    </form>
-  </div>
-
-  <script>
-    // BUTTON CLICK FOR THE MODAL POPUP//
-    var modal = document.getElementById('id01');
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }  </script>
-
-
-
-
   <!-- THREE flip cards start here  -->
-
+   
+ 
   <!-- FIRST FLIP CARD (FAR LEFT) -->
   <div class="centerflipcards">
     <div class="square-flip">
@@ -153,34 +112,11 @@
     <div class="clearfix"></div>
   </div>
   <!-- END FLIP CARDS SECTION -->
-
-  <!-- BUTON CLICK ACTIVATES MODAL POPUP/CSS) -->
-  <button class="block" type="submit" name="action" onclick="document.getElementById('id01').style.display='block'" ;>Login</button>
-  <style>
-    .block {
-      display: block;
-      width: 100%;
-      border: none;
-      background-color: RED;
-      color: white;
-      padding: 14px 28px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .block:hover {
-      background-color: #ddd;
-      color: black;
-    }
-  </style>
-
-  <!--PAGE FOOTER  -->
+<!-- 
+  PAGE FOOTER --> 
   <div class="footer">
     <p>Starving Artist 2018</p>
   </div>
-
-
 
   <!-- ACTIVE FUNCTIONS FOR FLIP CARDS  -->
   <script>jQuery(document).ready(function ($) {
@@ -199,3 +135,66 @@
 </body>
 
 </html>
+
+
+<!-- BUTON CLICK ACTIVATES MODAL POPUP/CSS)** Josh has modal already ===
+    <button class="block" type="submit" name="action" onclick="document.getElementById('id01').style.display='block'" ;>Login</button>
+    <style>
+      .block {
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: RED;
+        color: white;
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .block:hover {
+        background-color: #ddd;
+        color: black;
+      }
+    </style>
+
+  <-HIDDEN modal popup form ACTIVATES ON BUTTON CLICK
+  <div id="#login">
+    <div id="id01" class="modal" ;>
+
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          GRABBED THIS MONSTER FOR AVATAR -CAN CHANGE PER USER ID -->
+<!-- <img src="http://fiyazhasan.me/content/images/2017/06/default-avatar-png.png" alt="Fizz Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div> 
+
+   <-- <script>
+      // BUTTON CLICK FOR THE MODAL POPUP//
+      // var modal = document.getElementById('id01');
+      // When the user clicks anywhere outside of the modal, close it
+      // window.onclick = function (event) {
+      //   if (event.target == modal) {
+      //     modal.style.display = "none";
+      //   }
+      // }  </script>//-->
