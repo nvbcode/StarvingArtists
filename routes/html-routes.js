@@ -14,8 +14,8 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, '../public/artist.html'));
     });
 
-    // Go to home.html to be a default.
+    // Go to kandingpagead.html to be a default.
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/index.html'));
+        res.sendFile(path.join(__dirname, '../public/landingpagead.html'));
     });
 }
