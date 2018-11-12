@@ -54,84 +54,94 @@ db.sequelize.sync().then(function() {
     password: '123',
     email: 'user2@test.com',
     user_type:2
- }]).then(function(data) {
-    console.log('Data successfully added!');
-  }).catch(function(error) {
-    console.log('Error', error)
-  })
+ }]);
+ db.Customer.bulkCreate([{
+      first_name:'Makiko',
+      last_name:'Vaughan',
+      city:'Atlanta',
+      state:'GA',
+      profile_pic:'http://'
+  },
+  {
+      first_name:'Josh',
+      last_name:'McCormick',
+      city:'Atlanta',
+      state:'GA',
+      profile_pic:'http://'
+  },
+  {
+      first_name:'Cynthia',
+      last_name:'Knox',
+      city:'Atlanta',
+      state:'GA',
+      profile_pic:'http://'
+  },
+  {
+      first_name:'Josh',
+      last_name:'Jeng',
+      city:'Atlanta',
+      state:'GA',
+      profile_pic:'http://'
+  },
+  {
+      first_name:'Neel',
+      last_name:'Bernhadi',
+      city:'Atlanta',
+      state:'GA',
+      profile_pic:'http://'
+  },
+  {
+      first_name:'Test',
+      last_name:'Customer',
+      city:'Tallahassee',
+      state:'FL',
+      profile_pic:'http://'
+  }
+]);
+  db.Artist.bulkCreate([{
+    first_name:'Test',
+    last_name:'Artist',
+    demo:'http://youtube.com',
+    city:'Tallahassee',
+    state:'FL',
+    profile_pic:'http://'
+},
+{
+  first_name:'Beatles',
+  last_name:'Beatles',
+  demo:'https://www.youtube.com/watch?v=WrAV5EVI4tU',
+  city:'Tallahassee',
+  state:'FL',
+  profile_pic:'http://'
+},
+{
+  first_name:'User',
+  last_name:'1',
+  city:'Los Angeles',
+  demo:'https://youtube.com',
+  state:'CA',
+  profile_pic:'http://'
+},
+{
+  first_name:'User',
+  last_name:'2',
+  city:'Las Vegas',
+  demo:'https://youtube.com',
+  state:'NV',
+  profile_pic:'http://' 
+}
+]);
+ db.Event.BulkCreate([{
+    event_type:'Wedding',
+    street_address:'1150 Peachtree St NE',
+    city:"Atlanta",
+    state:"GA",
+    venue_name:"The Wimbish House",
+    budget:500,
+    additional_info:"This is my daughter's wedding and I hate who she is marrying so I'm looking for someone to ruin the wedding.",
+    has_booking:false
+}]).then(function(data) {
+  console.log('Data successfully added!');
 }).catch(function(error) {
   console.log('Error', error)
-});
-
-db.sequelize.sync().then(function() {
-    db.Customer.bulkCreate([{
-        first_name:'Makiko',
-        last_name:'Vaughan',
-        city:'Atlanta',
-        state:'GA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Josh',
-        last_name:'McCormick',
-        city:'Atlanta',
-        state:'GA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Cynthia',
-        last_name:'Knox',
-        city:'Atlanta',
-        state:'GA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Josh',
-        last_name:'Jeng',
-        city:'Atlanta',
-        state:'GA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Neel',
-        last_name:'Bernhadi',
-        city:'Atlanta',
-        state:'GA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Test',
-        last_name:'Customer',
-        city:'Tallahassee',
-        state:'FL',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'Test',
-        last_name:'Artist',
-        city:'Tallahassee',
-        state:'FL',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'User',
-        last_name:'1',
-        city:'Los Angeles',
-        state:'CA',
-        profile_pic:'http://'
-    },
-    {
-        first_name:'User',
-        last_name:'2',
-        city:'Los Angeles',
-        state:'CA',
-        profile_pic:'http://'
-    }
-]).then(function(data) {
-    console.log('Data successfully added!');
-  }).catch(function(error) {
-    console.log('Error', error)
-  })
-}).catch(function(error) {
-  console.log('Error', error)
-});
+})})
