@@ -89,6 +89,9 @@ const events = [
 ]
 //[END: DELETE ALL]
 
+//Make a global variable
+let artist;
+
 $(function () {
 
 	startRender();
@@ -98,65 +101,80 @@ $(function () {
 
 		// $.get('/api/profile/427') -- i.e. getting data based on the unique identifier.
 		// 	.then(function (profile){}
+		$.get("/api/artists/1")
+			.then(function (response) {
 
-		//[REQUEST]: GET [profile]. In the actual code: 
-		// 1. the test stuff above will be removed,
-		// 2. the code below will go into the {} of the .then request above, and 
-		// 3. [testArtist] in the code below will be replaced with the [profile] argument seen above. Or vice versa. It's all good.
-		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-		$('#banner').append(`Welcome, ${testArtist.firstName} ${testArtist.lastName}!`);
-		$('#picBox').append(`<img id=profilePic src=${testArtist.profilePic}>`);
+					artist = response;
 
-		const specialties = testArtist.specialties;
-		for (let i = 0; i < specialties.length; i++) {
-			$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
-		}
+					//[REQUEST]: GET [profile]. In the actual code: 
+					// 1. the test stuff above will be removed,
+					// 2. the code below will go into the {} of the .then request above, and 
+					// 3. [testArtist] in the code below will be replaced with the [profile] argument seen above. Or vice versa. It's all good.
+					// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
+					$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
+					$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
 
-		const reviews = testArtist.reviews;
-		for (let i = 0; i < specialties.length; i++) {
-			$('#reviewRow').append(`
+					const specialties = testArtist.specialties;
+					for (let i = 0; i < specialties.length; i++) {
+						$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
+					}
+
+					const reviews = artist.reviews;
+					for (let i = 0; i < reviews.length; i++) {
+						$('#reviewRow').append(`
 			<div class="oneReview">
-				<div class="rating">${reviews[i].rating}</div>
-				<div class="comment">${reviews[i].comment}</div>
+				<div class="rating">${reviews[i].review_rate}</div>
+				<div class="comment">${reviews[i].review_body}</div>
 			</div>`)
-		}
-		eventsRender();
+					}
+
+			}).catch(function (err) {
+				console.log("Error", err);
+			});
+
+			eventsRender();
 	}
 
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in PROFILE GENERATION.
 	function eventsRender() {
 
-		// $.get('/api/events')
-		// 	.then(function (events){}
+		$.get('/api/events')
+			.then(function (events) {
 
-		//[REQUEST]: GET [events]. In the actual code: 
-		// 1. the test stuff above will be removed,
-		// 2. the code below will go into the {} of the .then request above, and 
-		// 3. the [events] variabls below should correspond to the [events] argument that will be passed in.
-		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-		for (i = 0; i < events.length; i++) {
-			const e = events[i];
-			if (e.artType === testArtist.artType) {
-				$('#eventsBox').append(`
+				console.log("events", events);
+
+				//[REQUEST]: GET [events]. In the actual code: 
+				// 1. the test stuff above will be removed,
+				// 2. the code below will go into the {} of the .then request above, and 
+				// 3. the [events] variabls below should correspond to the [events] argument that will be passed in.
+				// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
+				for (i = 0; i < events.length; i++) {
+					const e = events[i];
+					// if (e.event_type === artist.artType) {
+						$('#eventsBox').append(`
 					<div class="oneEvent">
-						<div class="eventElement">Event: ${e.eventName}</div>
-						<div class="eventElement">Offer: ${e.price}</div>
-						<div class="eventElement">Zipcode: ${e.zipcode}</div>
+						<div class="eventElement">Event: ${e.venue_name}</div>
+						<div class="eventElement">Offer: ${e.budget}</div>
+						<div class="eventElement">City: ${e.city}</div>
 						<div class="eventElement">State: ${e.state}</div>
-						<div class="eventElement">Comments: ${e.comments}</div>
+						<div class="eventElement">Comments: ${e.additional_info}</div>
 						<button class="applyButton" id="${e.id}">Apply</button>
 						<div class="notice hide" id="${e.id}notice">Applied!</div>
-					</div>`)
-			}
-		}
+					</div>`);
+					// }
+				}
 
-		for (i = 0; i < events.length; i++) {
-			const e = events[i]
-			if (testArtist.applications.includes(e.id)) {
-				$(`#${e.id}notice`).removeClass("hide");
-				$(`#${e.id}`).addClass("hide");
-			}
-		}
+				for (i = 0; i < events.length; i++) {
+					const e = events[i]
+					if (testArtist.applications.includes(e.id)) {
+						$(`#${e.id}notice`).removeClass("hide");
+						$(`#${e.id}`).addClass("hide");
+					}
+				}
+
+			}).catch(function (error) {
+				res.json({ Error: error });
+			});
 	}
 
 	$("#eventsBox").on("click", ".applyButton", applyEvent);

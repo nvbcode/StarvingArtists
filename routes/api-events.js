@@ -17,6 +17,21 @@ module.exports = function (app) {
 
     });
 
+    //Get all events that has not been booked
+    app.get("/api/events", function(req, res){
+
+        console.log("here");
+
+        db.Event.findAll({ where: { has_booking: false }})
+        .then(function (dbEvent) {
+            console.log(dbEvent);
+            res.json(dbEvent);      
+          }).catch(function (error) {
+            res.json({ Error: error });
+          });
+
+    });
+
     //Update the event's data
     app.put("/api/events/:id", function (req, res) {
 
