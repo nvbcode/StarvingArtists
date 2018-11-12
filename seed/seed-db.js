@@ -103,58 +103,76 @@ db.sequelize.sync().then(function () {
       state: 'FL',
       profile_pic: 'http://'
     }
-    ])
-  }).then(function (response) {
-    db.Artist.bulkCreate([{
-      UserId: 7,
-      first_name: 'Test',
-      last_name: 'Artist',
-      demo: 'http://youtube.com',
-      city: 'Tallahassee',
-      state: 'FL',
-      profile_pic: 'http://'
-    },
-    {
-      UserId: 8,
-      first_name: 'Beatles',
-      last_name: 'Beatles',
-      demo: 'https://www.youtube.com/watch?v=WrAV5EVI4tU',
-      city: 'Tallahassee',
-      state: 'FL',
-      profile_pic: 'http://'
-    },
-    {
-      UserId: 9,
-      first_name: 'User',
-      last_name: '1',
-      city: 'Los Angeles',
-      demo: 'https://youtube.com',
-      state: 'CA',
-      profile_pic: 'http://'
-    },
-    {
-      UserId: 10,
-      first_name: 'User',
-      last_name: '2',
-      city: 'Las Vegas',
-      demo: 'https://youtube.com',
-      state: 'NV',
-      profile_pic: 'http://'
-    }
-    ])
-  }).then(function (response) {
-    ;
-    db.Event.bulkCreate([{
-      CustomerId: 2,
-      event_type: 'Wedding',
-      street_address: '1150 Peachtree St NE',
-      city: "Atlanta",
-      state: "GA",
-      venue_name: "The Wimbish House",
-      budget: 500,
-      additional_info: "This is my daughter's wedding and I hate who she is marrying so I'm looking for someone to ruin the wedding.",
-      has_booking: false
-    }])
+    ]).then(function (response) {
+      db.Artist.bulkCreate([{
+        UserId: 7,
+        first_name: 'Test',
+        last_name: 'Artist',
+        demo: 'http://youtube.com',
+        city: 'Tallahassee',
+        state: 'FL',
+        profile_pic: 'http://'
+      },
+      {
+        UserId: 8,
+        first_name: 'Beatles',
+        last_name: 'Beatles',
+        demo: 'https://www.youtube.com/watch?v=WrAV5EVI4tU',
+        city: 'Tallahassee',
+        state: 'FL',
+        profile_pic: 'http://'
+      },
+      {
+        UserId: 9,
+        first_name: 'User',
+        last_name: '1',
+        city: 'Los Angeles',
+        demo: 'https://youtube.com',
+        state: 'CA',
+        profile_pic: 'http://'
+      },
+      {
+        UserId: 10,
+        first_name: 'User',
+        last_name: '2',
+        city: 'Las Vegas',
+        demo: 'https://youtube.com',
+        state: 'NV',
+        profile_pic: 'http://'
+      }
+      ]).then(function (response) {
+        db.Event.bulkCreate([{
+          CustomerId: 2,
+          event_type: 'Wedding',
+          street_address: '1150 Peachtree St NE',
+          city: "Atlanta",
+          state: "GA",
+          venue_name: "The Wimbish House",
+          budget: 500,
+          additional_info: "This is my daughter's wedding and I hate who she is marrying so I'm looking for someone to ruin the wedding.",
+          has_booking: false
+        }]).then(function (response) {
+          db.Review.bulkCreate([{
+            ArtistId: 1,
+            review_rate: 1,
+            review_body: "Worst performance I have ever seen. The guy got drunk and made a pass at my daughter... who so happened to be the BRIDE!!"
+          },
+          {
+            ArtistId: 2,
+            review_rate: 5,
+            review_body: "An absolutely great buy for any occasion. This person was professional and a delight to hear play!"
+          }]).then(function (response) {
+            db.Applicant.bulkCreate([{
+              offer: 500.00,
+              bid_win: false,
+              ArtistId: 1,
+              EventId: 1,
+              sales_pitch: "I'm an all around professional who knows a variety of cover songs as well as original content of my own. Would love to be your host for the evening!"
+            }])
+          })
+        })
+      })
+    })
   }).then(function (data) {
     console.log('Data successfully added!');
   }).catch(function (error) {
