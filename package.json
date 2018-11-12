@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-<<<<<<< HEAD
-  "engines": {
-    "node": "*"
-=======
   "engine":{
-    "node":"*"
->>>>>>> 56a6d3a1ea05741a1e66ffba9385d3062843f859
+    "node":">=0.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node ./seed/seed-db.js"
+    "seed": "node ./seed/seed-db.js",
+    "watch":"nodemon watch"
   },
   "repository": {
     "type": "git",
