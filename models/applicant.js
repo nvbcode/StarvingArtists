@@ -6,6 +6,11 @@ module.exports = function(connection, Sequelize) {
       },
         bid_win:{
           type:Sequelize.BOOLEAN
+      },
+      sales_pitch:{
+          type:Sequelize.STRING,
+          allowNull:true,
+          len:[0,250]
       }
     });
     Applicant.associate=function(models){

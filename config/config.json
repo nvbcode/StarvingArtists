@@ -2,12 +2,7 @@
     "development": {
       "username": "root",
       "password": "georgia18",
-<<<<<<< HEAD
       "database": "starvingartist_db",
-=======
-      "database": "starvingartist_db,
-
->>>>>>> 16254980b6c4b5ed055a08968e614cc8570b07d6
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
