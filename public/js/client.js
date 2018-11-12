@@ -105,7 +105,7 @@ $(function () {
 					<div class="oneEvent">
 		 				<div class="eventElement">Event: ${event.venue_name}</div>
 		 				<div class="eventElement">Type: ${event.event_type}</div>
-		 				<div class="eventElement">Offer: ${event.budget}</div>
+		 				<div class="eventElement">Offer:$${event.budget}</div>
 		 				<div class="eventElement">Comments: ${event.additional_info}</div>
 		 			</div>`);
 
