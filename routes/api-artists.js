@@ -3,7 +3,6 @@ const db = require('../models');
 
 //Using these two files for posting and getting from/to review table.
 const artistReview = require('./artistReview.js');
-const creatingReview = require('./addingReview.js');
 
 module.exports = function (app) {
 
@@ -76,21 +75,36 @@ module.exports = function (app) {
 
     });
 
+    //Update the artist information
+    app.put("/api/artists/:id", function (req, res) {
 
-    //Create a row in Review table.
-    app.post("/api/reviews", function (req, res) {
+        const updatedArtist = {
+            id: req.params.id,
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            demo: req.body.demo,
+            city: req.body.city,
+            state: req.body.state,
+            profile_pic: req.body.profilePic,
+            UserId: req.body.UserId
+        }
 
-        console.log(req.body);
-
-        //Calling the function in addingReview.js to add the review.
-        creatingReview(req.body.reviews, req.body.ArtistId, function(){
+        db.Artist.update(updatedArtist, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbPut) {
             res.json({
-                ArtistId: req.body.ArtistId,
-                Status: "Review Created"
+                Artist_ID: req.params.id,
+                Status: "Artist Updated"
             });
-        
+        }).catch(function (error) {
+            console.log(error);
+            res.json({ Error: error });
         });
 
+
     });
+
 
 }

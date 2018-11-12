@@ -55,9 +55,9 @@ module.exports = function (app) {
 
   //Create a customer row in the table
   app.post("/api/customers", function (req, res) {
-    db.Event.create(req.body).then(function (rows) {
+    db.Customer.create(req.body).then(function (rows) {
       res.json({
-        Event: rows.id,
+        Customer: rows.id,
         Status: "Created"
       });
     }).catch(function (error) {
@@ -66,16 +66,35 @@ module.exports = function (app) {
 
   });
 
-  //Create review table based on the customer's id
-  app.post("/api/events", function (req, res) {
-    db.Event.create(req.body).then(function (rows) {
-      res.json({
-        Event: rows.id,
-        Status: "Created"
+  //Update the customer's data
+  app.put("/api/customers/:id", function(req, res){
+
+    //Updated customer data
+    const updateCustomer = {
+      id: req.params.id,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      city: req.body.city,
+      state: req.body.state,
+      profile_pic: req.body.profile_pic,
+      UserId: req.body.UserId
+    }
+
+    //Insert the updated data into the customer's table
+    db.Customer.update(updateCustomer,
+
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbPut) {
+        res.json({
+            user_name: `${req.body.first_name} ${req.body.last_name}`,
+            Status: "Updated" 
+        });
+      }).catch(function (error) {
+        res.json({Error: error});
       });
-    }).catch(function (error) {
-      res.json({ error: error })
-    });
 
   });
 
