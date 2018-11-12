@@ -2,6 +2,22 @@
 
 //NOTE: in the text data, all users IDs are 3 digits. All event IDs are 2 digits.
 
+//Adding YouTube parser function to display iFrame after ajax call
+const getYouTube=function(url){
+    let youtube=url;
+    youtube=youtube.substring(32);
+    console.log(youtube);
+    const iFrame=`<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    console.log(iFrame);
+    return iFrame
+}
+
+//getYouTube('https://www.youtube.com/watch?v=ZjRX-PL7pC4');
+
+
+
+
+
 //[REQUEST]: GET info from database by artist's [id]. See the function startRender();
 const testArtist = {
 	id: 427,
