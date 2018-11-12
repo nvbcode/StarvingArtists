@@ -4,12 +4,13 @@
   "description": "",
   "main": "server.js",
   "engine":{
-    "node":"*"
+    "node":">=0.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node ./seed/seed-db.js"
+    "seed": "node ./seed/seed-db.js",
+    "watch":"nodemon server.js"
   },
   "repository": {
     "type": "git",
