@@ -12,6 +12,7 @@ app.use(express.static("public"));
 //routes files
 require('./routes/api-applicant.js')(app);
 require('./routes/api-reviews.js')(app);
+require('./routes/api-events')(app);
 require('./routes/api-user.js')(app);
 require('./routes/api-customers.js')(app);
 require('./routes/api-artists.js')(app);
