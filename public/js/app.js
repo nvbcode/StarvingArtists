@@ -175,7 +175,7 @@ $(function () {
 
 
 
-
+// SIGN IN FUNCTION
 
     const signIn = function (e) {
         e.preventDefault();
@@ -189,19 +189,32 @@ $(function () {
             url: '/api/login',
             data: signInData
         }).then(function (res) {
-            // console.log(res)
-            let routeUrl = '';
+            console.log(res)
+            let usertype = '';
             localStorage.token = res.token;
 
             // write a conditional if the response gives usertype 1 or 2. then do another ajax call that routes you to the right page
             console.log("token:", localStorage.token)
+            
             if (res.user_type === 1) {
-                routeUrl = `/api/artist/${res.id}`;
+                usertype = `customers`;
             } else if (res.user_type === 2) {
-                routeUrl = `/api/client/${res.id}`;
+                usertype = `artist`;
             }
-            window.location.replace(routeUrl);
-        })
+            
+            // window.location.replace(`/${usertype}/${userId}`);
+            // $.ajax({
+            //     method: 'GET',
+            //     url:   `${usertype}/${res.id}`,
+            //     headers: {
+            //         "Authorization": `Bearer ${localStorage.token}` 
+            //     }
+            // }).then(function(res){
+            //     console.log(res);
+            // }).catch(err => {
+            //     return err
+            // });
+        });
     }
 
     $('#loginBtn').on('click', signIn);
