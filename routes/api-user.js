@@ -10,34 +10,51 @@ module.exports = function (app) {
   app.post('/api/users', function (req, res) {
 
     console.log(req.body);
-    // added a conditional for duplicate users 
 
-    db.User.findAll({
-      where: {
-        username: req.body.userName
-      }
-    }).then(userRes => {
-      if (userRes.length >=1) {
-        return res.status(422).json({
-          message: "Username exists"
-        });
-      } else {
-        console.log(req.body);
-        // changing req.body to account for username and password
-        db.User.create({
-          username: req.body.userName,
-          password: req.body.password
-        }).then(function (rows) {
-          res.json({
-            User: rows.id,
-            Status: "Created"
-          });
-        }).catch(function (error) {
-          res.json({ error: error });
-        });
+    db.User.create(req.body).then(function (rows) {
+      res.json({
+        User: rows.id,
+        Status: "Created"
+      });
+    }).catch(function (error) {
+      res.json({ error: error });
+    });
 
+  });
+
+  app.get('/api/users/:id', function (req, res) {
+
+    db.User.find({ where: { id: req.params.id } }).then(function (dbUser) {
+      res.json(dbUser);
+    }).catch(function (error) {
+      res.json({ Error: error });
+    });
+
+  });
+
+  app.put('/api/users/:id', function(req, res){
+
+      const updatedUser = {
+        id: req.params.id,
+        user_name: req.body.user_name,
+        password: req.body.password,
+        email: req.body.email,
+        user_type: req.body.user_type
       }
-    }).catch();
+
+      db.User.update(updatedUser, {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbPut) {
+        res.json({
+            UserId: req.params.id,
+            Status: "User ID Updated" 
+        });
+      }).catch(function (error) {
+        console.log(error);
+        res.json({Error: error});
+      });
 
   });
 

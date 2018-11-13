@@ -10,8 +10,51 @@
   color: white;
   text-align: center;
 }
+#logo1 {
+  	width: 100%; 
+	height: 100%; 
 
+      margin: 0%; 
+}
 
+.bg {
+  background-image: url("https://sftextures.com/texture/5145/1/5153/gradient-grey-display-background-many-nine-lights-stage-floor-six-spotlight-wall-modern-soft-web-image-512x288.png");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -200;
+}
+
+.topnav {
+  z-index: -100px;
+  height: 100px;
+ 
+  background-color: black; 
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: whitesmoke;  
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
 
 
 

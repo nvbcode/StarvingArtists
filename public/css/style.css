@@ -134,7 +134,7 @@ html, body{
 
 /*MODAL CONTENT*/
 .modal {
-	display: none; /* Hidden by default */
+	/* display: none; Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 100; /* Sit on top */
 	padding-top:10px;

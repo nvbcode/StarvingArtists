@@ -25,8 +25,8 @@ module.exports = function(connection, Sequelize) {
       }
     });
   User.associate =function(models){
-      User.hasOne(models.Customer);
-      User.hasOne(models.Artist);
+      User.hasMany(models.Customer);
+      User.hasMany(models.Artist);
   }
     return User;
   }

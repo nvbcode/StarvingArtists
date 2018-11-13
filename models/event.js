@@ -41,7 +41,8 @@ module.exports = function(connection, Sequelize) {
           }
       },
       has_booking:{
-          type:Sequelize.BOOLEAN
+          type:Sequelize.BOOLEAN,
+          defaultValue:false
       }
     });
     Event.associate=function(models){
