@@ -17,7 +17,7 @@ require('./routes/api-user.js')(app);
 require('./routes/api-customers.js')(app);
 require('./routes/api-artists.js')(app);
 require('./routes/html-routes.js')(app);
-
+require('./routes/api-login.js')(app);
 
 const db = require('./models');
 
