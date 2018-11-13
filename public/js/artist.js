@@ -117,7 +117,7 @@ $(function () {
 
 		// $.get('/api/profile/427') -- i.e. getting data based on the unique identifier.
 		// 	.then(function (profile){}
-		$.get("/api/artists/1")
+		$.get("/api/artists/9")
 			.then(function (response) {
 
 					artist = response;

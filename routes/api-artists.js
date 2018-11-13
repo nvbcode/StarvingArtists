@@ -9,7 +9,7 @@ module.exports = function (app) {
     //Provide the customer's information and linked events
     app.get('/api/artists/:id', function (req, res) {
 
-        db.Artist.find({ where: { id: req.params.id } })
+        db.Artist.find({ where: { UserId: req.params.id } })
             .then(function (artist) {
 
                 const reviewArray = [];
