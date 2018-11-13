@@ -102,12 +102,13 @@ $(function () {
 		events.forEach(event => {
 
 			$('#eventsBox').append(`
-					<div class="oneEvent">
-		 				<div class="eventElement">Event: ${event.venue_name}</div>
-		 				<div class="eventElement">Type: ${event.event_type}</div>
-		 				<div class="eventElement">Offer:$${event.budget}</div>
-		 				<div class="eventElement">Comments: ${event.additional_info}</div>
-		 			</div>`);
+			<div class="oneEvent">
+				<div class="eventElement">Event: ${c.eventName}</div>
+				<div class="eventElement">Type: ${c.artType}</div>
+				<div class="eventElement">Offer: ${c.price}</div>
+				<div class="eventElement">Comments: ${c.comments}</div>
+				<button class="applicantButton" id="${c.id}applicants">View Applicants</button>	
+			</div>`);
 
 		});
 	}
@@ -166,16 +167,57 @@ $(function () {
 			//		NOTE: may end up reconstructing the whole thing with a return or just create a global-scale variabe (i.e. where the test
 			//		information currently sits.)
 			//		Since we're only pushing, a global variable would probably be easy.
+			$('#eventCreateModal').removeClass("show");
+			$('#errorBox').removeClass("show")
+			renderEvents(customer.events);
 		}
-		$('#eventCreateModal').removeClass("show");
-		$('#errorBox').removeClass("show")
-		renderEvents(customer.events);
 	}
 
 	$('#cancelButton').on("click", emptyCart);
 	function emptyCart(event) {
 		event.preventDefault();
+
+		$('#errorBox').removeClass("show")
 		$('#eventCreateModal').removeClass("show");
+
+		$('#eventName').val('');
+		$('#zipcode').val('');
+		$('#price').val('');
+		$('#state').val('');
+		$('#comments').val('');
+	}
+
+	$("#eventsBox").on("click", ".applicantButton", applyEvent);
+	function applyEvent(event) {
+		event.preventDefault();
+		$('#applicantModal').addClass("show");
+
+	}
+	// 	for (i=0; i<testUser.applicants.length; i++) {
+	// 		//[REQUEST]: GET artist info based on the bio 
+	// 		//pass it into a .then function as the argument[data], and:
+
+
+
+	// 		$("#applicantModal").append(`
+	// 			<div>
+	// 				<div id="${data.id}name"> ${data.firstName} ${data.lastName}</div>
+	// 				<div class="profileBox">
+	// 					<img src="${data.profilePic}">
+	// 				</div>
+	// 				<div id="${data.id}email">${data.email}></div>
+	// 			</div>
+	// 		`)
+	// 	}
+	// }
+
+	$('#closeApplicants').on("click", closeApplicants);
+	function closeApplicants(event) {
+		event.preventDefault();
+
+
+
+		$('#applicantModal').removeClass("show");
 	}
 
 });

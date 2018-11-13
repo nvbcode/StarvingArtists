@@ -12,27 +12,99 @@
 </head>
 <body>
 	
-	<div id="myModal" class="modal">
+	<div>What would you like to sign up as?</div>
+
+	<div id=signupButtons>
+		<button class="button" id="createClient">Client</button>
+		<button class="button" id="createArtist">Artist</button>
+	</div>
+
+<!--CLIENT SIGN UP MODAL-->
+	<div id="clientSignUp" class="modal">
 		<div id="modalContent">
 			<div id="eventTitle">Let's Get Started</div>
 			<div class="rowBox">
 				<div class="itemBox">
 					<div class="label">First Name</div>
-					<input type="text" class="input" id="firstName" />
+					<input type="text" class="input" id="cFirstName" />
 				</div>
 				<div class="itemBox">
 					<div class="label">Last Name</div>
-					<input type="text" class="input" id="lastName" />
+					<input type="text" class="input" id="cLastName" />
+				</div>
+			</div>
+			<div class="rowBox">
+				<div class="itemBox">
+					<div class="label">Email Address</div>
+					<input type="email" class="email" id="cEmail" />
+				</div>
+				<div class="itemBox">
+					<div class="label">User Name</div>
+					<input type="text" class="input" id="cUserName" />
+				</div>
+			</div>
+			<div class="typeBox">
+				<div class="itemBox">
+					<div class="label">Password</div>
+					<input type="text" class="input" id="cPassword1" />
+				</div>
+				<div class="itemBox">
+					<div class="label">Confirm Password </div>
+					<input type="text" class="input" id="cPassword2" />
+				</div>
+				<div id="cpasswordError" class="colorVar">Oh my! Your passwords don't match!</div>
+				<div id="clientError" class="colorVar">Whoops! please fill in all the info</div>
+			</div>
+			<div class="buttonRow">
+				<button class="button" id="clientCreate">Create</button>
+				<button class="button" id="clientCancel">Cancel</button>
+			</div>
+		</div>
+	</div>
+
+
+<!--ARTIST SIGN UP MODAL-->
+	<div id="artistSignUp" class="modal">
+		<div id="modalContent">
+			<div id="eventTitle">Let's Get Started</div>
+			<div class="rowBox">
+				<div class="itemBox">
+					<div class="label">First Name</div>
+					<input type="text" class="input" id="aFirstName" />
+				</div>
+				<div class="itemBox">
+					<div class="label">Last Name</div>
+					<input type="text" class="input" id="aLastName" />
+				</div>
+			</div>
+			<div class="rowBox">
+				<div class="itemBox">
+					<div class="label">Email Address</div>
+					<input type="email" class="email" id="aEmail" />
+				</div>
+				<div class="itemBox">
+					<div class="label">User Name</div>
+					<input type="text" class="input" id="aUserName" />
+				</div>
+			</div>
+			<div class="typeBox">
+				<div class="itemBox">
+					<div class="label">Password</div>
+					<input type="text" class="input" id="aPassword1" />
+				</div>
+				<div class="itemBox">
+					<div class="label">Confirm Password </div>
+					<input type="text" class="input" id="aPassword2" />
 				</div>
 			</div>
 			<div class="rowBox">
 				<div class="itemBox">
 					<div class="label">Zipcode</div>
-					<input type="number" class="input" id="zipcode"  />
+					<input type="number" class="number" id="aZipcode" />
 				</div>
 				<div class="itemBox">
 					<div class="label">State</div>
-					<select class="input" id="state">
+					<select class="input" id="aState">
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
 						<option value="AZ">Arizona</option>
@@ -95,12 +167,16 @@
 					<option value="photographer">Photographer</option>
 				</select>
 			</div>
-			<div id="errorBox" class="colorVar">Whoops! please fill in all the info</div>
+				<div class="commentBox">
+					<div>Any Specialties? (Please separate with commas) </div>
+					<input type="text" id="comments" />
+				</div>
+				<div id="apasswordError" class="colorVar">Oh my! Your passwords don't match!</div>	
+			<div id="artistError" class="colorVar">Whoops! please fill in all the info</div>
 			<div class="buttonRow">
-				<button class="button" id="create">Create</button>
-				<button class="button" id="cancel">Cancel</button>
+				<button class="button" id="artistCreate">Create</button>
+				<button class="button" id="artistCancel">Cancel</button>
 			</div>
-
 		</div>
 	</div>
 
