@@ -1,7 +1,11 @@
 {
     "development": {
       "username": "root",
+<<<<<<< HEAD
       "password": "openme",
+=======
+      "password": "gerogia18",
+>>>>>>> b54e1a476054a3e4926acea48fe76ce8e3e83a1d
       "database": "starvingartist_db",
       "host": "127.0.0.1",
       "port": 3306,
@@ -15,10 +19,7 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "root",
-      "password": null,
-      "database": "database_production",
-      "host": "127.0.0.1",
+      "use_env_variable":"JAWSDB_URL",
       "dialect": "mysql"
     }
   }

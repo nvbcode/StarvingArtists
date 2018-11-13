@@ -4,42 +4,61 @@ const db = require('../models');
 module.exports = function(app){
 
     //Get all appications based on ArtistId
-    app.get("/api/applications:id", function(req, res){
+    app.get("/api/applicants/:id", function(req, res){
 
         db.Applicant.find({ where: { id: req.params.id } })
-            .then(function (applicants) {
-
-                const applicantArray = [];
-
-                //Get a review information in artistReview.js
-                artistReview(artist.id, function (reviews) {
-                    reviews.forEach(review => {
-                        const reviewData = {
-                            id: review.id,
-                            review_rate: review.review_rate,
-                            review_body: review.review_body
-                        }
-
-                        reviewArray.push(reviewData);
-
-                    });
-
-                    //Create a requested data
-                    const reviewInfo = {
-                        id: artist.id,
-                        first_name: artist.first_name,
-                        last_name: artist.last_name,
-                        demo: artist.demo,
-                        city: artist.city,
-                        state: artist.state,
-                        profile_pic: artist.profile_pic,
-                        review: reviewArray
-                    }
-                    res.json(reviewInfo);
-                });
+            .then(function (applicant) {
+                res.json(applicant);
+                
             }).catch(function (error) {
                 res.json({ error: error });
             });
+    });
+
+    app.post("/api/applicants", function(req, res){
+
+        const applicant = req.body;
+        
+        db.Applicant.create(applicant).then(function(row){
+
+            res.json({
+                Applicant_ID: row.dataValues.id,
+                Status: "Processed"
+            })
+
+        }).catch(function(error){
+            console.log(error);
+            res.json({Error: error})
+        });
+
+    });
+
+    app.put("/api/applicants/:id", function(req, res) {
+
+        const updatedApplicant = {
+            id: req.params.id,
+            offer: req.body.offer,
+            bid_win: req.body.bid_win,
+            sales_pitch: req.body.sales_pitch,
+            ArtistId: req.body.ArtistId,
+            EventId: req.body.EventId
+        }
+
+        db.Applicant.update(updatedApplicant, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbPut) {
+            res.json({
+                Applicant_ID: req.params.id,
+                Status: "Applicant Updated"
+            });
+        }).catch(function (error) {
+            console.log(error);
+            res.json({ Error: error });
+        });
+
+
     });
 
 }
