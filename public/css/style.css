@@ -86,7 +86,7 @@ html, body{
 	text-align:left;
 }
 
-#errorBox{
+#errorBox, #cpasswordError, #apasswordError, #clientError, #artistError{
 	display:none;
 	text-align:center;
 }
@@ -135,7 +135,6 @@ html, body{
 /*MODAL CONTENT*/
 .modal {
 	display: none; /*Hidden by default */
-
 	position: fixed; /* Stay in place */
 	z-index: 100; /* Sit on top */
 	padding-top:10px;
