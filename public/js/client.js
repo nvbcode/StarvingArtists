@@ -43,29 +43,27 @@ $(function () {
 		// const eventId= whatever argument we used.CustomerId
 		for (let i = 0; i < events.length; i++) {
 
-			if (clientId === eventId) {
+			if (clientId === eventId && !argument.venue_name ==="") {
 				$('#eventsBox').append(`
 					<div class="oneEvent">
 						<div class="eventElement">Event: ${argument.event_type}</div>
-						<div class="eventElement">Type: ${argument.}</div>
-						<div class="eventElement">Offer: ${c.price}</div>
-						<div class="eventElement">Comments: ${c.comments}</div>
+						<div class="eventElement">Venue: ${argument.venue_name}</div>
+						<div class="eventElement">Adddress: ${argument.street_address} ${argument.city}, ${argument.state} </div>
+						<div class="eventElement">Offer: ${argument.budget}</div>
+						<div class="eventElement">Comments: ${argument.additional_info}</div>
+						<button class="applicantButton" id="${clientId}applicants">View Applicants</button>	
+					</div>`);
+			} else if (clientId === eventId) {
+				$('#eventsBox').append(`
+					<div class="oneEvent">
+						<div class="eventElement">Event: ${argument.event_type}</div>
+						<div class="eventElement">Adddress: ${argument.street_address} ${argument.city}, ${argument.state} </div>
+						<div class="eventElement">Offer: ${argument.budget}</div>
+						<div class="eventElement">Comments: ${argument.additional_info}</div>
+						<button class="applicantButton" id="${clientId}applicants">View Applicants</button>	
 					</div>`);
 			}
 		}
-
-		events.forEach(event => {
-
-			$('#eventsBox').append(`
-			<div class="oneEvent">
-				<div class="eventElement">Event: ${c.eventName}</div>
-				<div class="eventElement">Type: ${c.artType}</div>
-				<div class="eventElement">Offer: ${c.price}</div>
-				<div class="eventElement">Comments: ${c.comments}</div>
-				<button class="applicantButton" id="${c.id}applicants">View Applicants</button>	
-			</div>`);
-
-		});
 	}
 
 	$('#createEvent').on("click", showEventModal)
@@ -166,9 +164,7 @@ $(function () {
 	$('#closeApplicants').on("click", closeApplicants);
 	function closeApplicants(event) {
 		event.preventDefault();
-
-
-
+		
 		$('#applicantModal').removeClass("show");
 	}
 
