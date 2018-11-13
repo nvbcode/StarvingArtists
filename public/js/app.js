@@ -192,6 +192,7 @@ $(function () {
             console.log(res)
             let usertype = '';
             localStorage.token = res.token;
+            localStorage.id = res.id;
 
             // write a conditional if the response gives usertype 1 or 2. then do another ajax call that routes you to the right page
             console.log("token:", localStorage.token)
@@ -202,7 +203,7 @@ $(function () {
                 usertype = `artist`;
             }
             
-            // window.location.replace(`/${usertype}/${userId}`);
+            window.location.replace(`/${usertype}`);
             // $.ajax({
             //     method: 'GET',
             //     url:   `${usertype}/${res.id}`,

@@ -1,12 +1,19 @@
 $(function () {
 
+
+
+
 	startRender();
+
 	function startRender() {
 		// $.get('/api/user/234') -- i.e. getting data based on the unique identifier.
 		// 	.then(function (user){}
 		$.ajax({
 			method: "GET",
-			url: "/api/customers/2"
+			url: `/api/customers/${localStorage.id}`,
+			headers: {
+				"authorization": `Bearer ${localStorage.token}`
+			}
 		}).then(function (response) {
 			const customer = response;
 			console.log(response);
@@ -22,10 +29,7 @@ $(function () {
 		}).catch(function (err) {
 			console.log("Error", err);
 		});
-
-
 	}
-
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in the startRender function 
 	//and the createEvent click function.
 	function renderEvents(events) {
@@ -43,7 +47,7 @@ $(function () {
 		// const eventId= whatever argument we used.CustomerId
 		for (let i = 0; i < events.length; i++) {
 
-			if (clientId === eventId && !argument.venue_name ==="") {
+			if (clientId === eventId && !argument.venue_name === "") {
 				$('#eventsBox').append(`
 					<div class="oneEvent">
 						<div class="eventElement">Event: ${argument.event_type}</div>
@@ -106,7 +110,7 @@ $(function () {
 			$.post('/api/events', newEvent)
 				.then(function (data) {
 					console.log(data);
-				}).catch(function(error){
+				}).catch(function (error) {
 					console.log(error);
 				});
 
@@ -164,7 +168,7 @@ $(function () {
 	$('#closeApplicants').on("click", closeApplicants);
 	function closeApplicants(event) {
 		event.preventDefault();
-		
+
 		$('#applicantModal').removeClass("show");
 	}
 

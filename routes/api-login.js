@@ -24,8 +24,9 @@ module.exports = function (app) {
                         user_type: userData[0].user_type
                  }, 'voodoomagicjack', {expiresIn :'30m'}, (err, token) => {
                     res.json({
-                        token: token
-
+                        token: token,
+                        id: userData[0].id,
+                        user_type: userData[0].user_type
                     }).catch(err => {
                         res.json({err});
                     });
