@@ -171,9 +171,9 @@ $(function () {
 
 		$('#artistSignUp').removeClass("show");
 	}
-})
-=======
-$(document).ready(function () {
+
+
+
 
 
 
@@ -200,7 +200,6 @@ $(document).ready(function () {
             } else if (res.user_type === 2) {
                 routeUrl = `/api/client/${res.id}`;
             }
-
             window.location.replace(routeUrl);
         })
     }
