@@ -171,9 +171,9 @@ $(function () {
 
 		$('#artistSignUp').removeClass("show");
 	}
-})
-=======
-$(document).ready(function () {
+
+
+
 
 
 
