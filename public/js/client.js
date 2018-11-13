@@ -1,50 +1,3 @@
-//THIS IS ALL TEST DATA: ONCE THE FRONT AND BACK ARE LINKED, EVERYTHING BETWEEN THIS AND [END: DELETE ALL] WILL BE REMOVED.
-
-//NOTE: in the text data, all users IDs are 3 digits. All event IDs are 2 digits.
-
-//[REQUEST]: GET info from database by [id].
-
-const testUser = {
-	id: 234,
-	username: "GenericPerson",
-	password: "funfunfun",
-	createdEvents: [
-		10
-	]
-}
-
-const eventsList = [
-	{
-		id: 10,
-		eventName: "Fluffy's Birthday Party",
-		zipcode: "90210",
-		price: 500,
-		state: "AK",
-		artType: "Musician",
-		comments: "I want Fluffy's birthday party to be special. He loves Ray Charles, so I'm hoping for someone that plays like that.",
-		creator: 234,
-		applications: [
-			427,		//Bob Bobberson, the example from the artist section.
-			619			//another example to simulate having multiple applicants.
-		]
-	},
-	{
-		id: 22,
-		eventName: "Bar Mitzvah Bash",
-		zipcode: "19405",
-		price: 15,
-		state: "NJ",
-		artType: "Musician",
-		comments: "We need something cheap.",
-		creator: 117, 		//Not actually tied to anything, but every event needs to be tied to a client profile.
-		applicants: [427]
-	}
-]
-
-let customer;
-
-//[END: DELETE ALL]
-
 $(function () {
 
 	startRender();
@@ -55,7 +8,7 @@ $(function () {
 			method: "GET",
 			url: "/api/customers/2"
 		}).then(function (response) {
-			customer = response;
+			const customer = response;
 			console.log(response);
 			//[REQUEST]: GET [user]. In the actual code: 
 			// 1. the test stuff above will be removed,
@@ -64,6 +17,7 @@ $(function () {
 			// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 			$('#banner').append(`Welcome, ${customer.first_name} ${customer.last_name}!`);
 			renderEvents(customer.events);
+			$('#banner').attr('data-id', customer.id);
 
 		}).catch(function (err) {
 			console.log("Error", err);
@@ -85,19 +39,20 @@ $(function () {
 		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 		$('#eventsBox').empty();
 
-		// for (let i = 0; i < events.length; i++) {
+		const clientId = $('#banner').attr('data-id', customer.id);
+		// const eventId= whatever argument we used.CustomerId
+		for (let i = 0; i < events.length; i++) {
 
-		// 	const c = events[i];
-		// 	if (testUser.id === c.creator) {
-		// 		$('#eventsBox').append(`
-		// 			<div class="oneEvent">
-		// 				<div class="eventElement">Event: ${c.eventName}</div>
-		// 				<div class="eventElement">Type: ${c.artType}</div>
-		// 				<div class="eventElement">Offer: ${c.price}</div>
-		// 				<div class="eventElement">Comments: ${c.comments}</div>
-		// 			</div>`);
-		// 	}
-		// }
+			if (clientId === eventId) {
+				$('#eventsBox').append(`
+					<div class="oneEvent">
+						<div class="eventElement">Event: ${argument.event_type}</div>
+						<div class="eventElement">Type: ${argument.}</div>
+						<div class="eventElement">Offer: ${c.price}</div>
+						<div class="eventElement">Comments: ${c.comments}</div>
+					</div>`);
+			}
+		}
 
 		events.forEach(event => {
 
@@ -124,22 +79,19 @@ $(function () {
 		e.preventDefault();
 		//VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
 		//and mySQL will take care of it.
-		const fakeID = Math.floor(Math.random() * 100)
 
 		const newEvent = {
 			event_type: $('#virtuoso').val(),
-			street_address: "123 Bogus St.",
-			city: "Alpharetta", //parseInt($('#zipcode').val()),
+			street_address: $('#streetAddress').val().trim,
+			city: $('#city').val().trim,
 			state: $('#state').val(),
-			event_venue: $('#eventName').val().trim(),
+			event_venue: $('#venue').val().trim(),
 			budget: parseFloat($('#price').val()),
 			additional_info: $('#comments').val(),
-			has_booking: false,
-			CustomerId: customer.id,		
+			CustomerId: $('#banner').data("id")
 		}
 
-
-		if (newEvent.first_name === "" || newEvent.last_name === "" || newEvent.city === "") {
+		if (newEvent.first_name === "" || newEvent.last_name === "" || newEvent.city === "" || newEvent.street_address === "" || isNaN(newEvent.street_budget)) {
 			$('#errorBox').addClass("show")
 			$('#errorBox').toggleClass("alt");
 		} else {
