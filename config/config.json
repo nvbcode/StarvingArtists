@@ -1,11 +1,9 @@
 {
     "development": {
       "username": "root",
-<<<<<<< HEAD
-      "password": "openme",
-=======
-      "password": "gerogia18",
->>>>>>> b54e1a476054a3e4926acea48fe76ce8e3e83a1d
+signupJava
+      "password": "ragnarok7",
+
       "database": "starvingartist_db",
       "host": "127.0.0.1",
       "port": 3306,
