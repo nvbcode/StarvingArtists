@@ -1,7 +1,11 @@
 {
     "development": {
       "username": "root",
+<<<<<<< HEAD
+      "password": "georgia18",
+=======
       "password": "openme",
+>>>>>>> b1bca5c47509986ca18d57a67cf59d8456f33200
       "database": "starvingartist_db",
       "host": "127.0.0.1",
       "port": 3306,
