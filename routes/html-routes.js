@@ -6,12 +6,12 @@ const checkAuth = require('../middleware/checkAuth');
 module.exports = function (app) {
 
     // Go to home.html to be a default.
-    app.get('/client', checkAuth, function (req, res) {
+    app.get('/customers', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/client.html'));
     });
 
     // Go to home.html to be a default.
-    app.get('/artist', checkAuth, function (req, res) {
+    app.get('/artist', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/artist.html'));
     });
 

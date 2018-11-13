@@ -18,12 +18,13 @@ module.exports = function (app) {
             //     });
             // }
             // else {
-                jwt.sign({ user_name: userData[0].user_name }, 'voodoomagicjack', {expiresIn :'30m'}, (err, token) => {
-                    res.json({
-                        token: token, 
-                        user_name: userData[0].user_name,
+                jwt.sign({ 
+                    user_name: userData[0].user_name,
                         id: userData[0].id,
-                        user_type: userData[0].user_type,
+                        user_type: userData[0].user_type
+                 }, 'voodoomagicjack', {expiresIn :'30m'}, (err, token) => {
+                    res.json({
+                        token: token
 
                     }).catch(err => {
                         res.json({err});

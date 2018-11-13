@@ -8,7 +8,7 @@ module.exports = function (app) {
   //Provide the customer's information and linked events
   app.get('/api/customers/:id', function (req, res) {
 
-    db.Customer.find({ where: { id: req.params.id } })
+    db.Customer.find({ where: { UserId: req.params.id } })
       .then(function (customer) {
         //Use the call back function to get the event
         customerData(customer.id, function (customerEvent) {
