@@ -1,6 +1,6 @@
 const db = require("../models");
-const Sequelize=require('sequelize');
-const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
+// const Sequelize=require('sequelize');
+// const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
 
 module.exports = function (app) {
 
@@ -38,9 +38,9 @@ module.exports = function (app) {
     //GET ALL APPLICANTS FOR A SPECIFIC EVENT
     app.get("/api/events/:id", function (req, res) {
         console.log("Getting Applicants");
-        sequelize.query(`select * from applicants left join artists on applicants.artistid=artists.id 
+        db.sequelize.query(`select * from applicants left join artists on applicants.artistid=artists.id 
         left join events on events.id=applicants.eventid 
-        where applicants.eventid=${req.params.id}`,{type:sequelize.QueryTypes.SELECT}).then(applicants => {
+        where applicants.eventid=${req.params.id}`,{type:db.sequelize.QueryTypes.SELECT}).then(applicants => {
                 // We don't need spread here, since only the results will be returned for select queries
                 res.json(applicants);
             })
@@ -52,7 +52,7 @@ module.exports = function (app) {
 
 
             //Insert the updated data into the customer's table
-            sequelize.query(`update events set has_booking=true where id='${req.params.id}'`).then(function (dbPut) {
+            db.sequelize.query(`update events set has_booking=true where id='${req.params.id}'`).then(function (dbPut) {
                     res.json({
                         user_name: `${req.params.id}`,
                         Status: "Updated"
