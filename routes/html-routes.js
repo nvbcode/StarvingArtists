@@ -14,10 +14,13 @@ module.exports = function (app) {
     app.get('/artist', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/artist.html'));
     });
+    app.get('/lookup',function(req,res){
+        res.sendFile(path.join(__dirname, '../public/search.html'));
+    })
 
     // Go to kandingpagead.html to be a default.
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/landingpagead.html'));
+        res.sendFile(path.join(__dirname, '../public/index.html'));
     });
     //    Go to kandingpagead.html to be a default.
     //    app.get('/landing', function (req, res) {
