@@ -10,6 +10,42 @@
   color: white;
   text-align: center;
 }
+		.block {
+			border-style: solid;
+			border-width: thick;
+			position: relative;
+			overflow: auto;
+		}
+		#bandAvatar  {
+			float: left;
+			max-width: 100%;
+			max-height: 100%;
+		}
+    #cardFlips {
+ margin-bottom: 10%; 
+
+    }
+    /* jumbotron css -middle of index page  */
+    .jumbotron { 
+      margin: 0; 
+            padding: 0px; /* fills out the jumbotron */
+      background-color: transparent;
+    }
+    
+    .jumbotron .container { 
+      max-width: 100%; /* allows the jumbotron to adjust on smaller widths */
+      background-color: rgb(85, 78, 78);
+      margin-top: 10%; 
+      padding-top: 10%; 
+    }
+    
+    .jumbotron h1 { 
+      text-align: center; /* centers the heading */
+      color: #DDD;
+      font-family: 'Raleway', Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
 
 .bg {
   background-image: url("https://sftextures.com/texture/5145/1/5153/gradient-grey-display-background-many-nine-lights-stage-floor-six-spotlight-wall-modern-soft-web-image-512x288.png");
