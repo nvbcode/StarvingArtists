@@ -98,12 +98,19 @@ $(function () {
 
 			console.log(newEvent);
 
-			$.post('/api/events', newEvent)
-				.then(function (data) {
-					console.log(data);
-				}).catch(function (error) {
-					console.log(error);
-				});
+
+			$.ajax({
+				method: "POST",
+				url: '/api/events',
+				data: newEvent,
+				headers: {
+					"authorization": `Bearer ${localStorage.token}`
+				}
+			}).then(function (data) {
+				console.log(data);
+			}).catch(function (error) {
+				console.log(error);
+			});
 
 			// testUser.createdEvents.push(newEvent.id);
 			// $.put('/user)
@@ -140,36 +147,49 @@ $(function () {
 		$('#applicantModal').addClass("hide");
 		eventId = parseInt(this.id[0]);
 		$(".modal-body").empty();
-		$.get(`/api/applicants/${eventId}`)
-			.then(function (applicants) {
-				console.log(applicants);
-
-				for (let i = 0; i < applicants.length; i++) {
-					//[REQUEST]: GET artist info based on the bio 
-					//pass it into a .then function as the argument[data], and:
-
-					$.get(`/api/artist/${applicants[i].ArtistId}`)
-						.then(function (artist) {
-							console.log(artist);
-
-							const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
-							const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-							const city = $("<p>").text(`City: ${artist.city}`);
-							const state = $("<p>").text(`State: ${artist.state}`);
-							const confirmBtn = $(`<button id="confirm" value= ${applicants[i].id}>`).text('Confirm');
 
 
-							$(".modal-body").append(applicantName).append(demo).append(city).append(state).append(confirmBtn).append("<hr>");
-						}).catch(function (error) {
-							console.log(error);
-						});
-				}
-				if (applicants.length === 0) {
-					const emptyText = $("<p>").text("No applications");
-					$(".modal-body").append(emptyText);
-				}
-				$('#applicantModal').addClass("show");
-			});
+
+		$.ajax({
+			method: "GET",
+			url: `/api/applicants/${eventId}`,
+			headers: {
+				"authorization": `Bearer ${localStorage.token}`
+			}
+		}).then(function (applicants) {
+			console.log(applicants);
+
+			for (let i = 0; i < applicants.length; i++) {
+				//[REQUEST]: GET artist info based on the bio 
+				//pass it into a .then function as the argument[data], and:
+
+				$.ajax({
+					method: "GET",
+					url: `/api/artist/${applicants[i].ArtistId}`,
+					headers: {
+						"authorization": `Bearer ${localStorage.token}`
+					}
+				}).then(function (artist) {
+						console.log(artist);
+
+						const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
+						const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+						const city = $("<p>").text(`City: ${artist.city}`);
+						const state = $("<p>").text(`State: ${artist.state}`);
+						const confirmBtn = $(`<button id="confirm" value= ${applicants[i].id}>`).text('Confirm');
+
+
+						$(".modal-body").append(applicantName).append(demo).append(city).append(state).append(confirmBtn).append("<hr>");
+					}).catch(function (error) {
+						console.log(error);
+					});
+			}
+			if (applicants.length === 0) {
+				const emptyText = $("<p>").text("No applications");
+				$(".modal-body").append(emptyText);
+			}
+			$('#applicantModal').addClass("show");
+		});
 	}
 
 
@@ -183,6 +203,9 @@ $(function () {
 			url: `/api/applicants/${applicantId}`,
 			data: {
 				'bid_win': true,
+			},
+			headers: {
+				"authorization": `Bearer ${localStorage.token}`
 			}
 		}).then(function (res) {
 			console.log(res);
@@ -193,6 +216,9 @@ $(function () {
 			url: `/api/events/${eventId}`,
 			data: {
 				'has_booking': true,
+			},
+			headers: {
+				"authorization": `Bearer ${localStorage.token}`
 			}
 		}).then(function (res) {
 			console.log(res);

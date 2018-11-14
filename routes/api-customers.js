@@ -1,12 +1,13 @@
 // Requiring our models
 const db = require('../models');
 const customerData = require('./getCustomerData');
+const checkAuth = require('../middleware/checkAuth')
 
 
 module.exports = function (app) {
 
   //Provide the customer's information and linked events
-  app.get('/api/customers/:id', function (req, res) {
+  app.get('/api/customers/:id', checkAuth, function (req, res) {
 
     db.Customer.find({ where: { UserId: req.params.id } })
       .then(function (customer) {

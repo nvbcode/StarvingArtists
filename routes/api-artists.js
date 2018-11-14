@@ -4,10 +4,12 @@ const db = require('../models');
 //Using these two files for posting and getting from/to review table.
 const artistReview = require('./artistReview.js');
 
+const checkAuth = require('../middleware/checkAuth')
+
 module.exports = function (app) {
 
     //Provide the customer's information and linked events
-    app.get('/api/artists/:id', function (req, res) {
+    app.get('/api/artists/:id', checkAuth, function (req, res) {
 
         db.Artist.find({ where: { UserId: req.params.id } })
             .then(function (artist) {
