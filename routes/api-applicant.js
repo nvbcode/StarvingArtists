@@ -37,9 +37,7 @@ module.exports = function(app){
 
         const updatedApplicant = {
             id: req.params.id,
-            offer: req.body.offer,
             bid_win: req.body.bid_win,
-            sales_pitch: req.body.sales_pitch,
             ArtistId: req.body.ArtistId,
             EventId: req.body.EventId
         }
