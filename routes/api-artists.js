@@ -45,6 +45,19 @@ module.exports = function (app) {
             });
     });
 
+    app.get("/api/artist/:id", function (req, res) {
+
+        db.Artist.find({ where: { id: req.params.id } })
+            .then(function (dbArtist) {
+                console.log(dbArtist);
+                res.json(dbArtist);
+            }).catch(function (error) {
+                console.log(error);
+                res.json({ Error: error });
+            });
+
+    });
+
     //Create a row in Artists table.
     app.post("/api/artists", function (req, res) {
 
