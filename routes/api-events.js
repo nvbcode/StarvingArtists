@@ -1,6 +1,6 @@
 const db = require("../models");
 const Sequelize=require('sequelize');
-const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
+const sequelize = new Sequelize('starvingartist_db', 'root', 'openme',{'dialect':'mysql'});
 
 module.exports = function (app) {
 
@@ -49,30 +49,12 @@ module.exports = function (app) {
     //Update the event's data
     app.put("/api/events/:id", function (req, res) {
 
-            //Updated customer data
-            const updateEvent = {
-                id: req.params.id,
-                event_type: req.body.event_type,
-                street_address: req.body.street_address,
-                city: req.body.city,
-                state: req.body.state,
-                venue_name: req.body.venue_name,
-                budget: req.body.budget,
-                additional_info: req.body.additional_info,
-                has_booking: req.body.has_booking,
-                CustomerId: req.body.CustomerId
-            }
+
 
             //Insert the updated data into the customer's table
-            db.Event.update(updateEvent,
-
-                {
-                    where: {
-                        id: req.params.id
-                    }
-                }).then(function (dbPut) {
+            sequelize.query(`update events set has_booking=true where id='${req.params.id}'`).then(function (dbPut) {
                     res.json({
-                        user_name: `${req.params.id} ${req.body.venue_name}`,
+                        user_name: `${req.params.id}`,
                         Status: "Updated"
                     });
                 }).catch(function (error) {
