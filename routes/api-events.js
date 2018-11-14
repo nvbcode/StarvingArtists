@@ -1,10 +1,6 @@
 const db = require("../models");
 const Sequelize=require('sequelize');
-<<<<<<< HEAD
-const sequelize = new Sequelize('starvingartist_db', 'root', 'openme',{'dialect':'mysql'});
-=======
-const sequelize = new Sequelize('StarvingArtist2_db', 'root', 'kawaii23kiku!',{'dialect':'mysql'});
->>>>>>> d6757a55f077fb7b821727149009474544a03b8d
+const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
 
 module.exports = function (app) {
 
