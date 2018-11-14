@@ -1,6 +1,6 @@
 const db = require("../models");
 const Sequelize=require('sequelize');
-const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
+const sequelize = new Sequelize('StarvingArtist2_db', 'root', 'kawaii23kiku!',{'dialect':'mysql'});
 
 module.exports = function (app) {
 
