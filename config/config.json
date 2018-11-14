@@ -1,13 +1,8 @@
 {
     "development": {
       "username": "root",
-<<<<<<< HEAD
       "password": "openme",
       "database": "starvingartist_db",
-=======
-      "password": "kawaii23kiku!",
-      "database": "StarvingArtist2_db",
->>>>>>> d6757a55f077fb7b821727149009474544a03b8d
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"

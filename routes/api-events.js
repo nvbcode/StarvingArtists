@@ -1,11 +1,7 @@
 const db = require("../models");
 const Sequelize=require('sequelize');
-<<<<<<< HEAD
 const sequelize = new Sequelize('starvingartist_db', 'root', 'openme',{'dialect':'mysql'});
-=======
-const sequelize = new Sequelize('StarvingArtist2_db', 'root', 'kawaii23kiku!',{'dialect':'mysql'});
->>>>>>> d6757a55f077fb7b821727149009474544a03b8d
-
+const checkAuth = require('../middleware/checkAuth')
 module.exports = function (app) {
 
     //Create review table based on the customer's id
@@ -40,7 +36,7 @@ module.exports = function (app) {
     });
 
     //GET ALL APPLICANTS FOR A SPECIFIC EVENT
-    app.get("/api/events/:id", function (req, res) {
+    app.get("/api/events/:id", checkAuth, function (req, res) {
         console.log("Getting Applicants");
         sequelize.query(`select * from applicants left join artists on applicants.artistid=artists.id 
         left join events on events.id=applicants.eventid 
