@@ -163,11 +163,9 @@ db.sequelize.sync().then(function () {
             review_body: "An absolutely great buy for any occasion. This person was professional and a delight to hear play!"
           }]).then(function (response) {
             db.Applicant.bulkCreate([{
-              offer: 500.00,
               bid_win: false,
               ArtistId: 1,
-              EventId: 1,
-              sales_pitch: "I'm an all around professional who knows a variety of cover songs as well as original content of my own. Would love to be your host for the evening!"
+              EventId: 1
             }])
           })
         })
