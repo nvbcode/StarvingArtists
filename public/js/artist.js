@@ -117,8 +117,13 @@ $(function () {
 
 		// $.get('/api/profile/427') -- i.e. getting data based on the unique identifier.
 		// 	.then(function (profile){}
-		$.get("/api/artists/9")
-			.then(function (response) {
+		$.ajax({
+			method: "GET",
+			url: `/api/artists/${localStorage.id}`,
+			headers: {
+				"authorization": `Bearer ${localStorage.token}`
+			}
+		}).then(function (response) {
 
 					artist = response;
 
@@ -196,8 +201,9 @@ $(function () {
 	$("#eventsBox").on("click", ".applyButton", applyEvent);
 	function applyEvent(event) {
 		event.preventDefault();
-
+		$(".modal-body").empty();
 		const eventID = parseInt($(this).attr('id'));
+		console.log(eventID);
 		testArtist.applications.push(eventID);
 		// $.put('/api/profile/427')
 		//[REQUEST]: PUT [eventID]. In the actual code: 

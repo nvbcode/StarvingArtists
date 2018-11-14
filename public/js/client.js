@@ -1,3 +1,5 @@
+let customer;
+
 $(function () {
 
 
@@ -15,20 +17,22 @@ $(function () {
 				"authorization": `Bearer ${localStorage.token}`
 			}
 		}).then(function (response) {
-			const customer = response;
-			console.log(response);
+			customer = response;
+			console.log(customer);
 			//[REQUEST]: GET [user]. In the actual code: 
 			// 1. the test stuff above will be removed,
 			// 2. the code below will go into the {} of the .then request above, and 
 			// 3. [testUser] in the code below will be replaced with the [user] argument seen above. Or vice versa. It's all good.
 			// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 			$('#banner').append(`Welcome, ${customer.first_name} ${customer.last_name}!`);
-			renderEvents(customer.events);
 			$('#banner').attr('data-id', customer.id);
+
+			renderEvents(customer.events);
 
 		}).catch(function (err) {
 			console.log("Error", err);
 		});
+
 	}
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in the startRender function 
 	//and the createEvent click function.
@@ -43,30 +47,18 @@ $(function () {
 		// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 		$('#eventsBox').empty();
 
-		const clientId = $('#banner').attr('data-id', customer.id);
-		// const eventId= whatever argument we used.CustomerId
-		for (let i = 0; i < events.length; i++) {
+		console.log(events);
 
-			if (clientId === eventId && !argument.venue_name === "") {
-				$('#eventsBox').append(`
+		for (let i = 0; i < events.length; i++) {
+			$('#eventsBox').append(`
 					<div class="oneEvent">
-						<div class="eventElement">Event: ${argument.event_type}</div>
-						<div class="eventElement">Venue: ${argument.venue_name}</div>
-						<div class="eventElement">Adddress: ${argument.street_address} ${argument.city}, ${argument.state} </div>
-						<div class="eventElement">Offer: ${argument.budget}</div>
-						<div class="eventElement">Comments: ${argument.additional_info}</div>
-						<button class="applicantButton" id="${clientId}applicants">View Applicants</button>	
+						<div class="eventElement">Event: ${events[i].event_type}</div>
+						<div class="eventElement">Venue: ${events[i].venue_name}</div>
+						<div class="eventElement">Adddress: ${events[i].street_address} ${events[i].city}, ${events[i].state} </div>
+						<div class="eventElement">Offer: ${events[i].budget}</div>
+						<div class="eventElement">Comments: ${events[i].additional_info}</div>
+						<button class="applicantButton" id="${events[i].id}applicants" data-toggle="modal" data-target="#applicantModal" >View Applicants</button>	
 					</div>`);
-			} else if (clientId === eventId) {
-				$('#eventsBox').append(`
-					<div class="oneEvent">
-						<div class="eventElement">Event: ${argument.event_type}</div>
-						<div class="eventElement">Adddress: ${argument.street_address} ${argument.city}, ${argument.state} </div>
-						<div class="eventElement">Offer: ${argument.budget}</div>
-						<div class="eventElement">Comments: ${argument.additional_info}</div>
-						<button class="applicantButton" id="${clientId}applicants">View Applicants</button>	
-					</div>`);
-			}
 		}
 	}
 
@@ -84,20 +76,20 @@ $(function () {
 
 		const newEvent = {
 			event_type: $('#virtuoso').val(),
-			street_address: $('#streetAddress').val().trim,
-			city: $('#city').val().trim,
+			street_address: $('#streetAddress').val().trim(),
+			city: $('#city').val().trim(),
 			state: $('#state').val(),
-			event_venue: $('#venue').val().trim(),
+			venue_name: $('#venue').val().trim(),
 			budget: parseFloat($('#price').val()),
 			additional_info: $('#comments').val(),
-			CustomerId: $('#banner').data("id")
+			CustomerId: customer.id
 		}
 
-		if (newEvent.first_name === "" || newEvent.last_name === "" || newEvent.city === "" || newEvent.street_address === "" || isNaN(newEvent.street_budget)) {
+		if (newEvent.CustomerId === "" || newEvent.city === "" || newEvent.street_address === "" || isNaN(newEvent.budget)) {
 			$('#errorBox').addClass("show")
 			$('#errorBox').toggleClass("alt");
 		} else {
-			eventsList.push(newEvent);
+			// eventsList.push(newEvent);
 			// $.put('/api/events)
 			//[REQUEST]: PUT [newEvents]. In the actual code: 
 			// 1. the test stuff above will be removed, but we somehow still need to reference the object [testUser].
@@ -114,7 +106,7 @@ $(function () {
 					console.log(error);
 				});
 
-			testUser.createdEvents.push(newEvent.id);
+			// testUser.createdEvents.push(newEvent.id);
 			// $.put('/user)
 			//[REQUEST]: PUT [eventID]. In the actual code: 
 			// 1. the test stuff above will be removed, but we somehow still need to reference the object [testUser].
@@ -122,7 +114,9 @@ $(function () {
 			//		information currently sits.)
 			//		Since we're only pushing, a global variable would probably be easy.
 			$('#eventCreateModal').removeClass("show");
-			$('#errorBox').removeClass("show")
+			$('#errorBox').removeClass("show");
+
+			location.reload();
 			renderEvents(customer.events);
 		}
 	}
@@ -144,31 +138,46 @@ $(function () {
 	$("#eventsBox").on("click", ".applicantButton", applyEvent);
 	function applyEvent(event) {
 		event.preventDefault();
-		$('#applicantModal').addClass("show");
+		eventId = this.id[0];
+		$(".modal-body").empty();
+		$.get(`/api/applicants/${eventId}`)
+			.then(function (applicants) {
+				console.log(applicants);
 
+				for (let i = 0; i < applicants.length; i++) {
+					//[REQUEST]: GET artist info based on the bio 
+					//pass it into a .then function as the argument[data], and:
+
+					$.get(`/api/artist/${applicants[i].ArtistId}`)
+					.then(function(artist){
+						console.log(artist);
+
+					const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
+					const demo =`<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+					const city = $("<p>").text(`City: ${artist.city}`);
+					const state = $("<p>").text(`State: ${artist.state}`);
+					const sales = $("<p>").text(`Sales Pitch: ${applicants[i].sales_pitch}`);
+					const offer = $("<p>").text(`Offer: ${applicants[i].offer}`);
+
+					$(".modal-body").append(applicantName).append(demo).append(city).append(state);
+					$(".modal-body").append(sales).append(offer).append("<hr>");
+					}).catch(function(error){
+						console.log(error);
+					});
+				}
+				if (applicants.length === 0){
+					const emptyText = $("<p>").text("No applications");
+					$(".modal-body").append(emptyText);
+				}
+				$('#applicantModal').addClass("show");
+			});
 	}
-	// 	for (i=0; i<testUser.applicants.length; i++) {
-	// 		//[REQUEST]: GET artist info based on the bio 
-	// 		//pass it into a .then function as the argument[data], and:
 
 
-
-	// 		$("#applicantModal").append(`
-	// 			<div>
-	// 				<div id="${data.id}name"> ${data.firstName} ${data.lastName}</div>
-	// 				<div class="profileBox">
-	// 					<img src="${data.profilePic}">
-	// 				</div>
-	// 				<div id="${data.id}email">${data.email}></div>
-	// 			</div>
-	// 		`)
-	// 	}
-	// }
 
 	$('#closeApplicants').on("click", closeApplicants);
 	function closeApplicants(event) {
 		event.preventDefault();
-
 		$('#applicantModal').removeClass("show");
 	}
 

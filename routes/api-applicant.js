@@ -6,7 +6,7 @@ module.exports = function(app){
     //Get all appications based on ArtistId
     app.get("/api/applicants/:id", function(req, res){
 
-        db.Applicant.find({ where: { id: req.params.id } })
+        db.Applicant.findAll({ where: { EventId: req.params.id } })
             .then(function (applicant) {
                 res.json(applicant);
                 
