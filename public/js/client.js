@@ -149,6 +149,8 @@ $(function () {
 	$("#eventsBox").on("click", ".applicantButton", applyEvent);
 	function applyEvent(event) {
 		event.preventDefault();
+		$('#applicantModal').addClass("hide");
+
 		eventId = parseInt(this.id[0]);
 		$(".modal-body").empty();
 		$.get(`/api/applicants/${eventId}`)

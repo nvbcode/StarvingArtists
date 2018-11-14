@@ -87,6 +87,7 @@ $(function () {
 						"authorization": `Bearer ${localStorage.token}`
 					}
 				}).then(function (applicants) {
+					console.log(`applicant data: ${applicants}`);
 					const idArray = [];
 					for (let j = 0; j < applicants.length; j++) {
 						idArray.push(applicants[j].ArtistId)

@@ -36,7 +36,7 @@ module.exports = function (app) {
     });
 
     //GET ALL APPLICANTS FOR A SPECIFIC EVENT
-    app.get("/api/events/:id", function (req, res) {
+    app.get("/api/events/:id", checkAuth, function (req, res) {
         console.log("Getting Applicants");
         db.sequelize.query(`select * from applicants left join artists on applicants.artistid=artists.id 
         left join events on events.id=applicants.eventid 
