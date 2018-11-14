@@ -1,6 +1,14 @@
 $(function () {
 	let eventId;
 	let customer;
+	const getYouTube=function(url){
+		let youtube=url;
+		youtube=youtube.substring(32);
+		console.log(youtube);
+		const iFrame=`<iframe width="400" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+		console.log(iFrame);
+		return iFrame
+	}
 
 
 
@@ -55,8 +63,12 @@ $(function () {
 						<div class="eventElement">Venue: ${events[i].venue_name}</div>
 						<div class="eventElement">Adddress: ${events[i].street_address} ${events[i].city}, ${events[i].state} </div>
 						<div class="eventElement">Offer: ${events[i].budget}</div>
-						<div class="eventElement">Comments: ${events[i].additional_info}</div>
-						<button class="applicantButton" id="${events[i].id}applicants" data-toggle="modal" data-target="#applicantModal" >View Applicants</button>	
+						<div class="eventElement">Comments: ${events[i].additional_info}</div>`);
+						
+						//if statement to only give option to book if event has no current booking
+						if(events[i].has_booking === true){
+							$('#eventsBox').append('<div class="eventElement">Congratulations on booking your event!');
+						} else $('#eventsBox').append(`<button class="applicantButton" id="${events[i].id}applicants" data-toggle="modal" data-target="#applicantModal" >View Applicants</button>	
 					</div>`);
 		}
 	}
@@ -138,6 +150,7 @@ $(function () {
 	function applyEvent(event) {
 		event.preventDefault();
 		$('#applicantModal').addClass("hide");
+
 		eventId = parseInt(this.id[0]);
 		$(".modal-body").empty();
 		$.get(`/api/applicants/${eventId}`)
@@ -153,7 +166,7 @@ $(function () {
 							console.log(artist);
 
 							const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
-							const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+							const demo = getYouTube(artist.demo);
 							const city = $("<p>").text(`City: ${artist.city}`);
 							const state = $("<p>").text(`State: ${artist.state}`);
 							const confirmBtn = $(`<button id="confirm" value= ${applicants[i].id}>`).text('Confirm');
@@ -196,6 +209,9 @@ $(function () {
 			}
 		}).then(function (res) {
 			console.log(res);
+		}).then(function(){
+			alert('Thanks for booking! Your artist will be in touch');
+			$('#applicantModal').removeClass('show');
 		})
 
 
