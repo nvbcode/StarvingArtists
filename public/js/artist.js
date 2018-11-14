@@ -1,193 +1,75 @@
-//THIS IS ALL TEST DATA: ONCE THE FRONT AND BACK ARE LINKED, EVERYTHING BETWEEN THIS AND [END: DELETE ALL] WILL BE REMOVED.
-
-//NOTE: in the text data, all users IDs are 3 digits. All event IDs are 2 digits.
-
-//Adding YouTube parser function to display iFrame after ajax call
-const getYouTube=function(url){
-    let youtube=url;
-    youtube=youtube.substring(32);
-    console.log(youtube);
-    const iFrame=`<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    console.log(iFrame);
-    return iFrame
-}
-
-//getYouTube('https://www.youtube.com/watch?v=ZjRX-PL7pC4');
-
-
-
-
-
-//[REQUEST]: GET info from database by artist's [id]. See the function startRender();
-const testArtist = {
-	id: 427,
-	firstName: "Bob",
-	lastName: "Bobberson",
-	profilePic: "https://i.ytimg.com/vi/chQmIQcWcO0/hqdefault.jpg",
-	artType: "Musician",
-	specialties: [
-		"smooth jazz sax",
-		"sexy jazz sax",
-		"sweet jazz sax for the soul"
-	],
-	//[REQUEST]: linked to [reviews] table. No actual request should be needed.
-	reviews: [
-		{
-			rating: 5,
-			comment: "His jazz is smooth."
-
-		},
-		{
-			rating: 5,
-			comment: "His jazz is sexy."
-		},
-		{
-			rating: 1,
-			comment: "His jazz does nothing for my soul."
-		}
-	],
-	//[REQUEST]: linked to [events] table. No actual request should be needed.
-	//NOTE: all [applications] arrays will initially be empty. This 22 is just in here for testing purposes (i.e. does the button disappear if
-	//the event ID is already stored).
-	applications: [
-		22
-	]
-}
-
-//[REQUEST]: GET list of events from [events] table based on [artist] type. See the event eventsRender.
-//NOTE: the array [applicants] may not need to be stored directly here, but each event does need to track which artists applied to it.
-//NOTE: all applicants will initially be empty. This 427 is just in here for testing purposes.
-const events = [
-	{
-		id: 10,
-		eventName: "Fluffy's Birthday Party",
-		zipcode: "90210",
-		price: 500,
-		state: "AK",
-		artType: "Musician",
-		comments: "I want Fluffy's birthday party to be special. He loves Ray Charles, so I'm hoping for someone that plays like that.",
-		creator: 234,		//Tied to the "GenericPerson" client profile.
-		applicants: []
-	},
-	{
-		id: 22,
-		eventName: "Bar Mitzvah Bash",
-		zipcode: "19405",
-		price: 15,
-		state: "NJ",
-		artType: "Musician",
-		comments: "We need something cheap.",
-		creator: 117, 		//Not actually tied to anything, but every event needs to be tied to a client profile.
-		applicants: [427]
-	},
-	{
-		id: 37,
-		eventName: "Birth of the Antichrist",
-		zipcode: "10036",
-		price: 666,
-		state: "NY",
-		artType: "Musician",
-		comments: "Praise required for the advent of armageddon",
-		creator: 962,	 	//Not actually tied to anything, but every event needs to be tied to a client profile.
-		applicants: []
-	},
-	{
-		id: 99,
-		eventName: "The Annexation of Poland",
-		zipcode: "99999",
-		price: 1500,
-		state: "WS",
-		artType: "Artist",
-		comments: "Need a painter to create a commemorative piece for this great day.",
-		creator: 484,		//Not actually tied to anything, but every event needs to be tied to a client profile.
-		applicants: []
-	}
-]
-//[END: DELETE ALL]
-
-//Make a global variable
-let artist;
-
 $(function () {
+
+	let artist;
 
 	startRender();
 
 	//ARTIST PROFILE GENERATION: this section sets up the page to populate with the profile information.
 	function startRender() {
 
-		// $.get('/api/profile/427') -- i.e. getting data based on the unique identifier.
-		// 	.then(function (profile){}
+		//REPLACE 9 WITH A TEMPLATE LITERAL REFERENCING THE TOKEN.
 		$.get("/api/artists/9")
-			.then(function (response) {
+			.then(function (id) {
 
-					artist = response;
+				$('#banner').append(`Welcome, ${id.first_name} ${id.last_name}!`);
+				$('#picBox').append(`<img id=profilePic src=${id.profile_pic}>`);
 
-					//[REQUEST]: GET [profile]. In the actual code: 
-					// 1. the test stuff above will be removed,
-					// 2. the code below will go into the {} of the .then request above, and 
-					// 3. [testArtist] in the code below will be replaced with the [profile] argument seen above. Or vice versa. It's all good.
-					// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-					$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
-					$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
+				//NEED TO PUT IN A SPECIALTIES TABLE.
+				const specs = id.specialties;
+				for (let i = 0; i < specss.length; i++) {
+					$('#specialtiesBox').append(`<div class="specialtyItem">${specs[i]}</div>`)
+				}
 
-					const specialties = testArtist.specialties;
-					for (let i = 0; i < specialties.length; i++) {
-						$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
-					}
-
-					const reviews = artist.reviews;
-					for (let i = 0; i < reviews.length; i++) {
-						$('#reviewRow').append(`
-			<div class="oneReview">
-				<div class="rating">${reviews[i].review_rate}</div>
-				<div class="comment">${reviews[i].review_body}</div>
-			</div>`)
-					}
+				const revs = id.reviews;
+				for (let i = 0; i < revs.length; i++) {
+					$('#reviewRow').append(`
+						<div class="oneReview">
+							<div class="rating">${revs[i].review_rate}</div>
+							<div class="comment">${revss[i].review_body}</div>
+						</div>`)
+				}
+				return artist = id;
 
 			}).catch(function (err) {
 				console.log("Error", err);
 			});
-
-			eventsRender();
+		eventsRender();
 	}
 
+	let events;
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in PROFILE GENERATION.
 	function eventsRender() {
 
 		$.get('/api/events')
-			.then(function (events) {
+			.then(function (data) {
 
-				console.log("events", events);
-
-				//[REQUEST]: GET [events]. In the actual code: 
-				// 1. the test stuff above will be removed,
-				// 2. the code below will go into the {} of the .then request above, and 
-				// 3. the [events] variabls below should correspond to the [events] argument that will be passed in.
-				// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-				for (i = 0; i < events.length; i++) {
-					const e = events[i];
-					// if (e.event_type === artist.artType) {
+				//NEED TO PUT IN ART_TYPE TYPE FOR ARTISTS AND EVENTS
+				for (i = 0; i < data.length; i++) {
+					if (data[i].art_type === artist.art_type) {
 						$('#eventsBox').append(`
-					<div class="oneEvent">
-						<div class="eventElement">Event: ${e.venue_name}</div>
-						<div class="eventElement">Offer: ${e.budget}</div>
-						<div class="eventElement">City: ${e.city}</div>
-						<div class="eventElement">State: ${e.state}</div>
-						<div class="eventElement">Comments: ${e.additional_info}</div>
-						<button class="applyButton" id="${e.id}">Apply</button>
-						<div class="notice hide" id="${e.id}notice">Applied!</div>
-					</div>`);
-					// }
-				}
+							<div class="oneEvent">
+								<div class="eventElement">Event: ${data[i].event_type}</div>
+								<div class="eventElement">Offer: ${data[i].budget}</div>
+								<div class="eventElement" id="${data[i].id}venue">Venue: ${data[i].venue_name}</div>
+								<div class="eventElement">Address: ${data[i].venue_name} ${data[i].city}, ${data[i].state}</div>
+								<div class="eventElement">Comments: ${data[i].additional_info}</div>
+								<button class="applyButton" id="${data[i].id}">Apply</button>
+								<div class="notice hide" id="${data[i].id}notice">Applied!</div>
+							</div>`);
 
-				for (i = 0; i < events.length; i++) {
-					const e = events[i]
-					if (testArtist.applications.includes(e.id)) {
-						$(`#${e.id}notice`).removeClass("hide");
-						$(`#${e.id}`).addClass("hide");
+						let applicantArray = [];
+						//UNCLEAR ON HOW APPLICANT DATA IS STORED.
+						for (let j = 0; data[i].applicants; i++) {
+							applicantArray.push(data[i].applicants[j].artistId);
+						}
+						if (applicantArray.includes(artist.id)) {
+							$(`#${data[i].id}notice`).removeClass("hide");
+							$(`#${data.id}`).addClass("hide");
+						}
+
 					}
 				}
-
+				return events = data;
 			}).catch(function (error) {
 				res.json({ Error: error });
 			});
@@ -199,6 +81,7 @@ $(function () {
 
 		const eventID = parseInt($(this).attr('id'));
 		testArtist.applications.push(eventID);
+
 		// $.put('/api/profile/427')
 		//[REQUEST]: PUT [eventID]. In the actual code: 
 		// 1. the test stuff above will be removed, but we somehow still need to reference the object [testArtist].
@@ -223,5 +106,92 @@ $(function () {
 
 		$(`#${eventID}notice`).removeClass("hide");
 		$(`#${eventID}`).addClass("hide");
+	}
+
+	$('#artistChange').on("click", showArtistModal)
+	function showArtistModal(event) {
+		event.preventDefault();
+		$('#artistSignUp').addClass("show");
+	}
+
+	$("#artistCreate").on("click", createArtist)
+	function createArtist(event) {
+		event.preventDefault();
+
+		$('#artistError').removeClass("show")
+		$('#apasswordError').removeClass("show")
+		//VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
+		//and mySQL will take care of it.
+
+		const p1 = $('#aPassword1').val().trim();
+		const p2 = $('#aPassword2').val().trim();
+
+		const str = $('#comments').val().trim();
+
+		const newUser = {
+			email: $('#aEmail').val().trim(),
+			user_name: $('#aUserName').val().trim(),
+			password: $('#aPassword2').val().trim(),
+			user_type: 2
+		}
+		const artistData = {
+			first_name: $('#aFirstName').val().trim(),
+			last_name: $('#aLastName').val().trim(),
+			city: $('#aCity').val().trim,
+			state: $('#aState').val().trim,
+			artType: $('#virtuoso').val(),
+			demo: $('#youTubeURL').val.trim,
+			specialties: str.split(","),
+			UserID: null
+		}
+
+		if (artistData.first_name === "" || artistData.last_name === "" ||artistData.city === "" || newUser.user_name === "" || newUser.password === "") {
+			$('#artistError').addClass("show")
+			$('#artistError').toggleClass("alt");
+		} else if (p1 != p2) {
+			$('#apasswordError').addClass("show")
+			$('#apasswordError').toggleClass("alt");
+		} else {
+
+			// $.put('/api/events)
+			//[REQUEST]: PUT [newUser]
+			//.then(function (newUser){
+				// set newUser.id as foreignKey.
+			//})
+			console.log(newUser);
+
+			//$.get('/api/user/id)
+			//[REQUEST]: GET [user]
+			//.then
+			// $.put('/api/events)
+			//[REQUEST]: PUT [artistData]
+			//set artistData.UserID to user.ID
+			console.log(artistData);
+
+			$('#artistSignUp').removeClass("show");
+			$('#apasswordError').removeClass("show")
+			$('#artistError').removeClass("show")
+		}
+	}
+
+	$('#artistCancel').on("click", closeArtist);
+	function closeArtist(event) {
+		event.preventDefault();
+
+		$('#artistError').removeClass("show")
+		$('#apasswordError').removeClass("show")
+
+		$('#aFirstName').val("");
+		$('#aLastName').val("");
+		$('#aEmail').val("");
+		$('#aUserName').val("");
+		$('#aPassword1').val("");
+		$('#aPassword2').val("");
+		$('#aZipcode').val("");
+		$('#aState').val("");
+		$('#virtuoso').val("");
+		$('#comments').val("");
+
+		$('#artistSignUp').removeClass("show");
 	}
 })
