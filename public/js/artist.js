@@ -3,13 +3,13 @@
 //NOTE: in the text data, all users IDs are 3 digits. All event IDs are 2 digits.
 
 //Adding YouTube parser function to display iFrame after ajax call
-const getYouTube=function(url){
-    let youtube=url;
-    youtube=youtube.substring(32);
-    console.log(youtube);
-    const iFrame=`<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
-    console.log(iFrame);
-    return iFrame
+const getYouTube = function (url) {
+	let youtube = url;
+	youtube = youtube.substring(32);
+	console.log(youtube);
+	const iFrame = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+	console.log(iFrame);
+	return iFrame
 }
 
 //getYouTube('https://www.youtube.com/watch?v=ZjRX-PL7pC4');
@@ -125,35 +125,35 @@ $(function () {
 			}
 		}).then(function (response) {
 
-					artist = response;
+			artist = response;
 
-					//[REQUEST]: GET [profile]. In the actual code: 
-					// 1. the test stuff above will be removed,
-					// 2. the code below will go into the {} of the .then request above, and 
-					// 3. [testArtist] in the code below will be replaced with the [profile] argument seen above. Or vice versa. It's all good.
-					// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
-					$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
-					$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
+			//[REQUEST]: GET [profile]. In the actual code: 
+			// 1. the test stuff above will be removed,
+			// 2. the code below will go into the {} of the .then request above, and 
+			// 3. [testArtist] in the code below will be replaced with the [profile] argument seen above. Or vice versa. It's all good.
+			// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
+			$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
+			$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
 
-					const specialties = testArtist.specialties;
-					for (let i = 0; i < specialties.length; i++) {
-						$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
-					}
+			const specialties = testArtist.specialties;
+			for (let i = 0; i < specialties.length; i++) {
+				$('#specialtiesBox').append(`<div class="specialtyItem">${specialties[i]}</div>`)
+			}
 
-					const reviews = artist.reviews;
-					for (let i = 0; i < reviews.length; i++) {
-						$('#reviewRow').append(`
+			const reviews = artist.reviews;
+			for (let i = 0; i < reviews.length; i++) {
+				$('#reviewRow').append(`
 			<div class="oneReview">
 				<div class="rating">${reviews[i].review_rate}</div>
 				<div class="comment">${reviews[i].review_body}</div>
 			</div>`)
-					}
+			}
 
-			}).catch(function (err) {
-				console.log("Error", err);
-			});
+		}).catch(function (err) {
+			console.log("Error", err);
+		});
 
-			eventsRender();
+		eventsRender();
 	}
 
 	//CREATING THE EVENTS LIST: This is a generic function that makes a list of available events. Called in PROFILE GENERATION.
@@ -171,37 +171,39 @@ $(function () {
 				// 4. May need to add a return command in to make data accessible to click functions. Or maybe just create a universal variable?
 				for (i = 0; i < events.length; i++) {
 					const e = events[i];
-					// if (e.event_type === artist.artType) {
-						$('#eventsBox').append(`
-					<div class="oneEvent">
-						<div class="eventElement">Event: ${e.venue_name}</div>
-						<div class="eventElement">Offer: ${e.budget}</div>
-						<div class="eventElement">City: ${e.city}</div>
-						<div class="eventElement">State: ${e.state}</div>
-						<div class="eventElement">Comments: ${e.additional_info}</div>
-						<button class="applyButton" id="${e.id}">Apply</button>
-						<div class="notice hide" id="${e.id}notice">Applied!</div>
-					</div>`);
-					// }
-				}
+					$('#eventsBox').append(`
+							<div class="oneEvent">
+								<div class="eventElement">Event: ${e.venue_name}</div>
+								<div class="eventElement">Offer: ${e.budget}</div>
+								<div class="eventElement">City: ${e.city}</div>
+								<div class="eventElement">State: ${e.state}</div>
+								<div class="eventElement">Comments: ${e.additional_info}</div>
+								<button class="applyButton" id="${e.id}">Apply</button>
+								<div class="notice hide" id="${e.id}notice">Applied!</div>
+							</div>`);
 
-				for (i = 0; i < events.length; i++) {
-					const e = events[i]
-					if (testArtist.applications.includes(e.id)) {
-						$(`#${e.id}notice`).removeClass("hide");
-						$(`#${e.id}`).addClass("hide");
-					}
-				}
+					$.get(`/api/events/${e.id}`)
+						.then(function (applicants) {
+							const idArray = []
+							for (j = 0; j < e.applicants.length; i++) {
+								idArray.push(applicants[j])
+							}
 
-			}).catch(function (error) {
-				res.json({ Error: error });
+							if (idArray.includes(THEARTISTID)) {
+								$(`#${e.id}notice`).removeClass("hide");
+								$(`#${e.id}`).addClass("hide");
+							}
+
+						}).catch(function (error) {
+							res.json({ Error: error });
+						});
+				}
 			});
 	}
 
 	$("#eventsBox").on("click", ".applyButton", applyEvent);
 	function applyEvent(event) {
 		event.preventDefault();
-		$(".modal-body").empty();
 		const eventID = parseInt($(this).attr('id'));
 		console.log(eventID);
 		testArtist.applications.push(eventID);
@@ -210,15 +212,28 @@ $(function () {
 		// 1. the test stuff above will be removed, but we somehow still need to reference the object [testArtist].
 		//		NOTE: may end up reconstructing the whole thing with a return or just create a global-scale variabe (i.e. where the test
 		//		information currently sits.)
-		//		Since we're only pushing a single new piece of information, a global variable would probably be easy.
-
-		const eventIDList = [];
-		for (let i = 0; i < events.length; i++) {
-			eventIDList.push(events[i].id);
+		//		Since we're only pushing a single new piece of informat	ion, a global variable would probably be easy.
+		const newApplicant = {
+			ArtistId: artist.id,
+			EventId: eventID,
+			offer: 500.00,
+			bid_win: false,
+			sales_pitch: "Help me"
 		}
 
-		const index = eventIDList.indexOf(eventID);
-		events[index].applicants.push(testArtist.id);
+		//Create a new Applicant table row and add artist ID and event ID in the row
+		$.post("/api/applicants", newApplicant).then(function (data) {
+			console.log(data);
+		}).catch(function (error) {
+			console.log(error);
+		});
+		// const eventIDList = [];
+		// for (let i = 0; i < events.length; i++) {
+		// 	eventIDList.push(events[i].id);
+		// }
+
+		// const index = eventIDList.indexOf(eventID);
+		// events[index].applicants.push(testArtist.id);
 
 		// $.put('/api/events/${eventID}')
 		//[REQUEST]: PUT [events]. In the actual code: 
@@ -230,4 +245,4 @@ $(function () {
 		$(`#${eventID}notice`).removeClass("hide");
 		$(`#${eventID}`).addClass("hide");
 	}
-})
+});
