@@ -269,6 +269,10 @@ transform: translateY(-50%) translateX(0px)  scale(1);
     transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
     transform-style: preserve-3d;
   }
+  #errorBox, #cpasswordError, #apasswordError, #clientError, #artistError{
+    display:none;
+    text-align:center;
+  }
 
 
 
