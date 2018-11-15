@@ -67,9 +67,10 @@ $(function () {
 	$("#createButton").on("click", createEvent)
 	function createEvent(e) {
 		e.preventDefault();
+		
 
 		const newEvent = {
-			event_type: $('#virtuoso').val(),
+			event_type: $('#eventName').val().trim(),
 			street_address: $('#streetAddress').val().trim(),
 			city: $('#city').val().trim(),
 			state: $('#state').val(),
@@ -78,12 +79,10 @@ $(function () {
 			additional_info: $('#comments').val(),
 			CustomerId: customer.id
 		}
-
 		if (newEvent.CustomerId === "" || newEvent.city === "" || newEvent.street_address === "" || isNaN(newEvent.budget)) {
 			$('#errorBox').addClass("show")
 			$('#errorBox').toggleClass("alt");
 		} else {
-
 			$.ajax({
 				method: "POST",
 				url: '/api/events',

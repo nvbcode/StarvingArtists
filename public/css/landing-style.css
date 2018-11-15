@@ -269,6 +269,10 @@ transform: translateY(-50%) translateX(0px)  scale(1);
     transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
     transform-style: preserve-3d;
   }
+  #errorBox, #cpasswordError, #apasswordError, #clientError, #artistError{
+    display:none;
+    text-align:center;
+  }
 
 
 
@@ -281,7 +285,7 @@ transform: translateY(-50%) translateX(0px)  scale(1);
   }
   .square-flip h3{
     color:white;
-    font-family: Open Sans";
+    font-family: Open Sans;
     font-weight:500;
     font-size:16px;
     line-height:26px;
@@ -373,7 +377,9 @@ transform: translateY(-50%) translateX(0px)  scale(1);
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	overflow:scroll;
 }
-
+.show{
+	display:flex !important;
+}
 .hide{
 	display:none;
 }
