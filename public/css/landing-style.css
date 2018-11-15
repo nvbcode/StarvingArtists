@@ -373,7 +373,9 @@ transform: translateY(-50%) translateX(0px)  scale(1);
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	overflow:scroll;
 }
-
+.show{
+	display:flex !important;
+}
 .hide{
 	display:none;
 }
