@@ -143,6 +143,10 @@ $(function () {
             url: '/api/login',
             data: signInData
         }).then(function (res) {
+            console.log(res);
+            if( res.message === "Enter Correct Login/PW") {
+                return alert("Enter Correct Login/PW");
+            }
             console.log(res)
             let usertype = '';
             localStorage.token = res.token;
@@ -156,7 +160,10 @@ $(function () {
                 usertype = `artist`;
             }
 
-            window.location.replace(`/${usertype}`);
+            // window.location.replace(`/${usertype}`);
+        }).catch(function(err){
+            console.log(err);
+            alert('Please Enter Correct Username/Password');
         });
     }
 
