@@ -1,3 +1,4 @@
+
 $(function () {
     const searchField = {
         'queryParams':$('#starveSearch').val().trim()
