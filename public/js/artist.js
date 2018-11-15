@@ -54,7 +54,7 @@ $(function () {
 				$('#eventsBox').append(`
 							<div class="oneEvent">
 								<div class="eventElement">Event: ${e.venue_name}</div>
-								<div class="eventElement">Offer: ${e.budget}</div>
+								<div class="eventElement">Offer: $${e.budget.trim()}</div>
 								<div class="eventElement">City: ${e.city}</div>
 								<div class="eventElement">State: ${e.state}</div>
 								<div class="eventElement">Comments: ${e.additional_info}</div>
