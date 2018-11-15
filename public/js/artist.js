@@ -1,6 +1,14 @@
 let artist;
 
 $(function () {
+	const getYouTube = function (url) {
+		let youtube = url;
+		youtube = youtube.substring(32);
+		console.log(youtube);
+		const iFrame = `<iframe width="400" height="315" src="https://www.youtube.com/embed/${youtube}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+		console.log(iFrame);
+		return iFrame
+	}
 
 	startRender();
 
@@ -19,7 +27,7 @@ $(function () {
 
 			$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
 			$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
-			const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+			const demo = getYouTube(artist.demo);
 			$('#specBoxTitle').append(demo);
 
 			const reviews = artist.reviews;
