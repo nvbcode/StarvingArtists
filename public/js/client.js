@@ -1,7 +1,7 @@
 $(function () {
 	let eventId;
 	let customer;
-	
+
 	const getYouTube = function (url) {
 		let youtube = url;
 		youtube = youtube.substring(32);
@@ -148,7 +148,7 @@ $(function () {
 					console.log(artist);
 
 					const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
-					const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+					const demo = getYouTube(artist.demo);
 					const city = $("<p>").text(`City: ${artist.city}`);
 					const state = $("<p>").text(`State: ${artist.state}`);
 					const confirmBtn = $(`<button id="confirm" value= ${applicants[i].id}>`).text('Confirm');
