@@ -1,42 +1,494 @@
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+		<!-- artist style.css  -->
+		
 	<script src="./js/artist.js"></script>
-	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	 crossorigin="anonymous"> -->
-	<link rel="stylesheet" href="./css/reset.css">
-	<link rel="stylesheet" href="./css/style.css">
-	<title>Artist</title>
-</head>
-
-<body>
-	<div id="page">
-		<div id="banner">
-			<button id="logout">Logout</button>
-		</div>
-
-		<div id="profileSection">
-			<div id="picBox"></div>
-			<div id="specialtiesBox">
-				<div id="specBoxTitle"></div>
+				<!-- w3schools template stylesheet  -->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+		 crossorigin="anonymous">
+		<script src="./js/app.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="./js/app.js"></script>
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="canonical" href="https://ampbyexample.com/advanced/star_rating/">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+		 crossorigin="anonymous">
+	
+		<title>ARTIST PAGE: STARVING ARTISTS</title>
+	</head>
+	
+	
+	<body class="bg">
+		<header>
+			<div class="topnav">
+				<div class="topnav-right">
+					<a class="nav-link" href="public/client.html">Events</a>
+					<a class="nav-link" href="public/artist.html">Photographers</a>
+					<a class="nav-link" href="public/artist.html">Musicians</a>
+					<a class="nav-link" href="public/artist.html">Artists</a>
+				</div>
+				<div class="topnav-left" id="nav-logo">
+					<img src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png" alt="">
+				</div>
 			</div>
-		</div>
-		<div id="reviewRow">
-			<div class="boxBanner"> Reviews</div>
-		</div>
-		<div id="eventsBox">
+		</header>
+	
+	
+<!-- 
+ 		<div id="eventsBox">
 			<div class="boxBanner"> Available Gigs</div>
 		</div>
-	</div>
-
-
-</body>
-
-
-</html>
+	</div> -->
+	
+	
+		<section>
+			<main>
+				<div class="w3-container">
+					<div class="w3-panel w3-border w3-round-large">
+						<table class="block">
+	
+							<td>
+								<div class="column" style="max-width: 20%">
+									<img id="picBox" style="max-width: 400%" src="https://princefan046.com/wp-content/uploads/2018/11/Genisis.jpg" alt="">
+								</div>
+	
+								<h2 style="padding-top: 10px" id="cFirstName, cLastName"></h2>
+								<hr>
+								<p id="specialtiesBox"></p>
+								<p id="cEmail">genesis@gmail.com</p>
+								<p id="cCity, cState">Atlanta, Georgia</p></span>
+								<hr>
+								<p >The band have put together a repertoire to cater for all ages, perfect for weddings and
+									parties. For larger venues you may also be interested in adding an additional female vocalist or
+									guitarist, please get in touch for more details.</p>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<!-- form for star rating starts here  -->
+								<div>
+									<form id="rating" class="p2" method="post" action-xhr="/samples_templates/rating/set" target="_blank">
+										<fieldset class="rating">
+											<input name="rating" type="radio" id="rating5" value="5" on="change:rating.submit" />
+											<label for="rating5" title="5 stars">☆</label>
+	
+											<input name="rating" type="radio" id="rating4" value="4" on="change:rating.submit" />
+											<label for="rating4" title="4 stars">☆</label>
+	
+											<input name="rating" type="radio" id="rating3" value="3" on="change:rating.submit" />
+											<label for="rating3" title="3 stars">☆</label>
+	
+											<input name="rating" type="radio" id="rating2" value="2" on="change:rating.submit" checked="checked" />
+											<label for="rating2" title="2 stars">☆</label>
+	
+											<input name="rating" type="radio" id="rating1" value="1" on="change:rating.submit" />
+											<label for="rating1" title="1 stars">☆</label>
+										</fieldset>
+										<div class="w3-panel" style="width:50%" id="viewArtistPage">
+											<button class="w3-button w3-block w3-teal" id="logout">Logout</button>
+									
+	
+										<div submit-success>
+											<template type="amp-mustache">
+												<p>Thanks for rating {{rating}} star(s)!</p>
+											</template>
+										</div>
+										<div submit-error>
+											<template type="amp-mustache">
+												Looks like something went wrong. Please try to rate again. {{error}}
+											</template>
+										</div>
+									</form>
+							</td>
+					</div>
+					<h1><strong>Genesis</strong></h1>
+					<hr>
+	
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/hGI2d31M7Ns" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					 allowfullscreen></iframe></span>
+					<div class="w3-container">
+						<h2 id="specBoxTitle"> <b>Genesis</b> </h2>
+						<hr>
+	
+						<h3>
+							<b>Phil Collins</b> is a Grammy and Academy Award-winning solo artist, Collins has sold more than 34 million albums in the United States, and 150 million records worldwide.</h3>
+						<hr>
+						<hr>
+						<br>
+						<br>
+						<br>
+					</div>
+				</div>
+				</div>
+	
+				</table>
+	
+			</main>
+	
+	
+	
+		
+			<aside>
+				<!-- SOUNDCLOUD LINK -->
+				<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/126034626&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+				<div class="content" style="padding-left:5%;">
+	
+			</aside>
+			<aside>
+				<!-- TESTIMONIAL REVIEW  -->
+				<hr>
+				<h3 id="reviewRow"><cite>"Genesis is the best band in the world"</cite><strong>
+						<hr> Randy Newman </strong></cite></h3>
+				<hr>
+	
+			</aside>
+			<aside>
+				<!-- USER RATING STARS  -->
+				<span class="heading">User Rating</span>
+				<hr style="border:#f44336">
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<p>4.1 average based on 254 reviews.</p>
+				<hr style="border:3px solid #f1f1f1">
+	
+				<div>5 star</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-5"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>150</div>
+				</div>
+				<div class="side">
+					<div>4 star</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-4"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>63</div>
+				</div>
+				<div class="side">
+					<div>3 star</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-3"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>15</div>
+				</div>
+				<div class="side">
+					<div>2 star</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-2"></div>
+					</div>
+				</div>
+				</div>
+				<div class="side right">
+					<div>6</div>
+				</div>
+				<div class="side">
+					<div>1 star</div>
+				</div>
+				<div class="middle">
+					<div class="bar-container">
+						<div class="bar-1"></div>
+					</div>
+				</div>
+				<div class="side right">
+					<div>20</div>
+				</div>
+				<hr>
+			</aside>
+			<aside>
+					<div class="w3-half">
+						<h2>Contact Us</h2>
+					</div>
+					<form class="w3-container w3-card-4">
+						<br>
+						<p>
+							<label class="w3-text-grey">Name</label>
+							<input class="w3-input" type="text" required>
+						</p>
+						<p>
+							<label class="w3-text-grey">Email</label>
+							<input class="w3-input" type="text" required>
+						</p>
+						<p>
+							<label class="w3-text-grey">Subject</label>
+							<textarea class="w3-input" style="resize:none"></textarea>
+						</p>
+						<br>
+						<p><button type="button" class="w3-btn w3-padding w3-teal" style="width:120px">Send &nbsp; &#10095;</button></p>
+					</form>
+		
+				</aside>
+	
+	
+		</section>
+	
+	
+		<!-- PAGE FOOTER --> -->
+		<div class="footer">
+			<p>Starving Artist 2018</p>
+		</div>
+	
+	
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+	
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+			}
+	
+			/* Create two columns/boxes that floats next to each other */
+			main {
+				float: left;
+				width: 58%;
+				height: auto;
+				background: grey;
+				padding: 10px;
+			}
+	
+			aside {
+	
+				border: solid;
+				border: 1px;
+				float: left;
+				padding: 5px;
+				width: 40%;
+				background-color: #f1f1f1;
+				height: 100%;
+			}
+	
+			/* Clear floats after the columns */
+			section:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+	
+			/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+			@media (max-width: 600px) {
+	
+				nav,
+				article {
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+	
+		<style>
+			/* RATINGS BAR BOX  */
+	
+			.fa {
+				font-size: 25px;
+			}
+	
+			.checked {
+				color: orange;
+			}
+	
+	
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+	
+			/* The bar container */
+			.bar-container {
+				width: 100%;
+				background-color: #f1f1f1;
+				text-align: center;
+				color: white;
+			}
+	
+			/* Individual bars */
+			.bar-5 {
+				width: 60%;
+				height: 18px;
+				background-color: #4CAF50;
+			}
+	
+			.bar-4 {
+				width: 30%;
+				height: 18px;
+				background-color: #2196F3;
+			}
+	
+			.bar-3 {
+				width: 10%;
+				height: 18px;
+				background-color: #00bcd4;
+			}
+	
+			.bar-2 {
+				width: 4%;
+				height: 18px;
+				background-color: #ff9800;
+			}
+	
+			.bar-1 {
+				width: 15%;
+				height: 18px;
+				background-color: #f44336;
+			}
+	
+			/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+			@media (max-width: 400px) {
+	
+				.side,
+				.middle {
+					width: 100%;
+				}
+	
+				.right {
+					display: none;
+				}
+			}
+	
+			/* NAV BAR AND GENERAL PAGE CSS */
+			/* Add a gray background color and some padding to the footer */
+			.footer {
+				background-color: #1b1919;
+				padding: 0px;
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				color: white;
+				text-align: center;
+			}
+	
+			.bg {
+				background-image: url("https://sftextures.com/texture/5145/1/5153/gradient-grey-display-background-many-nine-lights-stage-floor-six-spotlight-wall-modern-soft-web-image-512x288.png");
+				height: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				z-index: -200;
+			}
+	
+			.topnav {
+				/* z-index: -100px; */
+	
+				height: 110px;
+				background-color: black;
+				margin-bottom: 02%;
+				z-index: -10;
+			}
+	
+			.topnav-left {
+				float: left;
+	
+			}
+	
+			.topnav-right {
+				float: right;
+				margin-right: 20px;
+				margin-top: 20px;
+			}
+	
+			#nav-logo {
+				padding-top: 20px;
+				padding-left: 60px;
+			}
+	
+			.topnav a {
+				float: right;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				font-size: 17px;
+			}
+	
+			.topnav a:hover {
+				background-color: #ddd;
+				color: black;
+			}
+	
+			.topnav a.active {
+				background-color: whitesmoke;
+				color: white;
+			}
+	
+			/* flexbox  */
+	
+			@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700|Open+Sans:400,800);
+	
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: 'Open Sans', sans-serif;
+			}
+	
+			.grid {
+				display: grid;
+				width: 100vw;
+				height: 100vh;
+				grid-template-columns: repeat(12, 1fr);
+				grid-template-rows: repeat(12, 1fr);
+				grid-template-areas: "navigation navigation navigation navigation navigation navigation navigation navigation navigation navigation navigation navigation";
+			}
+	
+			.grid>* {
+				background: orange;
+				outline: solid 3px grey;
+				box-sizing: border-box;
+			}
+	
+			.item04 {
+				grid-column-start: 1;
+				grid-column-end: 4;
+				grid-row-start: 1;
+				grid-row-end: 13;
+			}
+	
+			.item05 {
+				grid-column-start: 4;
+				grid-column-end: 9;
+				grid-row-start: 1;
+				grid-row-end: 13;
+			}
+	
+			.item06 {
+				grid-column-start: 9;
+				grid-column-end: 13;
+				grid-row-start: 1;
+				grid-row-end: 13;
+			}
+		</style>
+	</body>
+	
+	</html>
