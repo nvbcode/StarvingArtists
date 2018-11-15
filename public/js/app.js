@@ -160,7 +160,7 @@ $(function () {
                 usertype = `artist`;
             }
 
-            // window.location.replace(`/${usertype}`);
+            window.location.replace(`/${usertype}`);
         }).catch(function(err){
             console.log(err);
             alert('Please Enter Correct Username/Password');

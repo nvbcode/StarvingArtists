@@ -10,24 +10,24 @@ module.exports = function (app) {
             where: {
                 user_name: req.body.user_name,
             }
-        }).then(function (userData) {
-            if (!userData || req.body.password !== userData.password) {
+        }).then(function (user) {
+            if (!user || !user.validatePw(req.body.password)) {
                 return res.status(401).json({
                     message: "Incorrect username or password."
                 })
             } else {
 
-                console.log(userData)
+                console.log(user)
 
                 jwt.sign({
-                    user_name: userData.user_name,
-                    id: userData.id,
-                    user_type: userData.user_type
+                    user_name: user.user_name,
+                    id: user.id,
+                    user_type: user.user_type
                 }, 'voodoomagicjack', { expiresIn: '30m' }, (err, token) => {
                     res.json({
                         token: token,
-                        id: userData.id,
-                        user_type: userData.user_type
+                        id: user.id,
+                        user_type: user.user_type
                     }).catch(err => {
                         res.json({ err });
                     });

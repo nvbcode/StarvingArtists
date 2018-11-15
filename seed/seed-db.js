@@ -2,7 +2,7 @@ const db = require('../models');
 
 // Syncing our sequelize models 
 // =============================================================
-db.sequelize.sync().then(function () {
+db.sequelize.sync({force: true}).then(function () {
   db.User.bulkCreate([{
     user_name: 'makiko',
     password: '123',
@@ -54,7 +54,7 @@ db.sequelize.sync().then(function () {
     password: '123',
     email: 'user2@test.com',
     user_type: 2
-  }]).then(function (response) {
+  }], {individualHooks: true}).then(function (response) {
     db.Customer.bulkCreate([{
       UserId: 1,
       first_name: 'Makiko',
