@@ -359,4 +359,50 @@ transform: translateY(-50%) translateX(0px)  scale(1);
     box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
   }
 
+/*MODAL CONTENT*/
+.modal {
+	display: none; /*Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 100; /* Sit on top */
+	padding-top:10px;
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	overflow:scroll;
+}
+
+.hide{
+	display:none;
+}
+
+#modalContent {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	background-color: #fefefe;
+	margin:auto;
+	padding-top:30px;
+	border-width:2px;
+	border-style:solid;
+	border-color: rgb(41, 53, 53);
+	border-radius: 20px;
+	width: 80%;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
  
