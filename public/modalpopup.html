@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <!-- style.css  -->
+    <link rel="stylesheet" href="css/landing-style.css">
+    <!-- w3schools template stylesheet  -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <style>
+        form { 
+	border: 3px solid #f1f1f1; 
+} 
+
+input[type=text], input[type=password], input[type=submit]  { 
+	width: 100%; 
+	padding: 12px 20px; 
+	margin: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+} 
+
+#cState { 
+    margin-top: -2%;
+	width: 55%; 
+	padding: 9px 20px;
+margin-left: 1px;
+	margin-top: 1%;
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+#cCity { 
+    margin-top: 10px;
+	width: 40%; 
+margin-right: 2%;
+	margin-left: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+
+email { 
+	width: 100%; 
+margin-right: 2%;
+	margin-left: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+
+button { 
+	background-color: #4CAF50; 
+	color: white; 
+	padding: 14px 20px; 
+	margin: 8px 0; 
+	border: none; 
+	cursor: pointer; 
+	width: 100%; 
+} 
+
+button:hover { 
+	opacity: 0.8; 
+} 
+
+.cancelbtn { 
+	width: auto; 
+	padding: 10px 18px; 
+	background-color: #f44336; 
+} 
+
+.imgcontainer { 
+	text-align: center; 
+	margin: 24px 0 12px 0; 
+} 
+
+img.avatar { 
+	width: 40%; 
+	border-radius: 50%; 
+} 
+
+.container { 
+	padding: 16px; 
+} 
+
+span.psw { 
+	float: right; 
+	padding-top: 16px; 
+} 
+
+@media screen and (max-width: 300px) { 
+	span.psw { 
+	display: block; 
+	float: none; 
+	} 
+	.cancelbtn { 
+	width: 100%; 
+	} 
+} 
+.footer {
+  background-color: #1b1919;
+  padding: 0px;
+  position: relative; 
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+</style>
+
+    <body>
+
+
+        <!--CLIENT SIGN UP MODAL-->
+        <div id="clientSignUp" class="modal">
+            <div id="modalContent">
+                <div class="topnav-center" id="nav-logo" style="background: black">
+                    <img style="margin-top: 5%; margin-left: 30%;  width: 40%;" src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png"
+                        alt="">
+                    <h2>Login Form</h2>
+                </div>
+
+                <form action="/action_page.php">
+                    <div class="imgcontainer">
+                        <img src="https://princefan046.com/wp-content/uploads/2018/11/monster-195x195.png" alt="Avatar"
+                            class="Fizzy avatar"" alt=" Avatar" class="avatar">
+                    </div>
+
+                    <div class="container">
+
+                        <div class="label"><b>First Name</b>
+                            <input type="text" class="input" id="cFirstName" />
+
+                            <div class="label"><b>Last Name</b>
+                                <input type="text" class="input" id="cLastName" />
+
+                                <div class="label"><b>URL to Profile Pic</b>
+                                    <input type="text" class="input" id="cprofilePic">
+                                </div>
+
+                                <div class="label"><b>Email Address</b></div>
+                                <input type="email" class="email" id="cEmail" />
+
+
+                                <div class="row">
+                                    <div class="column">
+                                        <div class="label"><b>City</b><br>
+                                            <input type="text" class="input" id="cCity" />
+                                            <div class="row">
+                                                <div class="column">
+                                                    <div class="label"><b>State</b><br>
+                                                        <select class="input" id="cState">
+                                                            <option value="AL">Alabama</option>
+                                                            <option value="AK">Alaska</option>
+                                                            <option value="AZ">Arizona</option>
+                                                            <option value="AR">Arkansas</option>
+                                                            <option value="CA">California</option>
+                                                            <option value="CO">Colorado</option>
+                                                            <option value="CT">Connecticut</option>
+                                                            <option value="DE">Delaware</option>
+                                                            <option value="DC">District Of Columbia</option>
+                                                            <option value="FL">Florida</option>
+                                                            <option value="GA">Georgia</option>
+                                                            <option value="HI">Hawaii</option>
+                                                            <option value="ID">Idaho</option>
+                                                            <option value="IL">Illinois</option>
+                                                            <option value="IN">Indiana</option>
+                                                            <option value="IA">Iowa</option>
+                                                            <option value="KS">Kansas</option>
+                                                            <option value="KY">Kentucky</option>
+                                                            <option value="LA">Louisiana</option>
+                                                            <option value="ME">Maine</option>
+                                                            <option value="MD">Maryland</option>
+                                                            <option value="MA">Massachusetts</option>
+                                                            <option value="MI">Michigan</option>
+                                                            <option value="MN">Minnesota</option>
+                                                            <option value="MS">Mississippi</option>
+                                                            <option value="MO">Missouri</option>
+                                                            <option value="MT">Montana</option>
+                                                            <option value="NE">Nebraska</option>
+                                                            <option value="NV">Nevada</option>
+                                                            <option value="NH">New Hampshire</option>
+                                                            <option value="NJ">New Jersey</option>
+                                                            <option value="NM">New Mexico</option>
+                                                            <option value="NY">New York</option>
+                                                            <option value="NC">North Carolina</option>
+                                                            <option value="ND">North Dakota</option>
+                                                            <option value="OH">Ohio</option>
+                                                            <option value="OK">Oklahoma</option>
+                                                            <option value="OR">Oregon</option>
+                                                            <option value="PA">Pennsylvania</option>
+                                                            <option value="RI">Rhode Island</option>
+                                                            <option value="SC">South Carolina</option>
+                                                            <option value="SD">South Dakota</option>
+                                                            <option value="TN">Tennessee</option>
+                                                            <option value="TX">Texas</option>
+                                                            <option value="UT">Utah</option>
+                                                            <option value="VT">Vermont</option>
+                                                            <option value="VA">Virginia</option>
+                                                            <option value="WA">Washington</option>
+                                                            <option value="WV">West Virginia</option>
+                                                            <option value="WI">Wisconsin</option>
+                                                            <option value="WY">Wyoming</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="label"><b>User Name</b></div>
+                                                <input type="text" class="input" id="cUserName" />
+                                                <div class="typeBox">
+                                                    <div class="label"><b>Password</b></div>
+                                                    <input type="text" class="input" id="cPassword1" />
+                                                </div>
+                                                <div class="itemBox">
+                                                    <div class="label"><b>Confirm Password</b> </div>
+                                                    <input type="text" class="input" id="cPassword2" />
+                                                </div>
+                                                <div id="cpasswordError" class="colorVar">Oh my! Your passwords don't
+                                                    match!</div>
+                                                <div id="clientError" class="colorVar">Whoops! please fill in all the
+                                                    info</div>
+                                            </div>
+                                            <div class="buttonRow">
+                                                <button class="button" id="clientCreate">Create</button>
+                                                <button class="button" id="clientCancel">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label><b>Username</b></label>
+                                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                                    <label><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                    <button type="submit">Login</button>
+                                    <input type="checkbox" checked="checked"> Remember me
+                                </div>
+
+                                <div class="container" style="background-color:#f1f1f1">
+                                    <button type="button" class="cancelbtn">Cancel</button>
+                                    <span class="psw">Forgot <a href="#">password?</a></span>
+                                </div>
+                                <div class="footer">
+                                    <p>Starving Artist 2018</p>
+                                </div>
+                </form>
+
+
+
+
+                <!--ARTIST SIGN UP MODAL-->
+                <div id="artistSignUp" class="modal">
+                    <div id="modalContent">
+                        <div class="topnav-center" id="nav-logo" style="background: black">
+                            <img style="margin-top: 5%; margin-left: 30%; width: 40%;" src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png"
+                                alt="">
+                            <h2>Login Form</h2>
+                        </div>
+
+                        <form action="/action_page.php">
+                            <div class="imgcontainer">
+                                <img src="https://princefan046.com/wp-content/uploads/2018/11/monster-195x195.png" alt="Avatar"
+                                    class="Fizzy avatar" alt=" Avatar" class="avatar">
+                            </div>
+
+                            <div class="container">
+
+                                <div class="label"><b>First Name</b>
+                                    <input type="text" class="input" id="cFirstName" />
+
+                                    <div class="label"><b>Last Name</b>
+                                        <input type="text" class="input" id="cLastName" />
+
+                                        <div class="label"><b>URL to Profile Pic</b>
+                                            <input type="text" class="input" id="cprofilePic">
+                                        </div>
+
+                                        <div class="label"><b>Email Address</b></div>
+                                        <input type="email" class="email" id="cEmail" />
+
+                                        <div class="row">
+                                            <div class="column">
+                                                <div class="label"><b>City</b><br>
+                                                    <input type="text" class="input" id="cCity" />
+                                                    <div class="row">
+                                                        <div class="column">
+                                                            <div class="label"><b>State</b><br>
+                                                                <select class="input" id="cState">
+                                                                    <option value="AL">Alabama</option>
+                                                                    <option value="AK">Alaska</option>
+                                                                    <option value="AZ">Arizona</option>
+                                                                    <option value="AR">Arkansas</option>
+                                                                    <option value="CA">California</option>
+                                                                    <option value="CO">Colorado</option>
+                                                                    <option value="CT">Connecticut</option>
+                                                                    <option value="DE">Delaware</option>
+                                                                    <option value="DC">District Of Columbia</option>
+                                                                    <option value="FL">Florida</option>
+                                                                    <option value="GA">Georgia</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                    <option value="ID">Idaho</option>
+                                                                    <option value="IL">Illinois</option>
+                                                                    <option value="IN">Indiana</option>
+                                                                    <option value="IA">Iowa</option>
+                                                                    <option value="KS">Kansas</option>
+                                                                    <option value="KY">Kentucky</option>
+                                                                    <option value="LA">Louisiana</option>
+                                                                    <option value="ME">Maine</option>
+                                                                    <option value="MD">Maryland</option>
+                                                                    <option value="MA">Massachusetts</option>
+                                                                    <option value="MI">Michigan</option>
+                                                                    <option value="MN">Minnesota</option>
+                                                                    <option value="MS">Mississippi</option>
+                                                                    <option value="MO">Missouri</option>
+                                                                    <option value="MT">Montana</option>
+                                                                    <option value="NE">Nebraska</option>
+                                                                    <option value="NV">Nevada</option>
+                                                                    <option value="NH">New Hampshire</option>
+                                                                    <option value="NJ">New Jersey</option>
+                                                                    <option value="NM">New Mexico</option>
+                                                                    <option value="NY">New York</option>
+                                                                    <option value="NC">North Carolina</option>
+                                                                    <option value="ND">North Dakota</option>
+                                                                    <option value="OH">Ohio</option>
+                                                                    <option value="OK">Oklahoma</option>
+                                                                    <option value="OR">Oregon</option>
+                                                                    <option value="PA">Pennsylvania</option>
+                                                                    <option value="RI">Rhode Island</option>
+                                                                    <option value="SC">South Carolina</option>
+                                                                    <option value="SD">South Dakota</option>
+                                                                    <option value="TN">Tennessee</option>
+                                                                    <option value="TX">Texas</option>
+                                                                    <option value="UT">Utah</option>
+                                                                    <option value="VT">Vermont</option>
+                                                                    <option value="VA">Virginia</option>
+                                                                    <option value="WA">Washington</option>
+                                                                    <option value="WV">West Virginia</option>
+                                                                    <option value="WI">Wisconsin</option>
+                                                                    <option value="WY">Wyoming</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="typeBox">
+                                                            <div class="label"><b>Select Artist Type</b></div>
+                                                            <select class="input" id="virtuoso">
+                                                                <option value="musician">Musician</option>
+                                                                <option value="artist">Artist</option>
+                                                                <option value="photographer">Photographer</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="typeBox">
+                                                            <div><b>Showcase Your Youtube video. Paste the URL below</b></div>
+                                                            <input type="text" id="youTubeURL" />
+                                                        </div>
+                                                        <div class="commentBox">
+                                                            <div><b>List Your Specialties (Please separate with commas)</b></div>
+                                                            <input type="text" id="comments" />
+                                                        </div>
+                                                        <div id="apasswordError" class="colorVar">Oh my! Your passwords
+                                                            don't match!</div>
+                                                        <div id="artistError" class="colorVar">Whoops! please fill in
+                                                            all the info</div>
+                                                        <div class="buttonRow">
+                                                            <button class="button" id="artistCreate">Create</button>
+                                                            <button class="button" id="artistCancel">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label><b>Username</b></label>
+                                                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                                                <label><b>Password</b></label>
+                                                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                                <button type="submit">Login</button>
+                                                <input type="checkbox" checked="checked"> Remember me
+                                            </div>
+
+                                            <div class="container" style="background-color:#f1f1f1">
+                                                <button type="button" class="cancelbtn">Cancel</button>
+                                                <span class="psw">Forgot <a href="#">password?</a></span>
+                                            </div>
+                                            <div class="footer">
+                                                <p>Starving Artist 2018</p>
+                                            </div>
+                        </form>

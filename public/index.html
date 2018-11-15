@@ -1,459 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-	<link href='https://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
-  <!-- style.css  -->
-  <link rel="stylesheet" href="css/landing-style.css">
-  <!-- w3schools template stylesheet  -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <script src = "./js/app.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="./js/app.js"></script>
-  <!-- <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/style.css"> -->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+		<link href='https://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+		<!-- style.css  -->
 
-  <title>STARVING ARTISTS</title>
-</head>
+		<link rel="stylesheet" href="css/landing-style.css">
+		<!-- w3schools template stylesheet  -->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<body class="bg">
-  <header>
-    <div class="topnav">
-      <div class="topnav-right">
-        <div class="login-container">
-          <form action="/action_page.php">
-           
-            <input type="text" id="userName" placeholder="Username" name="username">
-            <input type="text" id="password" placeholder="Password" name="psw">
-            <button id="loginBtn">Login</button> &nbsp;&nbsp;
-              <button class="button" id="createClient">Create Client Profile</button> &nbsp;&nbsp;
-              <button class="button" id="createArtist">Create Artist Profile</button>
-            <!-- </div> <button id="createProfile" type="submit">Create Profile</button> -->
-           
-          </form>
-          <a class="nav-link" href="#Events">Events</a>
-          <a class="nav-link" href="#Photographers">Photographers</a>
-          <a class="nav-link" href="#Musicians">Musicians</a>
-          <a class="nav-link" href="#Artists">Artists</a>
-        </div>
-      </div>
-      <div class="topnav-left" id="nav-logo">
-        <button></button> <img src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png" alt="">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+		 crossorigin="anonymous">
+		<script src="./js/app.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="./js/app.js"></script>
 
-      </div>
-    </div>
-   
-  </header>
-  <!-- THREE flip cards start here  -->
-   
- <div id="cardFlips" >
-  <!-- FIRST FLIP CARD (FAR LEFT) -->
-  <div class="centerflipcards">
-    <div class="square-flip">
-      <div class='square' data-image="
+		<title>STARVING ARTISTS</title>
+	</head>
+
+	<body class="bg">
+		<header>
+			<div class="topnav">
+				<div class="topnav-right">
+					<div class="login-container">
+						<form action="/action_page.php">
+							<a href="#createArtist"></a>
+							<input type="navtext" id="userName" placeholder="Username" name="username">
+							<input type="navtext" id="password" placeholder="Password" name="psw">
+							<button id="loginBtn">Login</button> &nbsp;&nbsp;
+
+
+							<button onclick="document.getElementById('id01').style.display='block'" class="myBtn">Create
+								Client Profile</button> &nbsp;&nbsp;
+							<button onclick="document.getElementById('id02').style.display='block'" class="myBtn">Create
+								Artist Profile</button>
+							<!-- </div> <button id="createProfile" type="submit">Create Profile</button> -->
+
+						</form>
+						<a class="nav-link" href="#Events">Events</a>
+						<a class="nav-link" href="#Photographers">Photographers</a>
+						<a class="nav-link" href="#Musicians">Musicians</a>
+						<a class="nav-link" href="#Artists">Artists</a>
+					</div>
+				</div>
+				<div class="topnav-left" id="nav-logo">
+					<button></button> <img src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png"
+					 alt="">
+
+				</div>
+			</div>
+
+		</header>
+		<!-- THREE flip cards start here  -->
+		<section id="cardzz" style="padding-bottom: 10%;">
+			<div id="cardFlips">
+				<!-- FIRST FLIP CARD (FAR LEFT) -->
+				<div class="centerflipcards">
+					<div class="square-flip">
+						<div class='square' data-image="
           https://princefan046.com/wp-content/uploads/2018/11/assyrianweddingdrummers.jpg">
-        <div class="square-container">
-          <div class="align-center"><img src="" class="boxshadow" alt=""></div>
-          <h2 class="textshadow">PHOTOGRAPHERS</h2>
-          <h3 class="textshadow"></h3>
-        </div>
-        <div class="flip-overlay"></div>
-      </div>
-      <!-- FIRST FLIP CARD=BACK SIDE   -->
-      <div class='square2' data-image="
+							<div class="square-container">
+								<div class="align-center"><img src="" class="boxshadow" alt=""></div>
+								<h2 class="textshadow">PHOTOGRAPHERS</h2>
+								<h3 class="textshadow"></h3>
+							</div>
+							<div class="flip-overlay"></div>
+						</div>
+						<!-- FIRST FLIP CARD=BACK SIDE   -->
+						<div class='square2' data-image="
       https://princefan046.com/wp-content/uploads/2018/11/layinginpuddleweddingphtographer.jpg">
-        <div class="square-container2">
-          <div class="align-center"></div>
-          <h2>THE ONLY VENDOR BOOKING SERVICE YOU'LL EVER NEED.</h2>
-          <a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
-            Demos</a>
-        </div>
-        <div class="flip-overlay"></div>
-      </div>
-    </div>
+							<div class="square-container2">
+								<div class="align-center"></div>
+								<h2>THE ONLY VENDOR BOOKING SERVICE YOU'LL EVER NEED.</h2>
+								<a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
+									Demos</a>
+							</div>
+							<div class="flip-overlay"></div>
+						</div>
+					</div>
 
-    <!-- SECOND FLIP CARD (MIDDLE)  -->
-    <div class="square-flip">
-      <div class='square' data-image="https://princefan046.com/wp-content/uploads/2018/11/gif-of-band-playing.gif">
-        <div class="square-container">
-          <div class="align-center"><img src='' class="boxshadow" alt=""></div>
-          <h2 class="textshadow">MUSICIANS</h2>
-          <h3 class="textshadow"></h3>
-        </div>
-        <!--SECOND FLIP CARD -BACK SIDE  -->
-        <div class="flip-overlay"></div>
-      </div>
-      <div class='square2' data-image="https://princefan046.com/wp-content/uploads/2018/11/singersonstage.jpg">
-        <div class="square-container2">
-          <div class="align-center"></div>
-          <H2>BOOK RELIABLE MUSICIANS AND BANDS AT YOUR PRICE</H2>
-          <a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
-            Demos</a>
-        </div>
-        <div class="flip-overlay"></div>
-      </div>
-    </div>
+					<!-- SECOND FLIP CARD (MIDDLE)  -->
+					<div class="square-flip">
+						<div class='square' data-image="https://princefan046.com/wp-content/uploads/2018/11/gif-of-band-playing.gif">
+							<div class="square-container">
+								<div class="align-center"><img src='' class="boxshadow" alt=""></div>
+								<h2 class="textshadow">MUSICIANS</h2>
+								<h3 class="textshadow"></h3>
+							</div>
+							<!--SECOND FLIP CARD -BACK SIDE  -->
+							<div class="flip-overlay"></div>
+						</div>
+						<div class='square2' data-image="https://princefan046.com/wp-content/uploads/2018/11/singersonstage.jpg">
+							<div class="square-container2">
+								<div class="align-center"></div>
+								<H2>BOOK RELIABLE MUSICIANS AND BANDS AT YOUR PRICE</H2>
+								<a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
+									Demos</a>
+							</div>
+							<div class="flip-overlay"></div>
+						</div>
+					</div>
 
 
-    <!-- THIRD FLIP CARD (FAR RIGHT) -->
-    <div class="square-flip">
-      <div class='square' data-image="https://princefan046.com/wp-content/uploads/2018/11/crowdband.jpg">
-        <div class="square-container">
-          <div class="align-center"><img src="" class="boxshadow" alt=""></div>
-          <h2 class="textshadow">ARTISTS</h2>
-          <h3 class="textshadow"></h3>
-        </div>
-        <!-- THIRD FLIP CARD -BACK SIDE -->
-        <div class="flip-overlay"></div>
-      </div>
-      <div class='square2' data-image="
+					<!-- THIRD FLIP CARD (FAR RIGHT) -->
+					<div class="square-flip">
+						<div class='square' data-image="https://princefan046.com/wp-content/uploads/2018/11/crowdband.jpg">
+							<div class="square-container">
+								<div class="align-center"><img src="" class="boxshadow" alt=""></div>
+								<h2 class="textshadow">ARTISTS</h2>
+								<h3 class="textshadow"></h3>
+							</div>
+							<!-- THIRD FLIP CARD -BACK SIDE -->
+							<div class="flip-overlay"></div>
+						</div>
+						<div class='square2' data-image="
           https://princefan046.com/wp-content/uploads/2018/11/acoustic-guitar-playing_1426-615.jpg">
-        <div class="square-container2">
-          <div class="align-center"></div>
-          <h2>SKILLED UP & COMING ARTISTS WITH REFERALS</h2>
-          <a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
-            Demos</a>
-        </div>
-        <div class="flip-overlay"></div>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-	</div>
-</div>
-	<!-- END FLIP CARDS SECTION -->
- 
+							<div class="square-container2">
+								<div class="align-center"></div>
+								<h2>SKILLED UP & COMING ARTISTS WITH REFERALS</h2>
+								<a href="https://www.youtube.com/watch?v=bYe2_r0P5bQ" target="_blank" class="boxshadow viewdemo-button">View
+									Demos</a>
+							</div>
+							<div class="flip-overlay"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- END FLIP CARDS SECTION -->
+		</section>
 
-  <div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%;">
-   			<h1>Welcome to Starving Artists!</h1> <hr style="margin:0%">
-			<br><h3 style="color:brown; text-align: center"><b>Talented Photographers, Musicians, & Artists At Your Fingertips</b></h3>
-    </div>
-			<h4 style="margin-left: 5%; margin-right: 5%; margin-top: 0%;">
-					<p>Find a carefully selected directory of the best entertainers in your city. Many of our vendors appear <strong>exclusively</strong> on our site and canâ€™t be found anywhere else. Allowing artists to bid on your event allows you to set <strong>your own price</strong>while getting unrestricted access to talented Photographers, Musicians, & Artists. </p>
-				<p><ul style="margin-left: 30%; margin-right: 20%;">
+		<div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%;">
+			<h1>Welcome to Starving Artists!</h1>
+			<hr style="margin:0%">
+			<br>
+			<h3 style="color:brown; text-align: center"><b>Talented Photographers, Musicians, & Artists At Your Fingertips</b></h3>
+		</div>
+		<h4 style="margin-left: 5%; margin-right: 5%; margin-top: 0%;">
+			<p>Find a carefully selected directory of the best entertainers in your city. Many of our vendors appear <strong>exclusively</strong>
+				on our site and canâ€™t be found anywhere else. Allowing artists to bid on your event allows you to set <strong>your
+					own price</strong>while getting unrestricted access to talented Photographers, Musicians, & Artists. </p>
+			<p>
+				<ul style="margin-left: 30%; margin-right: 20%;">
 					<li><b>Create A Profile</b></li>
 					<li><b>Post Your Event</b></li>
 					<li><b>Get Instant Bids from Artist</b></li>
 					<li><b>Enjoy Quality Entertainment</b></li>
 				</ul>
-					</p>
-					</h4>
-    </div>
-  </div>
-<!-- START NEW BAND CARD  -->
+			</p>
+		</h4>
+		</div>
+		</div>
+		<!-- START NEW BAND CARD  -->
 
 
-<div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%;">
-		<hr style="margin:0%">	<h1>Featured Musicians
-		</h1> <hr style="margin:0%">
- <br><h3 style="color:brown; text-align: center"><b>
-	  <h3 style="margin-left: 30%; margin-right: 20%;"><cite> 	<i class="fas fa-quote-left"></i> </cite>From start to finish almost one year ago to today the services and communication received from Starving Artists exceeded our expectations. The professionalism, organisation and ease of booking is a credit to the company and the whole process ran efficiently and smoothly throughout.<i class="fas fa-quote-right"></i> </h3>
- <p class="testimonial-block__tag">Jennifer Otto</p>
- </b></h3>
-</div>
-	<div>
-		<table class="block" style="width:100%; margin: 0%;">
-			<td> <img id=bandAvatar style="float:left; max-height: 100; max-width: 100%; max-height: 100%;" src="https://api.adorable.io/avatars/285/abott@adorable.io.png"
-				 alt="Avatar"></td>
-			<td>
-				<h1><b>Awesome Band</b> </h1>
+		<div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%;">
+			<hr style="margin:0%">
+			<h1>Featured Musicians
+			</h1>
+			<hr style="margin:0%">
+			<br>
+			<h3 style="color:brown; text-align: center"><b>
+					<h3 style="margin-left: 30%; margin-right: 20%;"><cite> <i class="fas fa-quote-left"></i> </cite>From start to
+						finish almost one year ago to today the services and communication received from Starving Artists exceeded our
+						expectations. The professionalism, organisation and ease of booking is a credit to the company and the whole
+						process ran efficiently and smoothly throughout.<i class="fas fa-quote-right"></i> </h3>
+					<p class="testimonial-block__tag">Jennifer Otto</p>
+				</b></h3>
+		</div>
+		<div id="#Musicians">
+			<table class="block" style="width:100%; margin: 0%;">
+				<td> <img id=bandAvatar style="float:left; max-height: 100; max-width: 100%; max-height: 100%;" src="https://api.adorable.io/avatars/285/abott@adorable.io.png"
+					 alt="Avatar"></td>
+				<td>
+					<h1><b>Awesome Band</b> </h1>
 
-				<ul style="list-style-type:circle">
-					<li>Atlanta, Georgia</li>
-					<li>info hereBand info Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptate iure nostrum
-						debitis.</li>
-					<li>
-						<h2>Reviews</h2>
-						<p>Band info Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptate iure nostrum debitis.</p>
-						<cite>Ben Benson</cite>
-					</li>
-				</ul>
-			</td>
-		</table>
-	</div>
-	<!-- END NEW BAND CARD  -->
+					<ul style="list-style-type:circle">
+						<li>Atlanta, Georgia</li>
+						<li>info hereBand info Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptate iure nostrum
+							debitis.</li>
+						<li>
+							<h2>Reviews</h2>
+							<p>Band info Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptate iure nostrum debitis.</p>
+							<cite>Ben Benson</cite>
+						</li>
+					</ul>
+				</td>
+			</table>
+		</div>
+		<!-- END NEW BAND CARD  -->
 
-
-<!--   PAGE FOOTER --> 
-  <div class="footer">
-    <p>Starving Artist 2018</p>
-  </div>
-
-  <!-- ACTIVE FUNCTIONS FOR FLIP CARDS  -->
-  <script>jQuery(document).ready(function ($) {
-      //Count nr. of square classes
-      var countSquare = $('.square').length;
-      for (i = 0; i < countSquare; i++) {
-        var firstImage = $('.square').eq([i]);
-        var secondImage = $('.square2').eq([i]);
-        var getImage = firstImage.attr('data-image');
-        var getImage2 = secondImage.attr('data-image');
-        firstImage.css('background-image', 'url(' + getImage + ')');
-        secondImage.css('background-image', 'url(' + getImage2 + ')');
-      }
-    });</script>
+		<div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%; height: 200px; padding-top: 90px;">
+			<h1>Featured Photographers</h1>
+			<hr style="margin:0%">
+			<div id="#Photographers"> </div>
 
 
+			<div class="jumbotron" style="align-content:center; color: antiquewhite; font-size: 20%; height: 200px; padding-top: 90px;">
+				<h1>Featured Events!</h1>
+				<hr style="margin:0%">
+				<div id="#Events"></div>
+
+				<!--   PAGE FOOTER -->
+				<div class="footer">
+					<p>Starving Artist 2018</p>
+				</div>
+
+				<!-- ACTIVE FUNCTIONS FOR FLIP CARDS  -->
+				<script>jQuery(document).ready(function ($) {
+						//Count nr. of square classes
+						var countSquare = $('.square').length;
+						for (i = 0; i < countSquare; i++) {
+							var firstImage = $('.square').eq([i]);
+							var secondImage = $('.square2').eq([i]);
+							var getImage = firstImage.attr('data-image');
+							var getImage2 = secondImage.attr('data-image');
+							firstImage.css('background-image', 'url(' + getImage + ')');
+							secondImage.css('background-image', 'url(' + getImage2 + ')');
+						}
+					});</script>
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="./js/app.js"></script>
-	<link rel="stylesheet" href="./css/reset.css">
-	<link rel="stylesheet" href="./css/style.css">
-	<title>Document</title>
-</head>
-<body>
-	
-	<div>What would you like to sign up as?</div>
 
-	<div id=signupButtons>
+				<!-- <div id=signupButtons>
 		<button class="button" id="createClient">Client</button>
 		<button class="button" id="createArtist">Artist</button>
-	</div> -->
+	</div>  -->
 
-<!--CLIENT SIGN UP MODAL-->
-	<div id="clientSignUp" class="modal">
-		<div id="modalContent">
-			<div id="eventTitle">Let's Get Started</div>
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">First Name</div>
-					<input type="text" class="input" id="cFirstName" />
-				</div>
-				<div class="itemBox">
-					<div class="label">Last Name</div>
-					<input type="text" class="input" id="cLastName" />
-				</div>
-			</div>
-			<div class="rowBox">
-				<div class="label">URL to Profile Pic</div>
-				<input type="text" class="input" id="cprofilePic">
-			</div>
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">Email Address</div>
-					<input type="email" class="email" id="cEmail" />
-				</div>
-				<div class="itemBox">
-					<div class="label">User Name</div>
-					<input type="text" class="input" id="cUserName" />
-				</div>
-			</div>
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">City</div>
-					<input type="text" class="input" id="cCity" />
-				</div>
-				<div class="itemBox">
-					<div class="label">State</div>
-					<select class="input" id="cState">
-						<option value="AL">Alabama</option>
-						<option value="AK">Alaska</option>
-						<option value="AZ">Arizona</option>
-						<option value="AR">Arkansas</option>
-						<option value="CA">California</option>
-						<option value="CO">Colorado</option>
-						<option value="CT">Connecticut</option>
-						<option value="DE">Delaware</option>
-						<option value="DC">District Of Columbia</option>
-						<option value="FL">Florida</option>
-						<option value="GA">Georgia</option>
-						<option value="HI">Hawaii</option>
-						<option value="ID">Idaho</option>
-						<option value="IL">Illinois</option>
-						<option value="IN">Indiana</option>
-						<option value="IA">Iowa</option>
-						<option value="KS">Kansas</option>
-						<option value="KY">Kentucky</option>
-						<option value="LA">Louisiana</option>
-						<option value="ME">Maine</option>
-						<option value="MD">Maryland</option>
-						<option value="MA">Massachusetts</option>
-						<option value="MI">Michigan</option>
-						<option value="MN">Minnesota</option>
-						<option value="MS">Mississippi</option>
-						<option value="MO">Missouri</option>
-						<option value="MT">Montana</option>
-						<option value="NE">Nebraska</option>
-						<option value="NV">Nevada</option>
-						<option value="NH">New Hampshire</option>
-						<option value="NJ">New Jersey</option>
-						<option value="NM">New Mexico</option>
-						<option value="NY">New York</option>
-						<option value="NC">North Carolina</option>
-						<option value="ND">North Dakota</option>
-						<option value="OH">Ohio</option>
-						<option value="OK">Oklahoma</option>
-						<option value="OR">Oregon</option>
-						<option value="PA">Pennsylvania</option>
-						<option value="RI">Rhode Island</option>
-						<option value="SC">South Carolina</option>
-						<option value="SD">South Dakota</option>
-						<option value="TN">Tennessee</option>
-						<option value="TX">Texas</option>
-						<option value="UT">Utah</option>
-						<option value="VT">Vermont</option>
-						<option value="VA">Virginia</option>
-						<option value="WA">Washington</option>
-						<option value="WV">West Virginia</option>
-						<option value="WI">Wisconsin</option>
-						<option value="WY">Wyoming</option>
-					</select>
-				</div>
-			</div>
-			<div class="typeBox">
-				<div class="itemBox">
-					<div class="label">Password</div>
-					<input type="text" class="input" id="cPassword1" />
-				</div>
-				<div class="itemBox">
-					<div class="label">Confirm Password </div>
-					<input type="text" class="input" id="cPassword2" />
-				</div>
-				<div id="cpasswordError" class="colorVar">Oh my! Your passwords don't match!</div>
-				<div id="clientError" class="colorVar">Whoops! please fill in all the info</div>
-			</div>
-			<div class="buttonRow">
-				<button class="button" id="clientCreate">Create</button>
-				<button class="button" id="clientCancel">Cancel</button>
-			</div>
-		</div>
-	</div>
+				<body>
 
 
-<!--ARTIST SIGN UP MODAL-->
-	<div id="artistSignUp" class="modal">
-		<div id="modalContent">
-			<div id="eventTitle">Let's Get Started</div>
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">First Name</div>
-					<input type="text" class="input" id="aFirstName" />
-				</div>
-				<div class="itemBox">
-					<div class="label">Last Name</div>
-					<input type="text" class="input" id="aLastName" />
-				</div>
-			</div>
-			<div class="label">URL to Profile Pic</div>
-			<input type="text" class="input" id="aprofilePic">
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">Email Address</div>
-					<input type="email" class="email" id="aEmail" />
-				</div>
-				<div class="itemBox">
-					<div class="label">User Name</div>
-					<input type="text" class="input" id="aUserName" />
-				</div>
-			</div>
-			<div class="typeBox">
-				<div class="itemBox">
-					<div class="label">Password</div>
-					<input type="text" class="input" id="aPassword1" />
-				</div>
-				<div class="itemBox">
-					<div class="label">Confirm Password </div>
-					<input type="text" class="input" id="aPassword2" />
-				</div>
-			</div>
-			<div class="rowBox">
-				<div class="itemBox">
-					<div class="label">City</div>
-					<input type="text" class="input" id="aCity" />
-				</div>
-				<div class="itemBox">
-					<div class="label">State</div>
-					<select class="input" id="aState">
-						<option value="AL">Alabama</option>
-						<option value="AK">Alaska</option>
-						<option value="AZ">Arizona</option>
-						<option value="AR">Arkansas</option>
-						<option value="CA">California</option>
-						<option value="CO">Colorado</option>
-						<option value="CT">Connecticut</option>
-						<option value="DE">Delaware</option>
-						<option value="DC">District Of Columbia</option>
-						<option value="FL">Florida</option>
-						<option value="GA">Georgia</option>
-						<option value="HI">Hawaii</option>
-						<option value="ID">Idaho</option>
-						<option value="IL">Illinois</option>
-						<option value="IN">Indiana</option>
-						<option value="IA">Iowa</option>
-						<option value="KS">Kansas</option>
-						<option value="KY">Kentucky</option>
-						<option value="LA">Louisiana</option>
-						<option value="ME">Maine</option>
-						<option value="MD">Maryland</option>
-						<option value="MA">Massachusetts</option>
-						<option value="MI">Michigan</option>
-						<option value="MN">Minnesota</option>
-						<option value="MS">Mississippi</option>
-						<option value="MO">Missouri</option>
-						<option value="MT">Montana</option>
-						<option value="NE">Nebraska</option>
-						<option value="NV">Nevada</option>
-						<option value="NH">New Hampshire</option>
-						<option value="NJ">New Jersey</option>
-						<option value="NM">New Mexico</option>
-						<option value="NY">New York</option>
-						<option value="NC">North Carolina</option>
-						<option value="ND">North Dakota</option>
-						<option value="OH">Ohio</option>
-						<option value="OK">Oklahoma</option>
-						<option value="OR">Oregon</option>
-						<option value="PA">Pennsylvania</option>
-						<option value="RI">Rhode Island</option>
-						<option value="SC">South Carolina</option>
-						<option value="SD">South Dakota</option>
-						<option value="TN">Tennessee</option>
-						<option value="TX">Texas</option>
-						<option value="UT">Utah</option>
-						<option value="VT">Vermont</option>
-						<option value="VA">Virginia</option>
-						<option value="WA">Washington</option>
-						<option value="WV">West Virginia</option>
-						<option value="WI">Wisconsin</option>
-						<option value="WY">Wyoming</option>
-					</select>
-				</div>
-			</div>
-			<div class="typeBox">
-				<div class="label">Select Artist Type</div>
-				<select class="input" id="virtuoso">
-					<option value="musician">Musician</option>
-					<option value="artist">Artist</option>
-					<option value="photographer">Photographer</option>
-				</select>
-			</div>
-			<div class="typeBox">
-				<div>Have a Youtube vid? Paste the URL below</div>
-				<input type="text" id="youTubeURL"/>
-			</div>
-				<div class="commentBox">
-					<div>Any Specialties? (Please separate with commas) </div>
-					<input type="text" id="comments" />
-				</div>
-				<div id="apasswordError" class="colorVar">Oh my! Your passwords don't match!</div>	
-			<div id="artistError" class="colorVar">Whoops! please fill in all the info</div>
-			<div class="buttonRow">
-				<button class="button" id="artistCreate">Create</button>
-				<button class="button" id="artistCancel">Cancel</button>
-			</div>
-		</div>
-	</div>
+					<!--CLIENT SIGN UP MODAL-->
+					<div id="id01" class="w3-modal">
+						<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+							<div class="w3-center"><br>
+								<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright"
+								 title="Close Modal">×</span>
+								<div id="clientSignUp" class="modal">
+									<div id="modalContent">
+										<div class="topnav-center" id="nav-logo" style="background: black">
+											<img style="margin-top: 5%; margin-left: 30%;  width: 40%;" src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png"
+											 alt="">
+											<h2>Login Form</h2>
+										</div>
 
-	
-</body>
+										<form>
+											<div class="imgcontainer">
+												<img src="https://princefan046.com/wp-content/uploads/2018/11/monster-195x195.png" alt="Avatar" class="Fizzy avatar"" alt="
+												 Avatar" class="avatar">
+											</div>
+
+											<div class="container">
+
+												<div class="label"><b>First Name</b>
+													<input type="text" class="input" id="cFirstName" />
+
+													<div class="label"><b>Last Name</b>
+														<input type="text" class="input" id="cLastName" />
+
+														<div class="label"><b>URL to Profile Pic</b>
+															<input type="text" class="input" id="cprofilePic">
+														</div>
+
+														<div class="label"><b>Email Address</b></div>
+														<input type="email" class="email" id="cEmail" />
+
+
+														<div class="row">
+															<div class="column">
+																<div class="label"><b>City</b><br>
+																	<input type="text" class="input" id="cCity" />
+																	<div class="row">
+																		<div class="column">
+																			<div class="label"><b>State</b><br>
+																				<select class="input" id="cState">
+																					<option value="AL">Alabama</option>
+																					<option value="AK">Alaska</option>
+																					<option value="AZ">Arizona</option>
+																					<option value="AR">Arkansas</option>
+																					<option value="CA">California</option>
+																					<option value="CO">Colorado</option>
+																					<option value="CT">Connecticut</option>
+																					<option value="DE">Delaware</option>
+																					<option value="DC">District Of Columbia</option>
+																					<option value="FL">Florida</option>
+																					<option value="GA">Georgia</option>
+																					<option value="HI">Hawaii</option>
+																					<option value="ID">Idaho</option>
+																					<option value="IL">Illinois</option>
+																					<option value="IN">Indiana</option>
+																					<option value="IA">Iowa</option>
+																					<option value="KS">Kansas</option>
+																					<option value="KY">Kentucky</option>
+																					<option value="LA">Louisiana</option>
+																					<option value="ME">Maine</option>
+																					<option value="MD">Maryland</option>
+																					<option value="MA">Massachusetts</option>
+																					<option value="MI">Michigan</option>
+																					<option value="MN">Minnesota</option>
+																					<option value="MS">Mississippi</option>
+																					<option value="MO">Missouri</option>
+																					<option value="MT">Montana</option>
+																					<option value="NE">Nebraska</option>
+																					<option value="NV">Nevada</option>
+																					<option value="NH">New Hampshire</option>
+																					<option value="NJ">New Jersey</option>
+																					<option value="NM">New Mexico</option>
+																					<option value="NY">New York</option>
+																					<option value="NC">North Carolina</option>
+																					<option value="ND">North Dakota</option>
+																					<option value="OH">Ohio</option>
+																					<option value="OK">Oklahoma</option>
+																					<option value="OR">Oregon</option>
+																					<option value="PA">Pennsylvania</option>
+																					<option value="RI">Rhode Island</option>
+																					<option value="SC">South Carolina</option>
+																					<option value="SD">South Dakota</option>
+																					<option value="TN">Tennessee</option>
+																					<option value="TX">Texas</option>
+																					<option value="UT">Utah</option>
+																					<option value="VT">Vermont</option>
+																					<option value="VA">Virginia</option>
+																					<option value="WA">Washington</option>
+																					<option value="WV">West Virginia</option>
+																					<option value="WI">Wisconsin</option>
+																					<option value="WY">Wyoming</option>
+																				</select>
+																			</div>
+																		</div>
+																		<div class="label"><b>User Name</b></div>
+																		<input type="text" class="input" id="cUserName" />
+																		<div class="typeBox">
+																			<div class="label"><b>Password</b></div>
+																			<input type="text" class="input" id="cPassword1" />
+																		</div>
+																		<div class="itemBox">
+																			<div class="label"><b>Confirm Password</b> </div>
+																			<input type="text" class="input" id="cPassword2" />
+																		</div>
+																		<div id="cpasswordError" class="colorVar">Oh my! Your passwords don't
+																			match!</div>
+																		<div id="clientError" class="colorVar">Whoops! please fill in all the
+																			info</div>
+																	</div>
+																	<div class="buttonRow">
+																		<button class="button" id="clientCreate">Create</button>
+																		<button class="button" id="clientCancel">Cancel</button>
+																	</div>
+																</div>
+															</div>
+															<label><b>Username</b></label>
+															<input type="text" placeholder="Enter Username" name="uname" required>
+
+															<label><b>Password</b></label>
+															<input type="password" placeholder="Enter Password" name="psw" required>
+
+															<button type="submit">Login</button>
+															<input type="checkbox" checked="checked"> Remember me
+														</div>
+
+														<div class="container" style="background-color:#f1f1f1">
+															<button type="button" class="cancelbtn">Cancel</button>
+															<span class="psw">Forgot <a href="#">password?</a></span>
+														</div>
+														<div class="footer">
+															<p>Starving Artist 2018</p>
+														</div>
+
+
+
+
+														<!--ARTIST SIGN UP MODAL-->
+														<div id="id02" class="w3-modal">
+															<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+																<div class="w3-center"><br>
+																	<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright"
+																	 title="Close Modal">×</span>
+																	<!--ARTIST SIGN UP MODAL-->
+																	<div id="artistSignUp" class="modal">
+																		<div id="modalContent">
+																			<div class="topnav-center" id="nav-logo" style="background: black">
+																				<img style="margin-top: 5%; margin-left: 30%; width: 40%;" src="https://princefan046.com/wp-content/uploads/2018/11/20181112_180320-e1542064024564.png"
+																				 alt="">
+																				<h2>Login Form</h2>
+																			</div>
+
+																			<form action="/action_page.php">
+																				<div class="imgcontainer">
+																					<img src="https://princefan046.com/wp-content/uploads/2018/11/monster-195x195.png" alt="Avatar"
+																					 class="Fizzy avatar" alt=" Avatar" class="avatar">
+																				</div>
+
+																				<div class="container">
+
+																					<div class="label"><b>First Name</b>
+																						<input type="text" class="input" id="cFirstName" />
+
+																						<div class="label"><b>Last Name</b>
+																							<input type="text" class="input" id="cLastName" />
+
+																							<div class="label"><b>URL to Profile Pic</b>
+																								<input type="text" class="input" id="cprofilePic">
+																							</div>
+
+																							<div class="label"><b>Email Address</b></div>
+																							<input type="email" class="email" id="cEmail" />
+
+																							<div class="row">
+																								<div class="column">
+																									<div class="label"><b>City</b><br>
+																										<input type="text" class="input" id="cCity" />
+																										<div class="row">
+																											<div class="column">
+																												<div class="label"><b>State</b><br>
+																													<select class="input" id="cState">
+																														<option value="AL">Alabama</option>
+																														<option value="AK">Alaska</option>
+																														<option value="AZ">Arizona</option>
+																														<option value="AR">Arkansas</option>
+																														<option value="CA">California</option>
+																														<option value="CO">Colorado</option>
+																														<option value="CT">Connecticut</option>
+																														<option value="DE">Delaware</option>
+																														<option value="DC">District Of Columbia</option>
+																														<option value="FL">Florida</option>
+																														<option value="GA">Georgia</option>
+																														<option value="HI">Hawaii</option>
+																														<option value="ID">Idaho</option>
+																														<option value="IL">Illinois</option>
+																														<option value="IN">Indiana</option>
+																														<option value="IA">Iowa</option>
+																														<option value="KS">Kansas</option>
+																														<option value="KY">Kentucky</option>
+																														<option value="LA">Louisiana</option>
+																														<option value="ME">Maine</option>
+																														<option value="MD">Maryland</option>
+																														<option value="MA">Massachusetts</option>
+																														<option value="MI">Michigan</option>
+																														<option value="MN">Minnesota</option>
+																														<option value="MS">Mississippi</option>
+																														<option value="MO">Missouri</option>
+																														<option value="MT">Montana</option>
+																														<option value="NE">Nebraska</option>
+																														<option value="NV">Nevada</option>
+																														<option value="NH">New Hampshire</option>
+																														<option value="NJ">New Jersey</option>
+																														<option value="NM">New Mexico</option>
+																														<option value="NY">New York</option>
+																														<option value="NC">North Carolina</option>
+																														<option value="ND">North Dakota</option>
+																														<option value="OH">Ohio</option>
+																														<option value="OK">Oklahoma</option>
+																														<option value="OR">Oregon</option>
+																														<option value="PA">Pennsylvania</option>
+																														<option value="RI">Rhode Island</option>
+																														<option value="SC">South Carolina</option>
+																														<option value="SD">South Dakota</option>
+																														<option value="TN">Tennessee</option>
+																														<option value="TX">Texas</option>
+																														<option value="UT">Utah</option>
+																														<option value="VT">Vermont</option>
+																														<option value="VA">Virginia</option>
+																														<option value="WA">Washington</option>
+																														<option value="WV">West Virginia</option>
+																														<option value="WI">Wisconsin</option>
+																														<option value="WY">Wyoming</option>
+																													</select>
+																												</div>
+																											</div>
+																											<div class="typeBox">
+																												<div class="label"><b>Select Artist Type</b></div>
+																												<select class="input" id="virtuoso">
+																													<option value="musician">Musician</option>
+																													<option value="artist">Artist</option>
+																													<option value="photographer">Photographer</option>
+																												</select>
+																											</div>
+																											<div class="typeBox">
+																												<div><b>Showcase Your Youtube video. Paste the URL below</b></div>
+																												<input type="text" id="youTubeURL" />
+																											</div>
+																											<div class="commentBox">
+																												<div><b>List Your Specialties (Please separate with commas)</b></div>
+																												<input type="text" id="comments" />
+																											</div>
+																											<div id="apasswordError" class="colorVar">Oh my! Your passwords
+																												don't match!</div>
+																											<div id="artistError" class="colorVar">Whoops! please fill in
+																												all the info</div>
+																											<div class="buttonRow">
+																												<button class="button" id="artistCreate">Create</button>
+																												<button class="button" id="artistCancel">Cancel</button>
+																											</div>
+																										</div>
+																									</div>
+																									<label><b>Username</b></label>
+																									<input type="text" placeholder="Enter Username" name="uname" required>
+
+																									<label><b>Password</b></label>
+																									<input type="password" placeholder="Enter Password" name="psw" required>
+
+																									<button type="submit">Login</button>
+																									<input type="checkbox" checked="checked"> Remember me
+																								</div>
+
+																								<div class="container" style="background-color:#f1f1f1">
+																									<button type="button" class="cancelbtn">Cancel</button>
+																									<span class="psw">Forgot <a href="#">password?</a></span>
+																								</div>
+																								<div class="footer">
+																									<p>Starving Artist 2018</p>
+																								</div>
+																							</div>
+																						</div>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+				</body>
+
 </html>

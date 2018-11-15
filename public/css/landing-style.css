@@ -10,6 +10,11 @@
   color: white;
   text-align: center;
 }
+#cardzz {
+  margin-bottom: 20%; 
+  margin-left: 5%; 
+  margin-right: 5%; 
+}
 		.block {
 			border-style: solid;
 			border-width: thick;
@@ -347,4 +352,100 @@ transform: translateY(-50%) translateX(0px)  scale(1);
     box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
   }
 
- 
+     
+  /* css for modal popup  */
+   
+        form { 
+	border: 3px solid #f1f1f1; 
+} 
+/* 
+input[type=text], input[type=password], input[type=submit]  { 
+	width: 100%; 
+	padding: 12px 20px; 
+	margin: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+}  */
+
+#cState { 
+    margin-top: -2%;
+	width: 55%; 
+	padding: 9px 20px;
+margin-left: 1px;
+	margin-top: 1%;
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+#cCity { 
+    margin-top: 10px;
+	width: 40%; 
+margin-right: 2%;
+	margin-left: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+
+email { 
+	width: 100%; 
+margin-right: 2%;
+	margin-left: 8px 0 5 5; 
+	display: inline-block; 
+	border: 1px solid #ccc; 
+	box-sizing: border-box; 
+	float: left;
+} 
+
+/* button { 
+	background-color: #4CAF50; 
+	color: white; 
+	padding: 14px 20px; 
+	margin: 8px 0; 
+	border: none; 
+	cursor: pointer; 
+	width: 100%; 
+}  */
+
+
+button:hover { 
+	opacity: 0.8; 
+} 
+
+.cancelbtn { 
+	width: auto; 
+	padding: 10px 18px; 
+	background-color: #f44336; 
+} 
+
+.imgcontainer { 
+	text-align: center; 
+	margin: 24px 0 12px 0; 
+} 
+
+img.avatar { 
+	width: 40%; 
+	border-radius: 50%; 
+} 
+
+.container { 
+	padding: 16px; 
+} 
+
+span.psw { 
+	float: right; 
+	padding-top: 16px; 
+} 
+
+@media screen and (max-width: 300px) { 
+	span.psw { 
+	display: block; 
+	float: none; 
+	} 
+	.cancelbtn { 
+	width: 100%; 
+	} 
+} 

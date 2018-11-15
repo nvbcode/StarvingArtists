@@ -43,17 +43,17 @@ $(function () {
             $('#cpasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [newUser]
             //.then(function (newUser){
-            // set newUser.id as foreignKey.
-            //})
-            console.log(newUser);
+        set newUser.id as foreignKey.
+                //})
+                console.log(newUser);
 
             //$.get('/api/user/id)
             //[REQUEST]: GET [user]
             //.then
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [clientData]
             //set clientData.UserID to user.ID
 
@@ -128,17 +128,17 @@ $(function () {
             $('#apasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [newUser]
             //.then(function (newUser){
-            // set newUser.id as foreignKey.
-            //})
-            console.log(newUser);
+        set newUser.id as foreignKey.
+                //})
+                console.log(newUser);
 
             //$.get('/api/user/id)
             //[REQUEST]: GET [user]
             //.then
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [artistData]
             //set artistData.UserID to user.ID
             console.log(artistData);
@@ -174,7 +174,7 @@ $(function () {
 
 
 
-    // SIGN IN FUNCTION
+    SIGN IN FUNCTION
 
     const signIn = function (e) {
         e.preventDefault();
@@ -193,7 +193,7 @@ $(function () {
             localStorage.token = res.token;
             localStorage.id = res.id;
 
-            // write a conditional if the response gives usertype 1 or 2. then do another ajax call that routes you to the right page
+            write a conditional if the response gives usertype 1 or 2. then do another ajax call that routes you to the right page
             console.log("token:", localStorage.token)
 
             if (res.user_type === 1) {
@@ -203,17 +203,17 @@ $(function () {
             }
 
             window.location.replace(`/${usertype}`);
-            // $.ajax({
-            //     method: 'GET',
-            //     url:   `${usertype}/${res.id}`,
-            //     headers: {
-            //         "Authorization": `Bearer ${localStorage.token}` 
-            //     }
-            // }).then(function(res){
-            //     console.log(res);
-            // }).catch(err => {
-            //     return err
-            // });
+            $.ajax({
+                method: 'GET',
+                url: `${usertype}/${res.id}`,
+                headers: {
+                    "Authorization": `Bearer ${localStorage.token}`
+                }
+            }).then(function (res) {
+                console.log(res);
+            }).catch(err => {
+                return err
+            });
         });
     }
 
@@ -238,7 +238,7 @@ $(function () {
         $('#cpasswordError').removeClass("show")
         //VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
         //and mySQL will take care of it.
-        // const fakeID = Math.floor(Math.random() * 900) + 100;
+        const fakeID = Math.floor(Math.random() * 900) + 100;
 
         const p1 = $('#cPassword1').val().trim();
         const p2 = $('#cPassword2').val().trim();
@@ -255,7 +255,7 @@ $(function () {
             first_name: $('#cFirstName').val().trim(),
             last_name: $('#cLastName').val().trim(),
             city: $('#cCity').val().trim(),
-            state:$('#cState').val().trim(),
+            state: $('#cState').val().trim(),
             profile_pic: $('#cprofilePic').val().trim(),
         }
         //CHECK WHY THIS VALIDATION ISN'T WORKING
@@ -267,42 +267,42 @@ $(function () {
             $('#cpasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [users]
 
             $.ajax({
-                method: "POST",
-                url: `/api/users/`,
-                data: newUser,
-                headers: {
-                    "authorization": `Bearer ${localStorage.token}`
-                }
-            }).then(function (response) {
-                const newClient1 = {
-                    first_name: $('#cFirstName').val().trim(),
-                    last_name: $('#cLastName').val().trim(),
-                    city: $('#cCity').val().trim(),
-                    state:$('#cState').val().trim(),
-                    profile_pic: $('#cprofilePic').val().trim(),
-                    UserId: response.User
-                }
-
-                $.ajax({
                     method: "POST",
-                    url: `/api/customers/`,
-                    data: newClient1,
+                    url: `/api/users/`,
+                    data: newUser,
                     headers: {
                         "authorization": `Bearer ${localStorage.token}`
                     }
-                }).then(function (data) {
-                    console.log(data);
-                }).catch(function(error) {
+                }).then(function (response) {
+                    const newClient1 = {
+                        first_name: $('#cFirstName').val().trim(),
+                        last_name: $('#cLastName').val().trim(),
+                        city: $('#cCity').val().trim(),
+                        state: $('#cState').val().trim(),
+                        profile_pic: $('#cprofilePic').val().trim(),
+                        UserId: response.User
+                    }
+
+                    $.ajax({
+                        method: "POST",
+                        url: `/api/customers/`,
+                        data: newClient1,
+                        headers: {
+                            "authorization": `Bearer ${localStorage.token}`
+                        }
+                    }).then(function (data) {
+                        console.log(data);
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+
+                }).catch(function (error) {
                     console.log(error);
                 });
-
-            }).catch(function (error) {
-                console.log(error);
-            });
 
             $('#clientSignUp').removeClass("show");
             $('#cpasswordError').removeClass("show")
@@ -371,7 +371,7 @@ $(function () {
             $('#apasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
+            $.put('/api/events)
             //[REQUEST]: PUT [users]
 
             console.log(newArtist);
@@ -405,3 +405,36 @@ $(function () {
     }
 
 });
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+var modal = document.getElementById('id01');
+{/* When the user clicks anywhere outside of the modal, close it */ }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+} 
