@@ -5,35 +5,39 @@ const jwt = require('jsonwebtoken');
 module.exports = function (app) {
 
     app.post('/api/login', function (req, res) {
-        db.User.findAll({
+        console.log(req.body);
+        db.User.findOne({
             where: {
                 user_name: req.body.user_name,
-                password: req.body.password
             }
         }).then(function (userData) {
-            console.log(`userData: ${JSON.stringify(userData[0])}`)
-            // if (userData.length < 1) {
-            //     return res.status(401).json({
-            //         message: "Auth failed"
-            //     });
-            // }
-            // else {
-                jwt.sign({ 
-                    user_name: userData[0].user_name,
-                        id: userData[0].id,
-                        user_type: userData[0].user_type
-                 }, 'voodoomagicjack', {expiresIn :'30m'}, (err, token) => {
+            if (!userData || req.body.password !== userData.password) {
+                return res.status(401).json({
+                    message: "Incorrect username or password."
+                })
+            } else {
+
+                console.log(userData)
+
+                jwt.sign({
+                    user_name: userData.user_name,
+                    id: userData.id,
+                    user_type: userData.user_type
+                }, 'voodoomagicjack', { expiresIn: '30m' }, (err, token) => {
                     res.json({
                         token: token,
-                        id: userData[0].id,
-                        user_type: userData[0].user_type
+                        id: userData.id,
+                        user_type: userData.user_type
                     }).catch(err => {
-                        res.json({err});
+                        res.json({ err });
                     });
                 });
+            }
 
-            // }
-            });
+        }).catch(function (err) {
+            console.log(`error: ${err}`);
+            res.json({ error: err });
+        });
     });
 
     app.post('/api/signIn', function (req, res) {
