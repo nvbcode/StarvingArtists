@@ -19,7 +19,7 @@ $(function () {
 
 			$('#banner').append(`Welcome, ${artist.first_name} ${artist.last_name}!`);
 			$('#picBox').append(`<img id=profilePic src=${artist.profile_pic}>`);
-			const demo =`<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+			const demo = `<iframe width="360" height="315" src="https://www.youtube.com/embed/${artist.demo.split("/").pop()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 			$('#specBoxTitle').append(demo);
 
 			const reviews = artist.reviews;
@@ -113,4 +113,13 @@ $(function () {
 		$(`#${eventID}notice`).removeClass("hide");
 		$(`#${eventID}`).addClass("hide");
 	}
+
+	const logoutFn = function (e) {
+		console.log('has been clicked');
+		e.preventDefault();
+		localStorage.token = '';
+		window.location.replace('/');
+	};
+
+	$('#logout').on('click', logoutFn);
 });
