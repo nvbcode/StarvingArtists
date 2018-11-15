@@ -11,11 +11,9 @@ module.exports = function (app) {
 
     console.log(req.body);
 
-    db.User.create(req.body).then(function (rows) {
-      res.json({
-        User: rows.id,
-        Status: "Created"
-      });
+    db.User.create(req.body).then(function (user) {
+      console.log(user);
+      res.json(user);
     }).catch(function (error) {
       res.json({ error: error });
     });
