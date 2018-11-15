@@ -1,22 +1,13 @@
 
 $(function () {
 
-    //CLIENT SIGN UP SECTION
-
-    $('#createClient').on("click", showClientModal)
-    function showClientModal(event) {
-        event.preventDefault();
-        $('#clientSignUp').addClass("show");
-    }
-
     $("#clientCreate").on("click", createClient)
     function createClient(event) {
         event.preventDefault();
 
         $('#clientError').removeClass("show")
         $('#cpasswordError').removeClass("show")
-        //VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
-        //and mySQL will take care of it.
+        $('#clientSignUp').addClass("show");
 
         const p1 = $('#cPassword1').val().trim();
         const p2 = $('#cPassword2').val().trim();
@@ -34,7 +25,7 @@ $(function () {
             state: $('#cState').val().trim(),
             UserID: null
         }
-        //CHECK WHY THIS VALIDATION ISN'T WORKING
+
         if (clientData.first_name === "" || clientData.last_name === "" || clientData.city === "" || newUser.user_name === "" || newUser.password === "") {
             $('#clientError').addClass("show")
             $('#clientError').toggleClass("alt");
@@ -42,22 +33,6 @@ $(function () {
             $('#cpasswordError').addClass("show")
             $('#cpasswordError').toggleClass("alt");
         } else {
-
-            // $.put('/api/events)
-            //[REQUEST]: PUT [newUser]
-            //.then(function (newUser){
-            // set newUser.id as foreignKey.
-            //})
-            console.log(newUser);
-
-            //$.get('/api/user/id)
-            //[REQUEST]: GET [user]
-            //.then
-            // $.put('/api/events)
-            //[REQUEST]: PUT [clientData]
-            //set clientData.UserID to user.ID
-
-            console.log(clientData);
 
             $('#clientSignUp').removeClass("show");
             $('#cpasswordError').removeClass("show")
@@ -96,8 +71,6 @@ $(function () {
 
         $('#artistError').removeClass("show")
         $('#apasswordError').removeClass("show")
-        //VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
-        //and mySQL will take care of it.
 
         const p1 = $('#aPassword1').val().trim();
         const p2 = $('#aPassword2').val().trim();
@@ -110,6 +83,7 @@ $(function () {
             password: $('#aPassword2').val().trim(),
             user_type: 2
         }
+
         const artistData = {
             first_name: $('#aFirstName').val().trim(),
             last_name: $('#aLastName').val().trim(),
@@ -128,26 +102,10 @@ $(function () {
             $('#apasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
-            //[REQUEST]: PUT [newUser]
-            //.then(function (newUser){
-            // set newUser.id as foreignKey.
-            //})
-            console.log(newUser);
-
-            //$.get('/api/user/id)
-            //[REQUEST]: GET [user]
-            //.then
-            // $.put('/api/events)
-            //[REQUEST]: PUT [artistData]
-            //set artistData.UserID to user.ID
-            console.log(artistData);
-
             $('#artistSignUp').removeClass("show");
             $('#apasswordError').removeClass("show")
             $('#artistError').removeClass("show")
         }
-
     }
 
     $('#artistCancel').on("click", closeArtist);
@@ -171,9 +129,6 @@ $(function () {
         $('#artistSignUp').removeClass("show");
     }
 
-
-
-
     // SIGN IN FUNCTION
 
     const signIn = function (e) {
@@ -193,7 +148,6 @@ $(function () {
             localStorage.token = res.token;
             localStorage.id = res.id;
 
-            // write a conditional if the response gives usertype 1 or 2. then do another ajax call that routes you to the right page
             console.log("token:", localStorage.token)
 
             if (res.user_type === 1) {
@@ -203,24 +157,10 @@ $(function () {
             }
 
             window.location.replace(`/${usertype}`);
-            // $.ajax({
-            //     method: 'GET',
-            //     url:   `${usertype}/${res.id}`,
-            //     headers: {
-            //         "Authorization": `Bearer ${localStorage.token}` 
-            //     }
-            // }).then(function(res){
-            //     console.log(res);
-            // }).catch(err => {
-            //     return err
-            // });
         });
     }
 
     $('#loginBtn').on('click', signIn);
-
-
-
 
     //CLIENT SIGN UP SECTION
 
@@ -236,9 +176,6 @@ $(function () {
 
         $('#clientError').removeClass("show")
         $('#cpasswordError').removeClass("show")
-        //VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
-        //and mySQL will take care of it.
-        // const fakeID = Math.floor(Math.random() * 900) + 100;
 
         const p1 = $('#cPassword1').val().trim();
         const p2 = $('#cPassword2').val().trim();
@@ -258,7 +195,7 @@ $(function () {
             state:$('#cState').val().trim(),
             profile_pic: $('#cprofilePic').val().trim(),
         }
-        //CHECK WHY THIS VALIDATION ISN'T WORKING
+
         if (newClient.first_name === "" || newClient.last_name === "" || newUser.userName === "" || newUser.password === "") {
             $('#clientError').addClass("show")
             $('#clientError').toggleClass("alt");
@@ -266,9 +203,6 @@ $(function () {
             $('#cpasswordError').addClass("show")
             $('#cpasswordError').toggleClass("alt");
         } else {
-
-            // $.put('/api/events)
-            //[REQUEST]: PUT [users]
 
             $.ajax({
                 method: "POST",
@@ -341,9 +275,6 @@ $(function () {
 
         $('#artistError').removeClass("show")
         $('#apasswordError').removeClass("show")
-        //VERY IMPORTANT! Currently, this event ID is being randomly generated for testing. In the actual program, this will not exist, 
-        //and mySQL will take care of it.
-        const fakeID = Math.floor(Math.random() * 900) + 100;
 
         const p1 = $('#aPassword1').val().trim();
         const p2 = $('#aPassword2').val().trim();
@@ -351,7 +282,6 @@ $(function () {
         const str = $('#comments').val().trim();
 
         const newArtist = {
-            id: fakeID,
             firstName: $('#aFirstName').val().trim(),
             lastName: $('#aLastName').val().trim(),
             email: $('#aEmail').val().trim(),
@@ -371,16 +301,10 @@ $(function () {
             $('#apasswordError').toggleClass("alt");
         } else {
 
-            // $.put('/api/events)
-            //[REQUEST]: PUT [users]
-
-            console.log(newArtist);
-
             $('#artistSignUp').removeClass("show");
             $('#apasswordError').removeClass("show")
             $('#artistError').removeClass("show")
         }
-
     }
 
     $('#artistCancel').on("click", closeArtist);
