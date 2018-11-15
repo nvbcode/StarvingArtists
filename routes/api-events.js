@@ -21,7 +21,7 @@ module.exports = function (app) {
 
 
     //Get all events that has not been booked
-    app.get("/api/events", function (req, res) {
+    app.get("/api/events", checkAuth, function (req, res) {
 
         console.log("here");
 
@@ -47,7 +47,7 @@ module.exports = function (app) {
     });
 
     //Update the event's data
-    app.put("/api/events/:id", function (req, res) {
+    app.put("/api/events/:id",checkAuth, function (req, res) {
 
 
 
