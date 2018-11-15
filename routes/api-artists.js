@@ -67,17 +67,7 @@ module.exports = function (app) {
 
         console.log("artistData", artistData);
 
-        const artist = {
-            first_name: artistData.firstName,
-            last_name: artistData.lastName,
-            demo: artistData.demo,
-            city: artistData.city,
-            state: artistData.state,
-            profile_pic: artistData.profilePic,
-            UserId: artistData.id
-        }
-
-        db.Artist.create(artist).then(function (rows) {
+        db.Artist.create(artistData).then(function (rows) {
 
             res.json({
                 ArtistId: rows.dataValues.id,

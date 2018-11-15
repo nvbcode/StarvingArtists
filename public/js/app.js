@@ -75,8 +75,6 @@ $(function () {
         const p1 = $('#aPassword1').val().trim();
         const p2 = $('#aPassword2').val().trim();
 
-        const str = $('#comments').val().trim();
-
         const newUser = {
             email: $('#aEmail').val().trim(),
             user_name: $('#aUserName').val().trim(),
@@ -101,6 +99,40 @@ $(function () {
             $('#apasswordError').addClass("show")
             $('#apasswordError').toggleClass("alt");
         } else {
+            $.ajax({
+                method: "POST",
+                url: `/api/users/`,
+                data: newUser,
+                headers: {
+                    "authorization": `Bearer ${localStorage.token}`
+                }
+            }).then(function (response) {
+                const newArtist = {
+                    first_name: $('#aFirstName').val().trim(),
+                    last_name: $('#aLastName').val().trim(),
+                    city: $('#aCity').val().trim(),
+                    state: $('#aState').val().trim(),
+                    demo: $('#youTubeURL').val().trim(),
+                    profile_pic: $('#aprofilePic').val().trim(),
+                    UserId: response.id
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: `/api/artists/`,
+                    data: newArtist,
+                    headers: {
+                        "authorization": `Bearer ${localStorage.token}`
+                    }
+                }).then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            }).catch(function (error) {
+                console.log(error);
+            });
 
             $('#artistSignUp').removeClass("show");
             $('#apasswordError').removeClass("show")
@@ -144,7 +176,7 @@ $(function () {
             data: signInData
         }).then(function (res) {
             console.log(res);
-            if( res.message === "Enter Correct Login/PW") {
+            if (res.message === "Enter Correct Login/PW") {
                 return alert("Enter Correct Login/PW");
             }
             console.log(res)
@@ -160,8 +192,8 @@ $(function () {
                 usertype = `artist`;
             }
 
-             window.location.replace(`/${usertype}`);
-        }).catch(function(err){
+            window.location.replace(`/${usertype}`);
+        }).catch(function (err) {
             console.log(err);
             alert('Please Enter Correct Username/Password');
         });
@@ -199,7 +231,7 @@ $(function () {
             first_name: $('#cFirstName').val().trim(),
             last_name: $('#cLastName').val().trim(),
             city: $('#cCity').val().trim(),
-            state:$('#cState').val().trim(),
+            state: $('#cState').val().trim(),
             profile_pic: $('#cprofilePic').val().trim(),
         }
 
@@ -223,7 +255,7 @@ $(function () {
                     first_name: $('#cFirstName').val().trim(),
                     last_name: $('#cLastName').val().trim(),
                     city: $('#cCity').val().trim(),
-                    state:$('#cState').val().trim(),
+                    state: $('#cState').val().trim(),
                     profile_pic: $('#cprofilePic').val().trim(),
                     UserId: response.User
                 }
@@ -237,7 +269,7 @@ $(function () {
                     }
                 }).then(function (data) {
                     console.log(data);
-                }).catch(function(error) {
+                }).catch(function (error) {
                     console.log(error);
                 });
 
@@ -267,71 +299,72 @@ $(function () {
 
         $('#clientSignUp').removeClass("show");
     }
+});
 
     //ARTIST SIGN UP SECTION
 
-    $('#createArtist').on("click", showArtistModal)
-    function showArtistModal(event) {
-        event.preventDefault();
-        $('#artistSignUp').addClass("show");
-    }
+//     $('#createArtist').on("click", showArtistModal)
+//     function showArtistModal(event) {
+//         event.preventDefault();
+//         $('#artistSignUp').addClass("show");
+//     }
 
-    $("#artistCreate").on("click", createArtist)
-    function createArtist(event) {
-        event.preventDefault();
+//     $("#artistCreate").on("click", createArtist)
+//     function createArtist(event) {
+//         event.preventDefault();
 
-        $('#artistError').removeClass("show")
-        $('#apasswordError').removeClass("show")
+//         $('#artistError').removeClass("show")
+//         $('#apasswordError').removeClass("show")
 
-        const p1 = $('#aPassword1').val().trim();
-        const p2 = $('#aPassword2').val().trim();
+//         const p1 = $('#aPassword1').val().trim();
+//         const p2 = $('#aPassword2').val().trim();
 
-        const str = $('#comments').val().trim();
+//         const str = $('#comments').val().trim();
 
-        const newArtist = {
-            firstName: $('#aFirstName').val().trim(),
-            lastName: $('#aLastName').val().trim(),
-            email: $('#aEmail').val().trim(),
-            userName: $('#aUserName').val().trim(),
-            password: $('#aPassword2').val().trim(),
-            zipcode: parseInt($('#Zipcode').val()),
-            state: $('#aState').val(),
-            artType: $('#virtuoso').val(),
-        }
+//         const newArtist = {
+//             firstName: $('#aFirstName').val().trim(),
+//             lastName: $('#aLastName').val().trim(),
+//             email: $('#aEmail').val().trim(),
+//             userName: $('#aUserName').val().trim(),
+//             password: $('#aPassword2').val().trim(),
+//             zipcode: parseInt($('#Zipcode').val()),
+//             state: $('#aState').val(),
+//             artType: $('#virtuoso').val(),
+//         }
 
-        if (newArtist.firstName === "" || newArtist.lastName === "" || newArtist.userName === "" || newArtist.password === "") {
-            $('#artistError').addClass("show")
-            $('#artistError').toggleClass("alt");
-        } else if (p1 != p2) {
-            $('#apasswordError').addClass("show")
-            $('#apasswordError').toggleClass("alt");
-        } else {
+//         if (newArtist.firstName === "" || newArtist.lastName === "" || newArtist.userName === "" || newArtist.password === "") {
+//             $('#artistError').addClass("show")
+//             $('#artistError').toggleClass("alt");
+//         } else if (p1 != p2) {
+//             $('#apasswordError').addClass("show")
+//             $('#apasswordError').toggleClass("alt");
+//         } else {
 
-            $('#artistSignUp').removeClass("show");
-            $('#apasswordError').removeClass("show")
-            $('#artistError').removeClass("show")
-        }
-    }
+//             $('#artistSignUp').removeClass("show");
+//             $('#apasswordError').removeClass("show")
+//             $('#artistError').removeClass("show")
+//         }
+//     }
 
-    $('#artistCancel').on("click", closeArtist);
-    function closeArtist(event) {
-        event.preventDefault();
+//     $('#artistCancel').on("click", closeArtist);
+//     function closeArtist(event) {
+//         event.preventDefault();
 
-        $('#artistError').removeClass("show")
-        $('#apasswordError').removeClass("show")
+//         $('#artistError').removeClass("show")
+//         $('#apasswordError').removeClass("show")
 
-        $('#aFirstName').val("");
-        $('#aLastName').val("");
-        $('#aEmail').val("");
-        $('#aUserName').val("");
-        $('#aPassword1').val("");
-        $('#aPassword2').val("");
-        $('#aZipcode').val("");
-        $('#aState').val("");
-        $('#virtuoso').val("");
-        $('#comments').val("");
+//         $('#aFirstName').val("");
+//         $('#aLastName').val("");
+//         $('#aEmail').val("");
+//         $('#aUserName').val("");
+//         $('#aPassword1').val("");
+//         $('#aPassword2').val("");
+//         $('#aZipcode').val("");
+//         $('#aState').val("");
+//         $('#virtuoso').val("");
+//         $('#comments').val("");
 
-        $('#artistSignUp').removeClass("show");
-    }
+//         $('#artistSignUp').removeClass("show");
+//     }
 
-});
+// });
