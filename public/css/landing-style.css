@@ -1,3 +1,12 @@
+@font-face {
+	font-family:"Ritz";
+	src: url('../css/RitzFLF.ttf')
+}
+
+@font-face {
+	font-family:"Riesling";
+	src: url('../css/reset.css')
+}
 
  /* Add a gray background color and some padding to the footer */
 .footer {
@@ -41,10 +50,17 @@
     
     .jumbotron h1 { 
       text-align: center; /* centers the heading */
-      color: #DDD;
-      font-family: 'Raleway', Helvetica, Arial, sans-serif;
+      color: black;
+      font-family: 'Ritz';
       font-weight: 600;
       text-transform: uppercase;
+    }
+
+    b{
+      font-family:"Riesling";
+      font-weight:bold;
+      letter-spacing: 2px;
+      font-size:36px;
     }
 
 .bg {
@@ -265,7 +281,7 @@ transform: translateY(-50%) translateX(0px)  scale(1);
   }
   .square-flip h3{
     color:white;
-    font-family: "Open Sans";
+    font-family: Open Sans";
     font-weight:500;
     font-size:16px;
     line-height:26px;
