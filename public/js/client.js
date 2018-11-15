@@ -255,6 +255,15 @@ $(function () {
 		$('#applicantModal').removeClass("show");
 	}
 
+	
+	const logoutFn = function (e) {
+		console.log('has been clicked');
+		e.preventDefault();
+		localStorage.token = '';
+		window.location.replace('/');
+	};
+
+	$('#logout').on('click', logoutFn);
 });
 
 
