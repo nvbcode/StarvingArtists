@@ -2,7 +2,7 @@ const db = require("../models");
 // const Sequelize=require('sequelize');
 // const sequelize = new Sequelize('starvingartist_db', 'root', 'georgia18',{'dialect':'mysql'});
 
-const checkAuth = require("../middleware/checkauth")
+const checkAuth = require("../middleware/checkAuth")
 
 module.exports = function (app) {
 
