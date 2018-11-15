@@ -297,7 +297,6 @@ $(function () {
             zipcode: parseInt($('#Zipcode').val()),
             state: $('#aState').val(),
             artType: $('#virtuoso').val(),
-            specialties: str.split(",")
         }
 
         if (newArtist.firstName === "" || newArtist.lastName === "" || newArtist.userName === "" || newArtist.password === "") {
