@@ -88,9 +88,6 @@ $(function () {
                     "authorization": `Bearer ${localStorage.token}`
                 }
             }).then(function (response) {
-                //This console.log is undefined. We need a get function to get the ID, then pass that in.
-                //ERROR FIX.
-                console.log(response.id);
                 const newClient = {
                     first_name: firstName,
                     last_name: lastName,
