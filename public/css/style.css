@@ -1,13 +1,20 @@
+@font-face {
+	font-family:"Ritz";
+	src: url('../css/RitzFLF.ttf')
+}
+
+@font-face {
+	font-family:"Riesling";
+	src: url('../css/reset.css')
+}
+
 /*GENERIC INFO USED BY ALL*/
 html, body{
 	padding:0;
 	margin:0;
 	width:100%;
-
 	background-image: url("https://sftextures.com/texture/5145/1/5153/gradient-grey-display-background-many-nine-lights-stage-floor-six-spotlight-wall-modern-soft-web-image-512x288.png");
-	height: 100%; 
-	background-position: center;
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	background-size: cover;
 	z-index: -200;
 }
@@ -19,11 +26,14 @@ html, body{
 #banner, .boxBanner {
 	border-bottom-style: solid;
 	border-bottom-width:2px;
-	border-color:black;
+	border-color:#4CAF50;
 	text-align:center;
 	font-size:40px;
+	color:white;
 	padding-top:20px;
 	padding-bottom:20px;
+	font-family: "Ritz";
+	background-color:#4CAF50;
 }
 
 
@@ -35,11 +45,13 @@ html, body{
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 12px;
+	font-size: 18px;
 	margin: 2px 5px;
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 	cursor: pointer;
+	font-family: "Riesling";
+	letter-spacing: 2px;
   }
 #eventsBox, .contentBox, #reviewRow{
 	display:flex;
@@ -59,6 +71,7 @@ html, body{
 body {font-family: Arial, Helvetica, sans-serif;}
 
 #eventTitle{
+	font-family:"Ritz";
 	font-size:36px;
 	font-weight:bold;
 	text-align:center;
@@ -72,6 +85,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .eventElement{
 	font-family: Arial, Helvetica, sans-serif;
+	padding-bottom:5px;
 }
 
 .rowBox{
@@ -241,10 +255,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 .oneEvent{
-	border-color:green;
+	border-color:#4CAF50;
 	border-style:solid;
 	border-width:2px;
+	border-radius:10px;
+	background-color:white;
 	width:80%;
+	padding:10px;
 }
 
 .notice{
