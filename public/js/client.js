@@ -121,10 +121,10 @@ $(function () {
 	$("#eventsBox").on("click", ".applicantButton", applyEvent);
 	function applyEvent(event) {
 		event.preventDefault();
-		$('#applicantModal').addClass("hide");
+		$('#applicantModal').addClass("show");
 
 		eventId = parseInt(this.id[0]);
-		$(".modal-body").empty();
+		$("#modalContent2").empty();
 
 		$.ajax({
 			method: "GET",
@@ -146,14 +146,16 @@ $(function () {
 				}).then(function (artist) {
 					console.log(artist);
 
-					const applicantName = $("<p>").attr("id", applicants[i].id).text(`Artist Name: ${artist.first_name} ${artist.last_name}`);
 					const demo = getYouTube(artist.demo);
-					const city = $("<p>").text(`City: ${artist.city}`);
-					const state = $("<p>").text(`State: ${artist.state}`);
-					const confirmBtn = $(`<button id="confirm" value= ${applicants[i].id}>`).text('Confirm');
+					const confirmBtn = `<button id="confirm" value= ${applicants[i].id}>Confirm</button>`;
+
+					$("#modalContent2").append(`<div class="oneEvent">
+						<div class="eventElement">Artist : ${artist.first_name} ${artist.last_name}</div>
+						<div class="eventElement">Demo: ${demo}</div>
+						<div class="eventElement"> ${confirmBtn} </div>
+						</div>`);
 
 
-					$(".modal-body").append(applicantName).append(demo).append(city).append(state).append(confirmBtn).append("<hr>");
 				}).catch(function (error) {
 					console.log(error);
 				});

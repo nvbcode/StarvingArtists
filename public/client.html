@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="./css/style.css">
 	<title>Client</title>
 </head>
+
 <body>
 	<div id="page">
 		<div id="banner"></div>
@@ -130,21 +131,13 @@
 
 	</div>
 	<!--View Applicant information-->
-	<div class="modal fade" id="applicantModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-info">Applicant</h5>
-					<button type="button" class="btn-info close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" id="closeApplicants" class="btn btn-secondary btn-info" data-dismiss="modal">Close</button>
-				</div>
+	<div id="applicantModal" class="modal">
+		<div class="modal-content">
+			<div id="modalContent2">
+				<h5 class="modal-title text-info">Applicant</h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closeApplicants" class="btn btn-secondary btn-info" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
