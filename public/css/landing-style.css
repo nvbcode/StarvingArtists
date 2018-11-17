@@ -8,24 +8,6 @@
 	src: url('../css/reset.css')
 }
 
-.button{
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:16px;
-}
-
-#eventTitle{
-	font-family:"Ritz";
-	font-size:36px;
-	font-weight:bold;
-	text-align:center;
-	width:100%;
-	margin-bottom:30px;
-	padding-bottom:10px;
-	border-bottom-style: solid;
-	border-bottom-width:2px;
-	border-color:black;
-}
-
  /* Add a gray background color and some padding to the footer */
 .footer {
   background-color: #1b1919;
@@ -81,9 +63,14 @@
       font-size:36px;
     }
 
-    .rowBox{
-      margin-bottom:5px;
-    }
+.bg {
+  background-image: url("https://sftextures.com/texture/5145/1/5153/gradient-grey-display-background-many-nine-lights-stage-floor-six-spotlight-wall-modern-soft-web-image-512x288.png");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -200;
+}
 
 .topnav {
   /* z-index: -100px; */
@@ -286,6 +273,7 @@ transform: translateY(-50%) translateX(0px)  scale(1);
     display:none;
     text-align:center;
   }
+
 
 
   /*Style text*/
