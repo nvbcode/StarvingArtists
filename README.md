@@ -46,19 +46,26 @@ Heroku, Mapbox.com API, Node.js, Express, Sequelize
 ## Rough Breakdown of Tasks: 
 
 ## User Interface: CSS, HTML 
-(Cynthia Knox, Josh Jeng)  
+(Cynthia Knox)  
 -Creating Dynamic user interface 
 -Login Page
--Display Musicians 
--Display Artists 
--Display Photographers 
--Make app mobile responsive 
+-Artist page display and styling
+-Client page display and styling
+-Mobile responsiveness 
 
-## BackEnd Functionality 
+## JavaScript Logic
+(Joshua Jeng)
+-HTML architecture
+-UI inputs to capture data
+-Converting data into model-usable format
+-Dynamically render results to page
+-Data validation to enforce data clarity
+
+## BackEnd Functionality & Login Verification
 API, mySQL, Javascript 
 (Josh McCormick, Makiko Vaughan, Neel Bhandari)
--Create models 
--create datavase 
--Write sequelize to take user input 
--Populate into database 
--Populate to UI 
+-Created models 
+-Constructed SQL database 
+-Initiated Sequelize routes to utilie inputs 
+-JSWebToken login with persistent memory
+-Data validation to enforce data clarity
