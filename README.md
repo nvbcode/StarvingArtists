@@ -43,7 +43,7 @@ Web App using HTML, CSS, Javascript, MySql,
 Heroku, Mapbox.com API, Node.js, Express, Sequelize 
 
 
-## Rough Breakdown of Tasks: 
+## Breakdown of Tasks: 
 
 ## User Interface: CSS, HTML 
 (Cynthia Knox)  
@@ -62,10 +62,9 @@ Heroku, Mapbox.com API, Node.js, Express, Sequelize
 -Data validation to enforce data clarity
 
 ## BackEnd Functionality & Login Verification
-API, mySQL, Javascript 
 (Josh McCormick, Makiko Vaughan, Neel Bhandari)
 -Created models 
 -Constructed SQL database 
--Initiated Sequelize routes to utilie inputs 
+-Initiated Sequelize routes to utilize inputs 
 -JSWebToken login with persistent memory
 -Data validation to enforce data clarity
